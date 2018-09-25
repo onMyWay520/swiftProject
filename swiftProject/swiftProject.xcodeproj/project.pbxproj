@@ -22,6 +22,7 @@
 		56CFDB7E215A3CF700E7EB02 /* PPYShopCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CFDB7D215A3CF700E7EB02 /* PPYShopCartVC.swift */; };
 		56CFDB80215A3D0800E7EB02 /* PPYMineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CFDB7F215A3D0800E7EB02 /* PPYMineVC.swift */; };
 		56CFDB83215A3F9D00E7EB02 /* PPYCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CFDB82215A3F9D00E7EB02 /* PPYCommon.swift */; };
+		84B735C9215A6FD300BB905E /* PPYBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B735C8215A6FD300BB905E /* PPYBaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		56CFDB7D215A3CF700E7EB02 /* PPYShopCartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYShopCartVC.swift; sourceTree = "<group>"; };
 		56CFDB7F215A3D0800E7EB02 /* PPYMineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYMineVC.swift; sourceTree = "<group>"; };
 		56CFDB82215A3F9D00E7EB02 /* PPYCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYCommon.swift; sourceTree = "<group>"; };
+		84B735C8215A6FD300BB905E /* PPYBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				56CFDB6E215A30AF00E7EB02 /* PPYBaseTableViewController.swift */,
 				56CFDB70215A30F700E7EB02 /* PPYBaseTabBarController.swift */,
 				56CFDB72215A323100E7EB02 /* PPYBaseNavigationController.swift */,
+				84B735C8215A6FD300BB905E /* PPYBaseViewController.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			files = (
 				56CFDB71215A30F700E7EB02 /* PPYBaseTabBarController.swift in Sources */,
 				56CFDB7C215A3CE100E7EB02 /* PPYSearchVC.swift in Sources */,
+				84B735C9215A6FD300BB905E /* PPYBaseViewController.swift in Sources */,
 				56CFDB7A215A3CC700E7EB02 /* PPYHomeVC.swift in Sources */,
 				56CFDB6F215A30AF00E7EB02 /* PPYBaseTableViewController.swift in Sources */,
 				56CFDB83215A3F9D00E7EB02 /* PPYCommon.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 let ppyScreenW = UIScreen.main.bounds.width
 let ppyScreenH = UIScreen.main.bounds.height
+//let defaultColor = UIColor.()
 
 class PPYCommon: NSObject {
 

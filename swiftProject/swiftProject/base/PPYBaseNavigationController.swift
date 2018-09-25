@@ -12,21 +12,20 @@ class PPYBaseNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//     UINavigationBar.appearance().barTintColor =
-       //背景色，导航条背景色
-  self.interactivePopGestureRecognizer?.delegate = nil
+            
+    self.interactivePopGestureRecognizer?.delegate = nil
 
     }
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.viewControllers.count<1 {
-            viewController.navigationItem.rightBarButtonItem=setRightButton()
+    viewController.navigationItem.rightBarButtonItem=setRightButton()
         }
         else {
         
       viewController.hidesBottomBarWhenPushed = true
    viewController.navigationItem.leftBarButtonItem = setBackBarButtonItem()
         }
-        super.pushViewController(viewController, animated: true)
+      super.pushViewController(viewController, animated: true)
     }
         /// 设置导航栏右边按钮
         func setRightButton() -> UIBarButtonItem {

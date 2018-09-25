@@ -9,13 +9,11 @@
 import UIKit
 
 class PPYBaseTabBarController: UITabBarController {
-//    override class func initialize(){
-//        var attrs = [String:NSObject]()
-//        attrs
-//
-//    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addChildViewControllers()
         let backView = UIView(frame: CGRect(x: 0, y: 0, width: ppyScreenW, height: 49))
         backView.backgroundColor = UIColor.white
@@ -34,7 +32,6 @@ class PPYBaseTabBarController: UITabBarController {
         
         controller.tabBarItem.title = title
         controller.title = title
-//        controller.view.backgroundColor =UIColor.white
         controller.tabBarItem.image = UIImage(named: image)
         controller.tabBarItem.selectedImage = UIImage(named: selectedImage)
         let naviController = PPYBaseNavigationController.init(rootViewController: controller)
