@@ -14,15 +14,16 @@ class PPYHomeGoodsCell: PPYBaseTableViewCell {
     var goodsImageView:UIImageView?
     var desLab:UILabel?
     var priceLab:UILabel?
+    var addShopCartButton:UIButton?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     override func setCellUI() {
 
-      self.goodsImageView=UIImageView()
-//      self.goodsImageView?.image=UIImage.init(named: "spellDefault")
-        self.goodsImageView?.sd_setImage(with: NSURL.init(string: "http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40f507b2e99aa64034f78f01930.jpg") as URL?, placeholderImage: UIImage.init(named: "spellDefault"), options: [], progress: nil, completed: nil)
+     self.goodsImageView=UIImageView()
+     self.goodsImageView?.sd_setImage(with: NSURL.init(string: "http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40f507b2e99aa64034f78f01930.jpg") as URL?, placeholderImage: UIImage.init(named: "spellDefault"), options: [], progress: nil, completed: nil)
       self.addSubview(self.goodsImageView!)
       self.titleLab=UILabel()
       self.titleLab?.font=UIFont.systemFont(ofSize: 14)
@@ -37,7 +38,9 @@ class PPYHomeGoodsCell: PPYBaseTableViewCell {
       self.desLab?.textColor=UIColor(hex: "666666")
       self.desLab?.textAlignment=NSTextAlignment.left
       self.addSubview(self.desLab!)
-        
+       
+        self.addShopCartButton=UIButton.buttonWith(titleColor: UIColor.white, titleFont: UIFont.systemFont(ofSize: 16), backgroundColor: defaultColor, title: "加入采购单",cornerRadius:5)
+      self.addSubview(self.addShopCartButton!)
     }
     override func layoutSubviews() {
          self.goodsImageView?.snp.makeConstraints { (make) in
@@ -61,6 +64,14 @@ class PPYHomeGoodsCell: PPYBaseTableViewCell {
             make.top.equalTo((self.titleLab?.snp.bottom)!).offset(10)
             // 设置宽、高
             make.height.equalTo(14)
+            make.width.equalTo(100)
+            make.left.equalTo((self.titleLab?.snp.left)!)
+        }
+        self.addShopCartButton?.snp.makeConstraints { (make) in
+            // 让顶部距离view1的底部为10的距离
+            make.top.equalTo((self.desLab?.snp.bottom)!).offset(40)
+            // 设置宽、高
+            make.height.equalTo(30)
             make.width.equalTo(100)
             make.left.equalTo((self.titleLab?.snp.left)!)
         }
