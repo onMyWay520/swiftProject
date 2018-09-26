@@ -12,9 +12,22 @@ class PPYHomeVC: PPYBaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataArray=["1","2","3","4"]
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
+        self.mainView.mj_footer.isHidden=false
+        mainView.mj_header.beginRefreshing()
+    }
+    override func loadNewData() {
+        self.dataArray=["1","2","3","4"]
+        self.mainView.mj_header.endRefreshing()
+        self.mainView .reloadData()
 
+    }
+    override func loadMoreData() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+            self.dataArray .append("5")
+            self.mainView .reloadData()
+            self.mainView.mj_footer.endRefreshing()
+        }
     }
      func numberOfSections(in tableView: UITableView) -> Int {
         return self.dataArray.count
@@ -48,7 +61,6 @@ class PPYHomeVC: PPYBaseTableViewController {
         if editingStyle == .delete {
             self.dataArray .remove(at: indexPath.section)
             self.mainView .reloadData()
-
         }
     }
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {

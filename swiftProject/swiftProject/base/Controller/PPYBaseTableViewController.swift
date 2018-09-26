@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MJRefresh
 class PPYBaseTableViewController: PPYBaseViewController,UITableViewDataSource,UITableViewDelegate {
   
     var mainView = UITableView()
@@ -22,9 +22,23 @@ class PPYBaseTableViewController: PPYBaseViewController,UITableViewDataSource,UI
         mainView.estimatedRowHeight=0
         mainView.estimatedSectionFooterHeight=0
         mainView.estimatedSectionHeaderHeight=0
+        mainView.mj_header=MJRefreshNormalHeader()
+        mainView.mj_header.setRefreshingTarget(self, refreshingAction:#selector(loadNewData))
+        mainView.mj_footer=MJRefreshAutoNormalFooter()
+        mainView.mj_footer.setRefreshingTarget(self, refreshingAction:#selector(loadMoreData))
         self.view.addSubview(mainView)
+        self.mainView.mj_footer.isHidden=true
     }
-    
+    @objc func loadNewData(){
+        self.mainView.mj_header.endRefreshing()
+        self.mainView .reloadData()
+
+    }
+    @objc func loadMoreData(){
+        self.mainView.mj_footer.endRefreshing()
+        self.mainView .reloadData()
+
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 0;

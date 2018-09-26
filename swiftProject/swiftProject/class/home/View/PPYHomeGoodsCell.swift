@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-
+import SDWebImage
 class PPYHomeGoodsCell: PPYBaseTableViewCell {
     var titleLab:UILabel?
     var goodsImageView:UIImageView?
@@ -21,9 +21,9 @@ class PPYHomeGoodsCell: PPYBaseTableViewCell {
     override func setCellUI() {
 
       self.goodsImageView=UIImageView()
-      self.goodsImageView?.image=UIImage.init(named: "spellDefault")
+//      self.goodsImageView?.image=UIImage.init(named: "spellDefault")
+        self.goodsImageView?.sd_setImage(with: NSURL.init(string: "http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40f507b2e99aa64034f78f01930.jpg") as URL?, placeholderImage: UIImage.init(named: "spellDefault"), options: [], progress: nil, completed: nil)
       self.addSubview(self.goodsImageView!)
-        
       self.titleLab=UILabel()
       self.titleLab?.font=UIFont.systemFont(ofSize: 14)
       self.titleLab?.text="我是标题"
