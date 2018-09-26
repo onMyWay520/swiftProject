@@ -8,61 +8,58 @@
 
 import UIKit
 private let ppyTitleViewH :CGFloat = 40
-class PPYHomeVC: PPYBaseTableViewController {
-    let titles = ["熊猫星秀","户外直播","音乐","萌宠乐园"]
-    
+class PPYHomeVC: UIViewController {
+    let titles = ["热卖","推荐","果汁","牛奶","方便面","矿泉水","功能饮料","其他"]
     fileprivate lazy var pageTitleView : PPYPageTitleView = {[weak self] in
         let titleFrame = CGRect(x: 0, y: ppyStatusBarH + ppyNavigationBarH, width: ppyScreenW, height: ppyTitleViewH)
-        let titleView = PPYPageTitleView(frame: titleFrame, titles: [(self?.title)!])
-        // MARK:- 控制器作为EntertainmentTitleView代理
-        titleView.delegate = self as? PageTitleViewDelegate
+ let titleView = PPYPageTitleView(frame: titleFrame, titles: (self?.titles)!)        // MARK:- 控制器作为EntertainmentTitleView代理
+        titleView.delegate = self
         return titleView
         }()
     
     fileprivate lazy var pageContentView : PPYPageContentView = { [weak self] in
         let contentFrame = CGRect(x: 0, y: ppyStatusBarH + ppyNavigationBarH + ppyTitleViewH+0.5, width: ppyScreenW, height: ppyScreenH - ppyStatusBarH - ppyNavigationBarH - ppyTitleViewH - ppyTabBarH)
+        
         var childVcs = [UIViewController]()
-        childVcs.append(PPYHomeChildVC())
-        childVcs.append(PPYHomeChildVC())
-        childVcs.append(PPYHomeChildVC())
-        childVcs.append(PPYHomeChildVC())
+        for _ in 0...titles.count {
+            childVcs.append(PPYHomeChildVC())
+
+        }
         let contentView = PPYPageContentView(frame: contentFrame, childVcs: childVcs, parentVc: self)
         //MARK:- 控制器作为PageContentViewDelegate代理
-        contentView.delegate = self as! PageContentViewDelegate
+        contentView.delegate = self
         return contentView
         }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//            setupUI()
-//        self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
-//        self.mainView.mj_footer.isHidden=false
-//        mainView.mj_header.beginRefreshing()
-     
+        setupUI()
+
     }
+}
     // MARK:- setupUI
-//    extension PPYHomeVC {
-//        fileprivate func setupUI() {
-//            //不需要调整scrollview的内边距
-//            automaticallyAdjustsScrollViewInsets = false
-//            view.addSubview(pageTitleView)
-//            view.addSubview(pageContentView)
-//        }
-//    }
-//
-//    //MARK:- PageTitleViewDelegate代理实现
-//    extension PPYHomeVC : PageTitleViewDelegate {
-//        func pageTitleView(_ titleView: PPYPageTitleView, selectedIndex index: Int) {
-//            pageContentView.setCurrentIndex(currentIndex: index)
-//        }
-//    }
-//
-//    //MARK:- EntertainmentContentViewDelegate代理实现
-//    extension PPYHomeVC : PageContentViewDelegate{
-//        func pageContentView(_ contentView: PPYPageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
-//            pageTitleView.setTitleWithProgress(progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
-//        }
-//    }
+    extension PPYHomeVC {
+        fileprivate func setupUI() {
+            //不需要调整scrollview的内边距
+//           automaticallyAdjustsScrollViewInsets = false
+            self.view.addSubview(pageTitleView)
+            self.view.addSubview(pageContentView)
+        }
+    }
+
+    //MARK:- PageTitleViewDelegate代理实现
+    extension PPYHomeVC : PageTitleViewDelegate {
+        func pageTitleView(_ titleView: PPYPageTitleView, selectedIndex index: Int) {
+            pageContentView.setCurrentIndex(currentIndex: index)
+        }
+    }
+
+    //MARK:-ContentViewDelegate代理实现
+    extension PPYHomeVC : PageContentViewDelegate{
+        func pageContentView(_ contentView: PPYPageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+            pageTitleView.setTitleWithProgress(progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+        }
+    }
 
 
     /*
@@ -89,5 +86,3 @@ class PPYHomeVC: PPYBaseTableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}

@@ -14,8 +14,9 @@ protocol PageContentViewDelegate :class {
 private let ContentCellID = "ContentCellID"
 class PPYPageContentView: UIView {
 
-    // 默认控子制器
-    let defaultVcsCount = UserDefaults.standard.object(forKey: DEFAULT_CHILDVCS) as! Int
+//    // 默认控子制器
+//    let defaultVcsCount = UserDefaults.standard.object(forKey: DEFAULT_CHILDVCS) as! Int
+        let defaultVcsCount=1
     fileprivate var isForbidScrollDelegate : Bool = false
     fileprivate var startOffsetX : CGFloat = 0
     fileprivate var childVcs :[UIViewController]

@@ -13,7 +13,7 @@ protocol  PageTitleViewDelegate :class{
 }
 
 private let kNormalColor :(CGFloat,CGFloat,CGFloat) = (85,85,85)
-private let kSelectColor :(CGFloat,CGFloat,CGFloat) = (108,198,152)
+private let kSelectColor = defaultColor
 private let kScrollLineH :CGFloat = 4
 private let lineH:CGFloat = 0.5
 
@@ -38,7 +38,7 @@ class PPYPageTitleView: UIView {
     
     fileprivate lazy var scrollLine : UIView = {
         let scrollLine = UIView()
-        scrollLine.backgroundColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
+        scrollLine.backgroundColor = defaultColor
         return scrollLine
     }()
     
@@ -94,7 +94,7 @@ extension PPYPageTitleView {
         bottomLine.frame = CGRect(x: 0, y: frame.height - lineH, width: frame.width, height: lineH)
         addSubview(bottomLine)
         guard let firstLabel = titleLabels.first else { return }
-        firstLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
+        firstLabel.textColor = defaultColor
         scrollView.addSubview(scrollLine)
         scrollLine.frame = CGRect(x: firstLabel.frame.origin.x+firstLabel.frame.width*0.1, y: frame.height-kScrollLineH-lineH, width: firstLabel.frame.width*0.8, height: kScrollLineH)
     }
@@ -106,7 +106,7 @@ extension PPYPageTitleView {
         guard let currentLabel = tapGes.view as? UILabel else { return }
         if currentLabel.tag == currentLabelIndex { return }
         let oldLabel = titleLabels[currentLabelIndex]
-        currentLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
+        currentLabel.textColor = defaultColor
         oldLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
         currentLabelIndex = currentLabel.tag
         //        let scrollLinePosition = CGFloat(currentLabel.tag) * scrollLine.frame.width
@@ -130,10 +130,9 @@ extension PPYPageTitleView {
         let moveX = moveTotalX * progress
         scrollLine.frame.origin.x = sourceLabel.frame.origin.x + sourceLabel.frame.width*0.1 + moveX
         
-        let colorDelta = (kSelectColor.0 - kNormalColor.0,kSelectColor.1 - kNormalColor.1,kSelectColor.2 - kNormalColor.2)
-        sourceLabel.textColor = UIColor(r: kSelectColor.0 - colorDelta.0 * progress, g: kSelectColor.1 - colorDelta.1 * progress, b: kSelectColor.2 - colorDelta.2 * progress)
-        targetLabel.textColor = UIColor(r: kNormalColor.0 + colorDelta.0 * progress, g: kNormalColor.1 + colorDelta.1 * progress, b: kNormalColor.2 + colorDelta.2 * progress)
-        //
+        sourceLabel.textColor = UIColor(hex: "666666")
+        targetLabel.textColor = defaultColor
+        
         currentLabelIndex = targetIndex
     }
 }
