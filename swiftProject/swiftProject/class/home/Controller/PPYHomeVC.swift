@@ -7,71 +7,62 @@
 //
 
 import UIKit
-
+private let ppyTitleViewH :CGFloat = 40
 class PPYHomeVC: PPYBaseTableViewController {
+    let titles = ["熊猫星秀","户外直播","音乐","萌宠乐园"]
+    
+    fileprivate lazy var pageTitleView : PPYPageTitleView = {[weak self] in
+        let titleFrame = CGRect(x: 0, y: ppyStatusBarH + ppyNavigationBarH, width: ppyScreenW, height: ppyTitleViewH)
+        let titleView = PPYPageTitleView(frame: titleFrame, titles: [(self?.title)!])
+        // MARK:- 控制器作为EntertainmentTitleView代理
+        titleView.delegate = self as? PageTitleViewDelegate
+        return titleView
+        }()
+    
+    fileprivate lazy var pageContentView : PPYPageContentView = { [weak self] in
+        let contentFrame = CGRect(x: 0, y: ppyStatusBarH + ppyNavigationBarH + ppyTitleViewH+0.5, width: ppyScreenW, height: ppyScreenH - ppyStatusBarH - ppyNavigationBarH - ppyTitleViewH - ppyTabBarH)
+        var childVcs = [UIViewController]()
+        childVcs.append(PPYHomeChildVC())
+        childVcs.append(PPYHomeChildVC())
+        childVcs.append(PPYHomeChildVC())
+        childVcs.append(PPYHomeChildVC())
+        let contentView = PPYPageContentView(frame: contentFrame, childVcs: childVcs, parentVc: self)
+        //MARK:- 控制器作为PageContentViewDelegate代理
+        contentView.delegate = self as! PageContentViewDelegate
+        return contentView
+        }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
-        self.mainView.mj_footer.isHidden=false
-        mainView.mj_header.beginRefreshing()
+//            setupUI()
+//        self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
+//        self.mainView.mj_footer.isHidden=false
+//        mainView.mj_header.beginRefreshing()
+     
     }
-    override func loadNewData() {
-        self.dataArray=["1","2","3","4"]
-        self.mainView.mj_header.endRefreshing()
-        self.mainView .reloadData()
-
-    }
-    override func loadMoreData() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
-            self.dataArray .append("5")
-            self.mainView .reloadData()
-            self.mainView.mj_footer.endRefreshing()
-        }
-    }
-     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.dataArray.count
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5;
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.001;
-    }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellID = "goodsCell"
-        var cell:PPYHomeGoodsCell! = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath) as! PPYHomeGoodsCell
-        if cell==nil {
-           cell=PPYHomeGoodsCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
-        }
-        cell.titleLab?.text="我是标题\(indexPath.section)"
-       return cell
-    }
-     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            self.dataArray .remove(at: indexPath.section)
-            self.mainView .reloadData()
-        }
-    }
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .delete
-    }
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "删除"
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
+    // MARK:- setupUI
+//    extension PPYHomeVC {
+//        fileprivate func setupUI() {
+//            //不需要调整scrollview的内边距
+//            automaticallyAdjustsScrollViewInsets = false
+//            view.addSubview(pageTitleView)
+//            view.addSubview(pageContentView)
+//        }
+//    }
+//
+//    //MARK:- PageTitleViewDelegate代理实现
+//    extension PPYHomeVC : PageTitleViewDelegate {
+//        func pageTitleView(_ titleView: PPYPageTitleView, selectedIndex index: Int) {
+//            pageContentView.setCurrentIndex(currentIndex: index)
+//        }
+//    }
+//
+//    //MARK:- EntertainmentContentViewDelegate代理实现
+//    extension PPYHomeVC : PageContentViewDelegate{
+//        func pageContentView(_ contentView: PPYPageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+//            pageTitleView.setTitleWithProgress(progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+//        }
+//    }
 
 
     /*
