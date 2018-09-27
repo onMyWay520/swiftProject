@@ -24,6 +24,10 @@
 		56411938215B92A500E00CDB /* PPYPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411937215B92A500E00CDB /* PPYPageContentView.swift */; };
 		56467968215CB06200D534F1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56467967215CB06200D534F1 /* UIView+Extension.swift */; };
 		5646796A215CBB1800D534F1 /* PPYPageTitleViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56467969215CBB1800D534F1 /* PPYPageTitleViewConfig.swift */; };
+		5646796C215CD4DC00D534F1 /* PPYBaseCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796B215CD4DC00D534F1 /* PPYBaseCollectionVC.swift */; };
+		5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */; };
+		56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */; };
+		56467972215CE09200D534F1 /* PPYHomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */; };
 		565C1B852159C78A00356718 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1B842159C78A00356718 /* AppDelegate.swift */; };
 		565C1B872159C78A00356718 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1B862159C78A00356718 /* ViewController.swift */; };
 		565C1B8A2159C78A00356718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565C1B882159C78A00356718 /* Main.storyboard */; };
@@ -73,6 +77,10 @@
 		56411937215B92A500E00CDB /* PPYPageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPageContentView.swift; sourceTree = "<group>"; };
 		56467967215CB06200D534F1 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		56467969215CBB1800D534F1 /* PPYPageTitleViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPageTitleViewConfig.swift; sourceTree = "<group>"; };
+		5646796B215CD4DC00D534F1 /* PPYBaseCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseCollectionVC.swift; sourceTree = "<group>"; };
+		5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeCollectionVC.swift; sourceTree = "<group>"; };
+		5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeCollectionCell.swift; sourceTree = "<group>"; };
 		565C1B812159C78A00356718 /* swiftProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565C1B842159C78A00356718 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		565C1B862159C78A00356718 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				56411931215B28B900E00CDB /* PPYHomeGoodsCell.swift */,
+				56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +161,7 @@
 			children = (
 				5641190D215B245200E00CDB /* PPYHomeVC.swift */,
 				56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */,
+				5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,6 +258,7 @@
 			children = (
 				56411922215B280100E00CDB /* PPYBaseViewController.swift */,
 				56411923215B280100E00CDB /* PPYBaseTableViewController.swift */,
+				5646796B215CD4DC00D534F1 /* PPYBaseCollectionVC.swift */,
 				56411924215B280100E00CDB /* PPYBaseNavigationController.swift */,
 				56411925215B280100E00CDB /* PPYBaseTabBarController.swift */,
 			);
@@ -267,6 +278,7 @@
 				5641192D215B283A00E00CDB /* PPYBaseTableViewCell.swift */,
 				5641192F215B285700E00CDB /* PPYBaseView.swift */,
 				56411933215B742800E00CDB /* PPYBaseButton.swift */,
+				5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -599,16 +611,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */,
 				5641192E215B283A00E00CDB /* PPYBaseTableViewCell.swift in Sources */,
 				56411932215B28B900E00CDB /* PPYHomeGoodsCell.swift in Sources */,
 				56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
+				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,
 				56411920215B247F00E00CDB /* PPYMineVC.swift in Sources */,
 				5646796A215CBB1800D534F1 /* PPYPageTitleViewConfig.swift in Sources */,
 				5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */,
 				56411936215B91B200E00CDB /* PPYPageTitleView.swift in Sources */,
 				5641191A215B247600E00CDB /* PPYShopCartVC.swift in Sources */,
 				56411938215B92A500E00CDB /* PPYPageContentView.swift in Sources */,
+				56467972215CE09200D534F1 /* PPYHomeCollectionCell.swift in Sources */,
 				56CFDB83215A3F9D00E7EB02 /* PPYCommon.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,
@@ -620,6 +635,7 @@
 				56411934215B742800E00CDB /* PPYBaseButton.swift in Sources */,
 				56467968215CB06200D534F1 /* UIView+Extension.swift in Sources */,
 				56411930215B285700E00CDB /* PPYBaseView.swift in Sources */,
+				5646796C215CD4DC00D534F1 /* PPYBaseCollectionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

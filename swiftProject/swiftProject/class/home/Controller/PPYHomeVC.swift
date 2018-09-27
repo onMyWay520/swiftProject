@@ -22,9 +22,16 @@ class PPYHomeVC: UIViewController {
     
     private lazy var pageContentView: PPYPageContentView = {
         var childControllers = [UIViewController]()
-        for _ in 0..<titles.count {
+        for i in 0..<titles.count {
             let vc = PPYHomeChildVC()
-            childControllers.append(vc)
+            let collectionVC = PPYHomeCollectionVC()
+            if i==0 {
+                 childControllers.append(vc)
+            }
+            else{
+                 childControllers.append(collectionVC)
+            }
+        
         }
         
         let pageContentViewY = pageTitleView.frame.maxY
