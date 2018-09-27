@@ -13,6 +13,8 @@ let ppyStatusBarH: CGFloat = 20
 let ppyNavigationBarH: CGFloat = 44
 let ppyTabBarH: CGFloat = 49
 let defaultColor = UIColor(hex: "2a7fd5")
+let defaultTitleColor = UIColor(hex: "666666")
+let DarkBlackColor = UIColor(hex: "666666")
 let DEFAULT_CHILDVCS: String = "default" // 首页初始化的子控制器
 let HOME_CHILDVCS: String = "childvcs" // 首页contentView中的子控制器
 class PPYCommon: NSObject {

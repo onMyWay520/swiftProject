@@ -9,80 +9,41 @@
 import UIKit
 private let ppyTitleViewH :CGFloat = 40
 class PPYHomeVC: UIViewController {
-    let titles = ["热卖","推荐","果汁","牛奶","方便面","矿泉水","功能饮料","其他"]
-    fileprivate lazy var pageTitleView : PPYPageTitleView = {[weak self] in
-        let titleFrame = CGRect(x: 0, y: ppyStatusBarH + ppyNavigationBarH, width: ppyScreenW, height: ppyTitleViewH)
- let titleView = PPYPageTitleView(frame: titleFrame, titles: (self?.titles)!)        // MARK:- 控制器作为EntertainmentTitleView代理
-        titleView.delegate = self
-        return titleView
-        }()
+    lazy var titles: Array = { () -> [String] in
+        let titles = ["热卖","推荐","果汁","牛奶","方便面","矿泉水","功能饮料","其他"]
+        return titles
+    }()
+    private lazy var pageTitleView: PPYPageTitleView = {
+        let config = PPYPageTitleViewConfig()
+        let pageTitleView = PPYPageTitleView(frame: CGRect(x: 0, y: navHeight, width: ppyScreenW, height: 41), titles: titles, config: config)
+        pageTitleView.pageTitleViewDelegate = self
+        return pageTitleView
+    }()
     
-    fileprivate lazy var pageContentView : PPYPageContentView = { [weak self] in
-        let contentFrame = CGRect(x: 0, y: ppyStatusBarH + ppyNavigationBarH + ppyTitleViewH+0.5, width: ppyScreenW, height: ppyScreenH - ppyStatusBarH - ppyNavigationBarH - ppyTitleViewH - ppyTabBarH)
-        
-        var childVcs = [UIViewController]()
-        for _ in 0...titles.count {
-            childVcs.append(PPYHomeChildVC())
-
+    private lazy var pageContentView: PPYPageContentView = {
+        var childControllers = [UIViewController]()
+        for _ in 0..<titles.count {
+            let vc = PPYHomeChildVC()
+            childControllers.append(vc)
         }
-        let contentView = PPYPageContentView(frame: contentFrame, childVcs: childVcs, parentVc: self)
-        //MARK:- 控制器作为PageContentViewDelegate代理
-        contentView.delegate = self
-        return contentView
-        }()
-
+        
+        let pageContentViewY = pageTitleView.frame.maxY
+        let pageContentView = PPYPageContentView(frame: CGRect(x: 0, y: pageContentViewY, width: ppyScreenW, height: ppyScreenH-pageContentViewY), parentVC: self, childVCs: childControllers)
+        pageContentView.pageContentViewDelegate = self
+        return pageContentView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-
+        view.backgroundColor = UIColor.white
+        view.addSubview(pageTitleView)
+        view.addSubview(pageContentView)
     }
 }
-    // MARK:- setupUI
-    extension PPYHomeVC {
-        fileprivate func setupUI() {
-            //不需要调整scrollview的内边距
-//           automaticallyAdjustsScrollViewInsets = false
-            self.view.addSubview(pageTitleView)
-            self.view.addSubview(pageContentView)
-        }
+extension PPYHomeVC : PPYPageTitleViewDelegate, PPYPageContentViewDelegate {
+    func selectedIndexInPageTitleView(pageTitleView: PPYPageTitleView, selectedIndex: Int) {
+        self.pageContentView.setPageContentViewCurrentIndex(currentIndex: selectedIndex)
     }
-
-    //MARK:- PageTitleViewDelegate代理实现
-    extension PPYHomeVC : PageTitleViewDelegate {
-        func pageTitleView(_ titleView: PPYPageTitleView, selectedIndex index: Int) {
-            pageContentView.setCurrentIndex(currentIndex: index)
-        }
+    func pageContentViewScroll(progress: CGFloat, originalIndex: Int, targetIndex: Int) {
+        self.pageTitleView.setPageTitleView(progress: progress, originalIndex: originalIndex, targetIndex: targetIndex)
     }
-
-    //MARK:-ContentViewDelegate代理实现
-    extension PPYHomeVC : PageContentViewDelegate{
-        func pageContentView(_ contentView: PPYPageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
-            pageTitleView.setTitleWithProgress(progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
-        }
-    }
-
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+}
