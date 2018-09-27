@@ -9,23 +9,22 @@
 import UIKit
 
 class PPYBaseCollectionVC: PPYBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-  
-    
     var mainColltionView : UICollectionView?
     var dataArr : NSMutableArray?//数据源
+    var baseLayout :UICollectionViewFlowLayout?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
 
     }
     func setUI() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize=CGSize(width: 150, height: 150)
-        mainColltionView=UICollectionView()
+        baseLayout = UICollectionViewFlowLayout()
+        mainColltionView=UICollectionView(frame:self.view.frame , collectionViewLayout: baseLayout!)
+
         mainColltionView?.delegate=self
         mainColltionView?.dataSource=self
-        mainColltionView=UICollectionView(frame:self.view.frame , collectionViewLayout: layout)
-        mainColltionView?.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "UICollectionViewCellId")
+        mainColltionView?.backgroundColor=UIColor.white
         self.view.addSubview(mainColltionView!)
         dataArr = NSMutableArray()
     }
@@ -36,11 +35,11 @@ class PPYBaseCollectionVC: PPYBaseViewController,UICollectionViewDelegate,UIColl
     }
     //返回多少个cell
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     //返回自定义的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath as IndexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCellId", for: indexPath as IndexPath)
         
         return cell
     }

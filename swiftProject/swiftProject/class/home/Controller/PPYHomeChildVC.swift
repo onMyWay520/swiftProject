@@ -53,7 +53,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         if cell==nil {
             cell=PPYHomeGoodsCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
         }
-        cell.titleLab?.text="我是标题\(indexPath.section)"
+        cell.titleLab?.text="我是标题\(indexPath.section+1)"
         return cell
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

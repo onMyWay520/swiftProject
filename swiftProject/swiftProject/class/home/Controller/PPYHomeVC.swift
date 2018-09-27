@@ -13,9 +13,10 @@ class PPYHomeVC: UIViewController {
         let titles = ["热卖","推荐","果汁","牛奶","方便面","矿泉水","功能饮料","其他"]
         return titles
     }()
-    private lazy var pageTitleView: PPYPageTitleView = {
+    private lazy var pageTitleView: PPYPageTitleView =
+    {
         let config = PPYPageTitleViewConfig()
-        let pageTitleView = PPYPageTitleView(frame: CGRect(x: 0, y: navHeight, width: ppyScreenW, height: 41), titles: titles, config: config)
+        let pageTitleView = PPYPageTitleView(frame: CGRect(x: 0, y: 20, width: ppyScreenW, height: 41), titles: titles, config: config)
         pageTitleView.pageTitleViewDelegate = self
         return pageTitleView
     }()
@@ -41,6 +42,8 @@ class PPYHomeVC: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+  self.navigationController?.navigationBar.isHidden = true
+
         view.backgroundColor = UIColor.white
         view.addSubview(pageTitleView)
         view.addSubview(pageContentView)
