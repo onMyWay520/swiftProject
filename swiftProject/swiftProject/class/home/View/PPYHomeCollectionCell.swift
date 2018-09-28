@@ -28,15 +28,15 @@ class PPYHomeCollectionCell: PPYBaseCollectionViewCell {
             make.top.equalTo(self)
             make.height.equalTo(ppyScreenW/2-40)
             make.width.equalTo(ppyScreenW/2-40)
-           make.left.equalTo(self)
+            make.left.equalTo(self)
         }
         self.titleLab?.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
-            make.top.equalTo((self.goodsImageView?.snp.bottom)!).offset(10)
+        make.top.equalTo((self.goodsImageView?.snp.bottom)!).offset(10)
             // 设置宽、高
-            make.height.equalTo(14)
-            make.width.equalTo(200)
-            make.left.equalTo((self.goodsImageView?.snp.left)!)
+        make.height.equalTo(14)
+        make.width.equalTo(200)
+        make.left.equalTo((self.goodsImageView?.snp.left)!)
         }
     }
 }

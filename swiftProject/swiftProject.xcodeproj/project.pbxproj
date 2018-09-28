@@ -31,6 +31,8 @@
 		565C1B9A2159C78C00356718 /* swiftProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1B992159C78C00356718 /* swiftProjectTests.swift */; };
 		565C1BA52159C78C00356718 /* swiftProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1BA42159C78C00356718 /* swiftProjectUITests.swift */; };
 		56871F6E215E05D00055B0E1 /* PPYHomeGoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56871F6D215E05D00055B0E1 /* PPYHomeGoodsModel.swift */; };
+		56871F70215E21C50055B0E1 /* PPYBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56871F6F215E21C50055B0E1 /* PPYBaseModel.swift */; };
+		56871F72215E21E20055B0E1 /* PPYBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56871F71215E21E20055B0E1 /* PPYBaseViewModel.swift */; };
 		56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */; };
 		56E332C6215DC68B00D69319 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332BF215DC68B00D69319 /* UIView+Extension.swift */; };
 		56E332C7215DC68B00D69319 /* PPYColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C0215DC68B00D69319 /* PPYColor.swift */; };
@@ -92,6 +94,8 @@
 		565C1BA42159C78C00356718 /* swiftProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftProjectUITests.swift; sourceTree = "<group>"; };
 		565C1BA62159C78D00356718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56871F6D215E05D00055B0E1 /* PPYHomeGoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeGoodsModel.swift; sourceTree = "<group>"; };
+		56871F6F215E21C50055B0E1 /* PPYBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseModel.swift; sourceTree = "<group>"; };
+		56871F71215E21E20055B0E1 /* PPYBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseViewModel.swift; sourceTree = "<group>"; };
 		56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeChildVC.swift; sourceTree = "<group>"; };
 		56E332BF215DC68B00D69319 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		56E332C0215DC68B00D69319 /* PPYColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYColor.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 		56411926215B280200E00CDB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				56871F71215E21E20055B0E1 /* PPYBaseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 		56411928215B280200E00CDB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56871F6F215E21C50055B0E1 /* PPYBaseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,6 +361,46 @@
 			path = swiftProjectUITests;
 			sourceTree = "<group>";
 		};
+		56871F73215E33B80055B0E1 /* loginOrRegister */ = {
+			isa = PBXGroup;
+			children = (
+				56871F74215E33B80055B0E1 /* ViewModel */,
+				56871F75215E33B80055B0E1 /* Controller */,
+				56871F76215E33B80055B0E1 /* Model */,
+				56871F77215E33B80055B0E1 /* View */,
+			);
+			name = loginOrRegister;
+			path = swiftProject/class/loginOrRegister;
+			sourceTree = SOURCE_ROOT;
+		};
+		56871F74215E33B80055B0E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		56871F75215E33B80055B0E1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56871F76215E33B80055B0E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56871F77215E33B80055B0E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		56CFDB6D215A309B00E7EB02 /* base */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				56CFDB81215A3F2700E7EB02 /* Tool */,
+				56871F73215E33B80055B0E1 /* loginOrRegister */,
 				56CFDB75215A3C6E00E7EB02 /* home */,
 				56CFDB76215A3C6E00E7EB02 /* search */,
 				56CFDB77215A3C6E00E7EB02 /* shopCart */,
@@ -624,12 +671,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -677,7 +728,9 @@
 				5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */,
 				5641191A215B247600E00CDB /* PPYShopCartVC.swift in Sources */,
 				56467972215CE09200D534F1 /* PPYHomeCollectionCell.swift in Sources */,
+				56871F70215E21C50055B0E1 /* PPYBaseModel.swift in Sources */,
 				56871F6E215E05D00055B0E1 /* PPYHomeGoodsModel.swift in Sources */,
+				56871F72215E21E20055B0E1 /* PPYBaseViewModel.swift in Sources */,
 				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,

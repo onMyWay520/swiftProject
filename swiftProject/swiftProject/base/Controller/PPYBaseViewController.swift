@@ -11,10 +11,10 @@ import UIKit
 class PPYBaseViewController: UIViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
     self.view.backgroundColor=UIColor.white
-        //修改导航栏背景色
- self.navigationController?.navigationBar.barTintColor = defaultColor
+    //修改导航栏背景色
+    self.navigationController?.navigationBar.barTintColor = defaultColor
     self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18)]
 
     }

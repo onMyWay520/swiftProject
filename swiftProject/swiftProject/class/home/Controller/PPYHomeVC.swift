@@ -13,8 +13,7 @@ class PPYHomeVC: UIViewController {
         let titles = ["热卖","推荐","果汁","牛奶","方便面","矿泉水","功能饮料","其他"]
         return titles
     }()
-    private lazy var pageTitleView: PPYPageTitleView =
-    {
+    private lazy var pageTitleView: PPYPageTitleView = {
         let config = PPYPageTitleViewConfig()
         let pageTitleView = PPYPageTitleView(frame: CGRect(x: 0, y: 20, width: ppyScreenW, height: 41), titles: titles, config: config)
         pageTitleView.pageTitleViewDelegate = self
@@ -43,18 +42,17 @@ class PPYHomeVC: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-  self.navigationController?.navigationBar.isHidden = true
-
-        view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isHidden = true
+        view.backgroundColor=UIColor.white
         view.addSubview(pageTitleView)
         view.addSubview(pageContentView)
     }
 }
 extension PPYHomeVC : PPYPageTitleViewDelegate, PPYPageContentViewDelegate {
     func selectedIndexInPageTitleView(pageTitleView: PPYPageTitleView, selectedIndex: Int) {
-        self.pageContentView.setPageContentViewCurrentIndex(currentIndex: selectedIndex)
+     self.pageContentView.setPageContentViewCurrentIndex(currentIndex: selectedIndex)
     }
     func pageContentViewScroll(progress: CGFloat, originalIndex: Int, targetIndex: Int) {
-        self.pageTitleView.setPageTitleView(progress: progress, originalIndex: originalIndex, targetIndex: targetIndex)
+     self.pageTitleView.setPageTitleView(progress: progress, originalIndex: originalIndex, targetIndex: targetIndex)
     }
 }

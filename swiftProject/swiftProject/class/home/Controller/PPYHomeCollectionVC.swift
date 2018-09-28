@@ -12,15 +12,18 @@ class PPYHomeCollectionVC: PPYBaseCollectionVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    self.mainColltionView?.register(PPYHomeCollectionCell.self, forCellWithReuseIdentifier: "PPYHomeCollectionCellId")
- // 注册headerView
-//        mainColltionView?.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-// 注册footView
-//        mainColltionView?.register(CollectionFootView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
-    
+    }
+    override func setUI() {
+        self.mainColltionView?.register(PPYHomeCollectionCell.self, forCellWithReuseIdentifier: "PPYHomeCollectionCellId")
+        // 注册headerView
+        //        mainColltionView?.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        // 注册footView
+        //        mainColltionView?.register(CollectionFootView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
+        
         mainColltionView?.frame=CGRect(x: 0, y: 0, width: ppyScreenW, height: ppyScreenH-100)
         baseLayout?.minimumLineSpacing=10
-       baseLayout?.minimumInteritemSpacing=10
+        baseLayout?.minimumInteritemSpacing=10
+
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

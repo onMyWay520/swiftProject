@@ -15,18 +15,20 @@ class PPYBaseCollectionVC: PPYBaseViewController,UICollectionViewDelegate,UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBaseUI()
         setUI()
-
     }
-    func setUI() {
+    func setBaseUI() {
         baseLayout = UICollectionViewFlowLayout()
         mainColltionView=UICollectionView(frame:self.view.frame , collectionViewLayout: baseLayout!)
-
         mainColltionView?.delegate=self
         mainColltionView?.dataSource=self
         mainColltionView?.backgroundColor=UIColor.white
         self.view.addSubview(mainColltionView!)
         dataArr = NSMutableArray()
+    }
+    func setUI() {
+       
     }
     //返回多少个组
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

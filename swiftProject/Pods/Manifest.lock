@@ -1,5 +1,8 @@
 PODS:
   - MJRefresh (3.1.15.3)
+  - RxCocoa (4.3.1):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.3.1)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -7,20 +10,26 @@ PODS:
 
 DEPENDENCIES:
   - MJRefresh
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - SDWebImage
   - SnapKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - MJRefresh
+    - RxCocoa
+    - RxSwift
     - SDWebImage
     - SnapKit
 
 SPEC CHECKSUMS:
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: bef46ce247e7add9d25c9708133cb37f662cf238
+PODFILE CHECKSUM: 812937a6258b97cac81195261c9734b28b48c809
 
 COCOAPODS: 1.5.3

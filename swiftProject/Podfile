@@ -6,5 +6,6 @@ target 'swiftProject' do
 	pod 'MJRefresh'
     pod 'SDWebImage'
     pod 'SnapKit'
-
+    pod 'RxSwift', '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
 end
