@@ -30,6 +30,7 @@
 		565C1B8F2159C78C00356718 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565C1B8D2159C78C00356718 /* LaunchScreen.storyboard */; };
 		565C1B9A2159C78C00356718 /* swiftProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1B992159C78C00356718 /* swiftProjectTests.swift */; };
 		565C1BA52159C78C00356718 /* swiftProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1BA42159C78C00356718 /* swiftProjectUITests.swift */; };
+		56871F6E215E05D00055B0E1 /* PPYHomeGoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56871F6D215E05D00055B0E1 /* PPYHomeGoodsModel.swift */; };
 		56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */; };
 		56E332C6215DC68B00D69319 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332BF215DC68B00D69319 /* UIView+Extension.swift */; };
 		56E332C7215DC68B00D69319 /* PPYColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C0215DC68B00D69319 /* PPYColor.swift */; };
@@ -37,6 +38,7 @@
 		56E332C9215DC68B00D69319 /* PPYPageTitleViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C3215DC68B00D69319 /* PPYPageTitleViewConfig.swift */; };
 		56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C4215DC68B00D69319 /* PPYPageTitleView.swift */; };
 		56E332CE215DC6CE00D69319 /* PPYCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332CD215DC6CE00D69319 /* PPYCommon.swift */; };
+		56E332D2215DDDBB00D69319 /* PPYPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E332D1215DDDBB00D69319 /* PPYPeople.m */; };
 		BB838B2DBAA447952C857D20 /* Pods_swiftProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,7 @@
 		565C1BA02159C78C00356718 /* swiftProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		565C1BA42159C78C00356718 /* swiftProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftProjectUITests.swift; sourceTree = "<group>"; };
 		565C1BA62159C78D00356718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56871F6D215E05D00055B0E1 /* PPYHomeGoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeGoodsModel.swift; sourceTree = "<group>"; };
 		56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeChildVC.swift; sourceTree = "<group>"; };
 		56E332BF215DC68B00D69319 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		56E332C0215DC68B00D69319 /* PPYColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYColor.swift; sourceTree = "<group>"; };
@@ -96,6 +99,9 @@
 		56E332C3215DC68B00D69319 /* PPYPageTitleViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYPageTitleViewConfig.swift; sourceTree = "<group>"; };
 		56E332C4215DC68B00D69319 /* PPYPageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYPageTitleView.swift; sourceTree = "<group>"; };
 		56E332CD215DC6CE00D69319 /* PPYCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYCommon.swift; sourceTree = "<group>"; };
+		56E332CF215DDDBB00D69319 /* swiftProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		56E332D0215DDDBB00D69319 /* PPYPeople.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPYPeople.h; sourceTree = "<group>"; };
+		56E332D1215DDDBB00D69319 /* PPYPeople.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPYPeople.m; sourceTree = "<group>"; };
 		660794DA2660AC39D5C18F47 /* Pods-swiftProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +158,10 @@
 		5641190B215B245200E00CDB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56E332D0215DDDBB00D69319 /* PPYPeople.h */,
+				56E332D1215DDDBB00D69319 /* PPYPeople.m */,
+				56E332CF215DDDBB00D69319 /* swiftProject-Bridging-Header.h */,
+				56871F6D215E05D00055B0E1 /* PPYHomeGoodsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -546,6 +556,7 @@
 				TargetAttributes = {
 					565C1B802159C78A00356718 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 0930;
 					};
 					565C1B942159C78C00356718 = {
 						CreatedOnToolsVersion = 9.3.1;
@@ -660,11 +671,13 @@
 				56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
 				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,
+				56E332D2215DDDBB00D69319 /* PPYPeople.m in Sources */,
 				56E332C8215DC68B00D69319 /* PPYPageContentView.swift in Sources */,
 				56411920215B247F00E00CDB /* PPYMineVC.swift in Sources */,
 				5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */,
 				5641191A215B247600E00CDB /* PPYShopCartVC.swift in Sources */,
 				56467972215CE09200D534F1 /* PPYHomeCollectionCell.swift in Sources */,
+				56871F6E215E05D00055B0E1 /* PPYHomeGoodsModel.swift in Sources */,
 				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,
@@ -850,7 +863,9 @@
 			baseConfigurationReference = 11EC59204A74AE94687D1781 /* Pods-swiftProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = swiftProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -858,6 +873,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pinpianyi.com.swiftProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swiftProject/class/home/Model/swiftProject-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -868,7 +885,9 @@
 			baseConfigurationReference = 660794DA2660AC39D5C18F47 /* Pods-swiftProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = swiftProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -876,6 +895,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pinpianyi.com.swiftProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swiftProject/class/home/Model/swiftProject-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

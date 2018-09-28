@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         print(constB)
         print(display(no1:100))
         vari(members:1,2,3)
-        print(inputs(no1: 123, no2: 5))
+//        print(ViewController.inputs(no1: 123, no2: 5))
 //        var studentDetail = Student.Name("swift")
 //        var studentMark = Student.Mark(12, 14, 17)
 //        switch studentMark {
@@ -77,10 +77,12 @@ class ViewController: UIViewController {
             print("打印\(i)")
         }
     }
-    func inputs(no1: Int, no2: Int) -> Int {
+   @objc   func inputs(no1: Int, no2: Int) -> Int {
         return no1/no2
     }
-
+   @objc  func show() -> Void {
+        print("hello World")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

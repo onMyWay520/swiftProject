@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class PPYHomeChildVC: PPYBaseTableViewController {
 
     override func viewDidLoad() {
@@ -15,7 +14,11 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
         self.mainView.mj_footer.isHidden=false
         mainView.mj_header.beginRefreshing()
+        let  people=PPYPeople ()
+        people.eat()//无参数的方法
+        people.logMe("log me", logYou: "log you")//有参数的方法
 
+     
     }
 
     override func loadNewData() {
