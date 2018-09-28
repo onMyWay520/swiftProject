@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56411908215B1ADB00E00CDB /* PPYColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411907215B1ADB00E00CDB /* PPYColor.swift */; };
 		5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641190D215B245200E00CDB /* PPYHomeVC.swift */; };
 		56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411911215B246B00E00CDB /* PPYSearchVC.swift */; };
 		5641191A215B247600E00CDB /* PPYShopCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411918215B247500E00CDB /* PPYShopCartVC.swift */; };
@@ -20,10 +19,6 @@
 		56411930215B285700E00CDB /* PPYBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641192F215B285700E00CDB /* PPYBaseView.swift */; };
 		56411932215B28B900E00CDB /* PPYHomeGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411931215B28B900E00CDB /* PPYHomeGoodsCell.swift */; };
 		56411934215B742800E00CDB /* PPYBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411933215B742800E00CDB /* PPYBaseButton.swift */; };
-		56411936215B91B200E00CDB /* PPYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411935215B91B200E00CDB /* PPYPageTitleView.swift */; };
-		56411938215B92A500E00CDB /* PPYPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411937215B92A500E00CDB /* PPYPageContentView.swift */; };
-		56467968215CB06200D534F1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56467967215CB06200D534F1 /* UIView+Extension.swift */; };
-		5646796A215CBB1800D534F1 /* PPYPageTitleViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56467969215CBB1800D534F1 /* PPYPageTitleViewConfig.swift */; };
 		5646796C215CD4DC00D534F1 /* PPYBaseCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796B215CD4DC00D534F1 /* PPYBaseCollectionVC.swift */; };
 		5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */; };
 		56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */; };
@@ -36,7 +31,12 @@
 		565C1B9A2159C78C00356718 /* swiftProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1B992159C78C00356718 /* swiftProjectTests.swift */; };
 		565C1BA52159C78C00356718 /* swiftProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C1BA42159C78C00356718 /* swiftProjectUITests.swift */; };
 		56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */; };
-		56CFDB83215A3F9D00E7EB02 /* PPYCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CFDB82215A3F9D00E7EB02 /* PPYCommon.swift */; };
+		56E332C6215DC68B00D69319 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332BF215DC68B00D69319 /* UIView+Extension.swift */; };
+		56E332C7215DC68B00D69319 /* PPYColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C0215DC68B00D69319 /* PPYColor.swift */; };
+		56E332C8215DC68B00D69319 /* PPYPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C2215DC68B00D69319 /* PPYPageContentView.swift */; };
+		56E332C9215DC68B00D69319 /* PPYPageTitleViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C3215DC68B00D69319 /* PPYPageTitleViewConfig.swift */; };
+		56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C4215DC68B00D69319 /* PPYPageTitleView.swift */; };
+		56E332CE215DC6CE00D69319 /* PPYCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332CD215DC6CE00D69319 /* PPYCommon.swift */; };
 		BB838B2DBAA447952C857D20 /* Pods_swiftProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +60,6 @@
 /* Begin PBXFileReference section */
 		11EC59204A74AE94687D1781 /* Pods-swiftProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		56411907215B1ADB00E00CDB /* PPYColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYColor.swift; sourceTree = "<group>"; };
 		5641190D215B245200E00CDB /* PPYHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYHomeVC.swift; sourceTree = "<group>"; };
 		56411911215B246B00E00CDB /* PPYSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYSearchVC.swift; sourceTree = "<group>"; };
 		56411918215B247500E00CDB /* PPYShopCartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYShopCartVC.swift; sourceTree = "<group>"; };
@@ -73,10 +72,6 @@
 		5641192F215B285700E00CDB /* PPYBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseView.swift; sourceTree = "<group>"; };
 		56411931215B28B900E00CDB /* PPYHomeGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeGoodsCell.swift; sourceTree = "<group>"; };
 		56411933215B742800E00CDB /* PPYBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseButton.swift; sourceTree = "<group>"; };
-		56411935215B91B200E00CDB /* PPYPageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPageTitleView.swift; sourceTree = "<group>"; };
-		56411937215B92A500E00CDB /* PPYPageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPageContentView.swift; sourceTree = "<group>"; };
-		56467967215CB06200D534F1 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		56467969215CBB1800D534F1 /* PPYPageTitleViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPageTitleViewConfig.swift; sourceTree = "<group>"; };
 		5646796B215CD4DC00D534F1 /* PPYBaseCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseCollectionVC.swift; sourceTree = "<group>"; };
 		5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeCollectionVC.swift; sourceTree = "<group>"; };
 		5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -95,7 +90,12 @@
 		565C1BA42159C78C00356718 /* swiftProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftProjectUITests.swift; sourceTree = "<group>"; };
 		565C1BA62159C78D00356718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeChildVC.swift; sourceTree = "<group>"; };
-		56CFDB82215A3F9D00E7EB02 /* PPYCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYCommon.swift; sourceTree = "<group>"; };
+		56E332BF215DC68B00D69319 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		56E332C0215DC68B00D69319 /* PPYColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYColor.swift; sourceTree = "<group>"; };
+		56E332C2215DC68B00D69319 /* PPYPageContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYPageContentView.swift; sourceTree = "<group>"; };
+		56E332C3215DC68B00D69319 /* PPYPageTitleViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYPageTitleViewConfig.swift; sourceTree = "<group>"; };
+		56E332C4215DC68B00D69319 /* PPYPageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYPageTitleView.swift; sourceTree = "<group>"; };
+		56E332CD215DC6CE00D69319 /* PPYCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYCommon.swift; sourceTree = "<group>"; };
 		660794DA2660AC39D5C18F47 /* Pods-swiftProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -416,15 +416,56 @@
 		56CFDB81215A3F2700E7EB02 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				56467967215CB06200D534F1 /* UIView+Extension.swift */,
-				56CFDB82215A3F9D00E7EB02 /* PPYCommon.swift */,
-				56411907215B1ADB00E00CDB /* PPYColor.swift */,
-				56411935215B91B200E00CDB /* PPYPageTitleView.swift */,
-				56411937215B92A500E00CDB /* PPYPageContentView.swift */,
-				56467969215CBB1800D534F1 /* PPYPageTitleViewConfig.swift */,
+				56E332BC215DC68B00D69319 /* OCTool */,
+				56E332BD215DC68B00D69319 /* SwiftTool */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
+		};
+		56E332BC215DC68B00D69319 /* OCTool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OCTool;
+			sourceTree = "<group>";
+		};
+		56E332BD215DC68B00D69319 /* SwiftTool */ = {
+			isa = PBXGroup;
+			children = (
+				56E332BE215DC68B00D69319 /* Category */,
+				56E332CC215DC6CE00D69319 /* Macro */,
+				56E332C1215DC68B00D69319 /* switchTitle */,
+			);
+			path = SwiftTool;
+			sourceTree = "<group>";
+		};
+		56E332BE215DC68B00D69319 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				56E332BF215DC68B00D69319 /* UIView+Extension.swift */,
+				56E332C0215DC68B00D69319 /* PPYColor.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		56E332C1215DC68B00D69319 /* switchTitle */ = {
+			isa = PBXGroup;
+			children = (
+				56E332C2215DC68B00D69319 /* PPYPageContentView.swift */,
+				56E332C3215DC68B00D69319 /* PPYPageTitleViewConfig.swift */,
+				56E332C4215DC68B00D69319 /* PPYPageTitleView.swift */,
+			);
+			path = switchTitle;
+			sourceTree = "<group>";
+		};
+		56E332CC215DC6CE00D69319 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				56E332CD215DC6CE00D69319 /* PPYCommon.swift */,
+			);
+			name = Macro;
+			path = swiftProject/class/Tool/SwiftTool/Macro;
+			sourceTree = SOURCE_ROOT;
 		};
 		9178F2BAA1652C6E41D251DC /* Pods */ = {
 			isa = PBXGroup;
@@ -611,30 +652,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E332C7215DC68B00D69319 /* PPYColor.swift in Sources */,
 				5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */,
 				5641192E215B283A00E00CDB /* PPYBaseTableViewCell.swift in Sources */,
 				56411932215B28B900E00CDB /* PPYHomeGoodsCell.swift in Sources */,
+				56E332CE215DC6CE00D69319 /* PPYCommon.swift in Sources */,
 				56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
 				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,
+				56E332C8215DC68B00D69319 /* PPYPageContentView.swift in Sources */,
 				56411920215B247F00E00CDB /* PPYMineVC.swift in Sources */,
-				5646796A215CBB1800D534F1 /* PPYPageTitleViewConfig.swift in Sources */,
 				5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */,
-				56411936215B91B200E00CDB /* PPYPageTitleView.swift in Sources */,
 				5641191A215B247600E00CDB /* PPYShopCartVC.swift in Sources */,
-				56411938215B92A500E00CDB /* PPYPageContentView.swift in Sources */,
 				56467972215CE09200D534F1 /* PPYHomeCollectionCell.swift in Sources */,
-				56CFDB83215A3F9D00E7EB02 /* PPYCommon.swift in Sources */,
+				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,
 				5641192A215B280200E00CDB /* PPYBaseTableViewController.swift in Sources */,
+				56E332C9215DC68B00D69319 /* PPYPageTitleViewConfig.swift in Sources */,
 				5641192C215B280200E00CDB /* PPYBaseTabBarController.swift in Sources */,
-				56411908215B1ADB00E00CDB /* PPYColor.swift in Sources */,
 				565C1B872159C78A00356718 /* ViewController.swift in Sources */,
 				565C1B852159C78A00356718 /* AppDelegate.swift in Sources */,
 				56411934215B742800E00CDB /* PPYBaseButton.swift in Sources */,
-				56467968215CB06200D534F1 /* UIView+Extension.swift in Sources */,
 				56411930215B285700E00CDB /* PPYBaseView.swift in Sources */,
+				56E332C6215DC68B00D69319 /* UIView+Extension.swift in Sources */,
 				5646796C215CD4DC00D534F1 /* PPYBaseCollectionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

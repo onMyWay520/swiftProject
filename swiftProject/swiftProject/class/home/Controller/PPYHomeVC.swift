@@ -26,6 +26,7 @@ class PPYHomeVC: UIViewController {
         for i in 0..<titles.count {
             let vc = PPYHomeChildVC()
             let collectionVC = PPYHomeCollectionVC()
+            collectionVC.title=titles[i]
             if i==0 {
                  childControllers.append(vc)
             }

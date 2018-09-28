@@ -35,7 +35,7 @@ class PPYHomeCollectionCell: PPYBaseCollectionViewCell {
             make.top.equalTo((self.goodsImageView?.snp.bottom)!).offset(10)
             // 设置宽、高
             make.height.equalTo(14)
-            make.width.equalTo(120)
+            make.width.equalTo(200)
             make.left.equalTo((self.goodsImageView?.snp.left)!)
         }
     }

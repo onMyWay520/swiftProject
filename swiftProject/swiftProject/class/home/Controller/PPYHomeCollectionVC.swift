@@ -36,7 +36,7 @@ class PPYHomeCollectionVC: PPYBaseCollectionVC {
     }
     override  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:PPYHomeCollectionCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "PPYHomeCollectionCellId", for: indexPath) as! PPYHomeCollectionCell
-        cell.titleLab?.text="我是标题\(indexPath.row+1)"
+        cell.titleLab?.text="\(String(describing: self.title))我是标题\(indexPath.row+1)"
         return cell;
     }
     //每个分区的内边距
