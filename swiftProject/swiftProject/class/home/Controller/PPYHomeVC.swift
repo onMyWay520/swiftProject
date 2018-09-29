@@ -8,7 +8,7 @@
 
 import UIKit
 private let ppyTitleViewH :CGFloat = 40
-class PPYHomeVC: UIViewController {
+class PPYHomeVC: PPYBaseViewController {
     lazy var titles: Array = { () -> [String] in
         let titles = ["热卖","推荐","果汁","牛奶","方便面","矿泉水","功能饮料","其他"]
         return titles
@@ -42,12 +42,25 @@ class PPYHomeVC: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
         view.backgroundColor=UIColor.white
         view.addSubview(pageTitleView)
         view.addSubview(pageContentView)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    self.navigationController?.navigationBar.isHidden = true
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    self.navigationController?.navigationBar.isHidden = false
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
 }
+
 extension PPYHomeVC : PPYPageTitleViewDelegate, PPYPageContentViewDelegate {
     func selectedIndexInPageTitleView(pageTitleView: PPYPageTitleView, selectedIndex: Int) {
      self.pageContentView.setPageContentViewCurrentIndex(currentIndex: selectedIndex)

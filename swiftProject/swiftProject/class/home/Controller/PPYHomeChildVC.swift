@@ -75,7 +75,8 @@ class PPYHomeChildVC: PPYBaseTableViewController {
 //        return "删除"
 //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = PPYkeyWordsVC()
+  navigationController!.pushViewController(vc, animated: true)
     }
 
     /*

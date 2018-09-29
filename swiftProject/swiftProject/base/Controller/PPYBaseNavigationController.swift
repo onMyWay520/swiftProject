@@ -42,7 +42,7 @@ class PPYBaseNavigationController: UINavigationController {
     func setBackBarButtonItem() -> UIBarButtonItem {
         
         let backButton = UIButton.init(type: .custom)
-        backButton.setImage(UIImage(named: "setting_back"), for: .normal)
+        backButton.setImage(UIImage(named: "backnarrow_white"), for: .normal)
         backButton.sizeToFit()
         backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         backButton.addTarget(self, action: #selector(PPYBaseNavigationController.backClick), for: UIControlEvents.touchUpInside)
