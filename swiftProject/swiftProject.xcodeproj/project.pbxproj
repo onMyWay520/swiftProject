@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5622997E216B63DC00678210 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622997D216B63DC00678210 /* MainTabBar.swift */; };
 		5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641190D215B245200E00CDB /* PPYHomeVC.swift */; };
 		56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411911215B246B00E00CDB /* PPYSearchVC.swift */; };
 		5641191A215B247600E00CDB /* PPYShopCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411918215B247500E00CDB /* PPYShopCartVC.swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		11EC59204A74AE94687D1781 /* Pods-swiftProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5622997D216B63DC00678210 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		5641190D215B245200E00CDB /* PPYHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYHomeVC.swift; sourceTree = "<group>"; };
 		56411911215B246B00E00CDB /* PPYSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYSearchVC.swift; sourceTree = "<group>"; };
 		56411918215B247500E00CDB /* PPYShopCartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYShopCartVC.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				56E332BE215DC68B00D69319 /* Category */,
 				56E332CC215DC6CE00D69319 /* Macro */,
 				56E332C1215DC68B00D69319 /* switchTitle */,
+				5622997D216B63DC00678210 /* MainTabBar.swift */,
 			);
 			path = SwiftTool;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
 				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,
+				5622997E216B63DC00678210 /* MainTabBar.swift in Sources */,
 				56E332D2215DDDBB00D69319 /* PPYPeople.m in Sources */,
 				56E332C8215DC68B00D69319 /* PPYPageContentView.swift in Sources */,
 				56411920215B247F00E00CDB /* PPYMineVC.swift in Sources */,

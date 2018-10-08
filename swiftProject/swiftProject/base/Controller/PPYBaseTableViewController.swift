@@ -22,6 +22,10 @@ class PPYBaseTableViewController: PPYBaseViewController,UITableViewDataSource,UI
         mainView.estimatedRowHeight=0
         mainView.estimatedSectionFooterHeight=0
         mainView.estimatedSectionHeaderHeight=0
+        mainView.separatorStyle = .none
+//        if #available(iOS 11.0, *) {
+//         mainView.contentInsetAdjustmentBehavior = .never
+//        };
         mainView.mj_header=MJRefreshNormalHeader()
         mainView.mj_header.setRefreshingTarget(self, refreshingAction:#selector(loadNewData))
         mainView.mj_footer=MJRefreshAutoNormalFooter()

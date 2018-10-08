@@ -57,6 +57,29 @@ class Fruit{
     static func ageOfPerson(name: String) {
         print("Type Method: Person name: \(name)")
     }
+    var name :String
+    required init(name :String){
+        self.name = name
+    }
+    
+    
+}
+/*
+ 在swift中，extension和oc的category有点类似，但是extension比起category来说更加强大和灵活，他不仅可以扩展某种类型或结构体的方法，同时他还可以与protocol等结合使用，他可以为特定的class，struct，enum或者protocol添加新的特性
+ 
+ */
+/*swift中的扩展extension
+ 1.定义实例方法和类型方法
+ 2.添加计算型属性和计算静态属性
+ 3。定义下标
+ 4，提供新的构造器
+ 5，定义和使用新的嵌套类型
+ 6，使一个已有类型符合某个接口*/
+extension Fruit{
+    func weight(){
+        print("重10斤")
+    }
+   
 }
 class Apple : Fruit {//类继承
     //        //重写父类方法
@@ -65,6 +88,15 @@ class Apple : Fruit {//类继承
 //    }
   //用static关键字指定的方法是类方法，他是不能被子类重写的
     
+    //如果子类需要添加异于父类的初始化方法时，必须先要实现父类中使用required修饰符修饰过的初始化方法，并且也要使用required修饰符而不是override。
+    required init(name: String) {
+        super.init(name: name)
+    }
+    /*注意：
+    （1）required修饰符只能用于修饰类初始化方法。
+    （2）当子类含有异于父类的初始化方法时（初始化方法参数类型和数量异于父类），子类必须要实现父类的required初始化方法，并且也要使用required修饰符而不是override。
+    （3）当子类没有初始化方法时，可以不用实现父类的required初始化方法。
+     */
     
 }
 /*Swift中，mutating关键字指的是可变即可修改。用在structure和enumeration中,虽然结构体和枚举可以定义自己的方法，但是默认情况下，实例方法中是不可以修改值类型的属性。为了能够在实例方法中修改属性值，可以在方法定义前添加关键字mutating*/
@@ -92,12 +124,38 @@ enum Direction {
         print("self === \(self)")
     }
 }
+extension UIButton{
+    //swit中类方法是以class开头的方法，类似于oc中+开头的方法
+    class func createButton(imageName:String)->UIButton{
+        let btn=UIButton()
+        btn.setImage(UIImage(named:imageName), for: .normal)
+        btn.sizeToFit()
+        return btn
+    }
+    /*
+     convenience:便利，使用convenience修饰的构造函数叫做便利构造函数
+     便利构造函数通常用在对系统的类进行构造函数的扩充时使用。
+     */
+    /*便利构造函数有如下几个特点：
+     （1）便利构造函数通常都是写在extension里面
+      （2）便利函数init前面需要加载convenience
+      （3）在便利构造函数中需要明确的调用self.init()
+     */
+    convenience init(title:String,color:UIColor,bgColor:UIColor){
+        self.init()
+        setTitle(title, for: .normal)
+        setTitleColor(color, for: .normal)
+        self.backgroundColor=bgColor
+        sizeToFit()
+    }
+}
 class PPYkeyWordsVC: PPYBaseTableViewController {
     //在Swift中, 如果我们要重写某个方法, 或者某个属性的话, 我们需要在重写的变量前增加一个override关键字
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title="关键字演练"
-  self.dataArray=["struct","enum","subscript","mutating"]
+//        mainView.frame=CGRect(x: 0, y:-20, width: ppyScreenW, height: ppyScreenH)
+        self.dataArray=["struct","enum","subscript","mutating","extensions","convenience"]
     self.mainView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "CellId")
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -149,7 +207,12 @@ class PPYkeyWordsVC: PPYBaseTableViewController {
             case  3:
                 self.showMutating()
                 break
-               
+            case  4:
+                self.showExtensions()
+                break
+            case  5:
+                self.showConvenience()
+                break
             default: break
                 
             }
@@ -195,5 +258,24 @@ class PPYkeyWordsVC: PPYBaseTableViewController {
         /**
          打印结果为：self === Left
          */
+    }
+    func showExtensions()  {
+        let fru = Fruit(name: "橘子")
+        fru.weight()
+        
+    }
+    func showConvenience(){
+//        title: "你好", color: UIColor.red
+        let btn = UIButton.init(title: "你好", color: UIColor.red, bgColor: UIColor.blue)
+        btn.frame=CGRect.init(x: 80, y: 120, width: 100, height: 30)
+        self.view.addSubview(btn)
+    }
+    deinit {
+        //释放
+        /*在Swift中，deinit属于析构函数，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。和OC中的dealloc 一样的,通常在deinit和dealloc中需要执行的操作有：
+          （1）对象销毁
+          （2）KVO移除
+          （3）移除通知
+          （4）NSTimer销毁*/
     }
 }

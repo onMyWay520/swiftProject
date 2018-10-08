@@ -18,7 +18,7 @@
 -(void)eat{
     NSLog(@"吃饭了");
     ViewController *vc=[[ViewController alloc]init];
-    [vc show];//oc调用无参数的swift方法fang'fa
+    [vc show];//oc调用无参数的swift方法
     NSInteger a=[vc inputsWithNo1:10 no2:2];
     NSLog(@"a==%ld",(long)a);//oc调用含参数的swift方法
 //    PPYHomeGoodsModel *model=[[PPYHomeGoodsModel alloc]init];

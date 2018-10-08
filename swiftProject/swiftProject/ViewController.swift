@@ -77,6 +77,15 @@ class ViewController: UIViewController {
             print("打印\(i)")
         }
     }
+    /*知识点： 在Swift代码中，使用@objc修饰后的类型，可以直接供Objective-C调用。
+     可以使用@objc修饰的类型有以下几种：
+     1、未嵌套的类
+     2、协议
+     3、非泛型枚举（仅限于原始值为整形的类型）
+     4、类和协议中的属性和方法
+     5、构造器和析构器
+     6、下标
+    */
    @objc   func inputs(no1: Int, no2: Int) -> Int {
         return no1/no2
     }
