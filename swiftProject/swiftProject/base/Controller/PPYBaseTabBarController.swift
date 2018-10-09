@@ -19,6 +19,8 @@ class PPYBaseTabBarController: UITabBarController {
         backView.backgroundColor = UIColor.white
         tabBar.insertSubview(backView, at: 0)
         tabBar.isOpaque = true
+        setValue(MainTabBar(), forKey: "tabBar")
+
 
     }
     func addChildViewControllers(){

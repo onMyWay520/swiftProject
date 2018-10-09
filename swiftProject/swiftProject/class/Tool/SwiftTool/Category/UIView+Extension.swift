@@ -28,7 +28,17 @@ extension UIView {
         }
     }
     
-    
+    //自身中心点
+    var ppy_center: CGPoint {
+        
+        get {
+            return CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
+        }
+        set {
+            center = CGPoint(x: newValue.x, y: newValue.y)
+        }
+        
+    }
     var centerX: CGFloat {
         get{
           return center.x

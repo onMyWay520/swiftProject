@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0B216C3BF50089394A /* PPYPublishVC.swift */; };
+		56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */; };
+		56153E10216C46400089394A /* PPYPublishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56153E0F216C46400089394A /* PPYPublishVC.xib */; };
 		5622997E216B63DC00678210 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622997D216B63DC00678210 /* MainTabBar.swift */; };
 		5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641190D215B245200E00CDB /* PPYHomeVC.swift */; };
 		56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411911215B246B00E00CDB /* PPYSearchVC.swift */; };
@@ -66,6 +69,9 @@
 /* Begin PBXFileReference section */
 		11EC59204A74AE94687D1781 /* Pods-swiftProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56153E0B216C3BF50089394A /* PPYPublishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPublishVC.swift; sourceTree = "<group>"; };
+		56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYVerticalSqureBtn.swift; sourceTree = "<group>"; };
+		56153E0F216C46400089394A /* PPYPublishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PPYPublishVC.xib; sourceTree = "<group>"; };
 		5622997D216B63DC00678210 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		5641190D215B245200E00CDB /* PPYHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYHomeVC.swift; sourceTree = "<group>"; };
 		56411911215B246B00E00CDB /* PPYSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYSearchVC.swift; sourceTree = "<group>"; };
@@ -145,6 +151,49 @@
 				3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56153E06216C3B910089394A /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				56153E07216C3B910089394A /* ViewModel */,
+				56153E08216C3B910089394A /* ViewControlller */,
+				56153E09216C3B910089394A /* Model */,
+				56153E0A216C3B910089394A /* View */,
+			);
+			name = Publish;
+			path = swiftProject/class/Publish;
+			sourceTree = SOURCE_ROOT;
+		};
+		56153E07216C3B910089394A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		56153E08216C3B910089394A /* ViewControlller */ = {
+			isa = PBXGroup;
+			children = (
+				56153E0B216C3BF50089394A /* PPYPublishVC.swift */,
+				56153E0F216C46400089394A /* PPYPublishVC.xib */,
+			);
+			path = ViewControlller;
+			sourceTree = "<group>";
+		};
+		56153E09216C3B910089394A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56153E0A216C3B910089394A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		56411909215B245200E00CDB /* View */ = {
@@ -425,6 +474,7 @@
 				56CFDB75215A3C6E00E7EB02 /* home */,
 				56CFDB76215A3C6E00E7EB02 /* search */,
 				56CFDB77215A3C6E00E7EB02 /* shopCart */,
+				56153E06216C3B910089394A /* Publish */,
 				56CFDB78215A3C6E00E7EB02 /* mine */,
 			);
 			name = class;
@@ -648,6 +698,7 @@
 			files = (
 				565C1B8F2159C78C00356718 /* LaunchScreen.storyboard in Resources */,
 				565C1B8C2159C78C00356718 /* Assets.xcassets in Resources */,
+				56153E10216C46400089394A /* PPYPublishVC.xib in Resources */,
 				565C1B8A2159C78A00356718 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,6 +776,7 @@
 				5641192E215B283A00E00CDB /* PPYBaseTableViewCell.swift in Sources */,
 				56411932215B28B900E00CDB /* PPYHomeGoodsCell.swift in Sources */,
 				56E332CE215DC6CE00D69319 /* PPYCommon.swift in Sources */,
+				56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */,
 				56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
 				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,
@@ -742,6 +794,7 @@
 				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,
+				56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */,
 				5641192A215B280200E00CDB /* PPYBaseTableViewController.swift in Sources */,
 				56E332C9215DC68B00D69319 /* PPYPageTitleViewConfig.swift in Sources */,
 				5641192C215B280200E00CDB /* PPYBaseTabBarController.swift in Sources */,
