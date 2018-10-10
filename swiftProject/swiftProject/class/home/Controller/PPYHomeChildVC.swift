@@ -52,7 +52,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellID = "goodsCell"
-        var cell:PPYHomeGoodsCell! = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath) as! PPYHomeGoodsCell
+        var cell:PPYHomeGoodsCell! = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath) as? PPYHomeGoodsCell
         if cell==nil {
             cell=PPYHomeGoodsCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
         }
@@ -75,8 +75,13 @@ class PPYHomeChildVC: PPYBaseTableViewController {
 //        return "删除"
 //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PPYkeyWordsVC()
-  navigationController!.pushViewController(vc, animated: true)
+        if indexPath.section==0 {
+            let vc = PPYkeyWordsVC()
+            navigationController!.pushViewController(vc, animated: true)
+        }
+        else{
+            
+        }
     }
 
     /*

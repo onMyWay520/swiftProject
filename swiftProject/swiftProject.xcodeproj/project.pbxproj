@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560C451F216DC877001F0DE5 /* PPYLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C451D216DC877001F0DE5 /* PPYLoginVC.swift */; };
+		560C4520216DC877001F0DE5 /* PPYLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560C451E216DC877001F0DE5 /* PPYLoginVC.xib */; };
 		56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0B216C3BF50089394A /* PPYPublishVC.swift */; };
 		56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */; };
 		56153E10216C46400089394A /* PPYPublishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56153E0F216C46400089394A /* PPYPublishVC.xib */; };
@@ -69,6 +71,8 @@
 /* Begin PBXFileReference section */
 		11EC59204A74AE94687D1781 /* Pods-swiftProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		560C451D216DC877001F0DE5 /* PPYLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYLoginVC.swift; sourceTree = "<group>"; };
+		560C451E216DC877001F0DE5 /* PPYLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPYLoginVC.xib; sourceTree = "<group>"; };
 		56153E0B216C3BF50089394A /* PPYPublishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPublishVC.swift; sourceTree = "<group>"; };
 		56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYVerticalSqureBtn.swift; sourceTree = "<group>"; };
 		56153E0F216C46400089394A /* PPYPublishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PPYPublishVC.xib; sourceTree = "<group>"; };
@@ -437,6 +441,8 @@
 		56871F75215E33B80055B0E1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				560C451D216DC877001F0DE5 /* PPYLoginVC.swift */,
+				560C451E216DC877001F0DE5 /* PPYLoginVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -699,6 +705,7 @@
 				565C1B8F2159C78C00356718 /* LaunchScreen.storyboard in Resources */,
 				565C1B8C2159C78C00356718 /* Assets.xcassets in Resources */,
 				56153E10216C46400089394A /* PPYPublishVC.xib in Resources */,
+				560C4520216DC877001F0DE5 /* PPYLoginVC.xib in Resources */,
 				565C1B8A2159C78A00356718 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +800,7 @@
 				56871F72215E21E20055B0E1 /* PPYBaseViewModel.swift in Sources */,
 				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
+				560C451F216DC877001F0DE5 /* PPYLoginVC.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,
 				56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */,
 				5641192A215B280200E00CDB /* PPYBaseTableViewController.swift in Sources */,
