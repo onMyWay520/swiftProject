@@ -140,23 +140,10 @@ extension UIButton {
         layer.cornerRadius = cornerRadius!
         
     }
-     static  func buttonWith(imageName: String?, titleColor: UIColor?, titleFont: UIFont?, backgroundColor: UIColor?, title: String?) -> UIButton {
+    static  func buttonWith(imageName: String?) -> UIButton {
         let button = UIButton(type: .custom)
-        button.backgroundColor = backgroundColor
-        if title?.count != nil {
-            button.setTitle(title, for: UIControlState.normal);          button.setTitleColor(titleColor, for: UIControlState.normal)
-            
-        }
-        if titleFont != nil {
-            button.titleLabel?.font = titleFont
-            
-        }
         if (imageName?.count) != nil {
-            button.setImage(UIImage(named: imageName!), for: UIControlState.normal);            if title?.count != nil {
-                button.titleEdgeInsets = UIEdgeInsetsMake(0, UIScreen.main.bounds.size.width / 375, 0, 0)
-                button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, UIScreen.main.bounds.size.width / 375)
-                
-            }
+            button.setImage(UIImage(named: imageName!), for: UIControlState.normal);
             
         }
         return button

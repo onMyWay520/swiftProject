@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow.init()
-        let loginVC = PPYLoginVC.init()
-        window?.rootViewController=loginVC
-//        let tabBarController = PPYBaseTabBarController.init()
-//        window?.rootViewController = tabBarController
+//        let loginVC = PPYLoginVC.init()
+//        window?.rootViewController=loginVC
+        let tabBarController = PPYBaseTabBarController.init()
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible();
         return true
     }
