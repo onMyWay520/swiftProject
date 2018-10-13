@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class PPYGoodsModel: NSObject {
+import HandyJSON
+class PPYGoodsModel: HandyJSON {
     //是否已经加入购物车
     var alreadyAddShoppingCart :Bool = false
     
@@ -33,15 +33,16 @@ class PPYGoodsModel: NSObject {
     //是否选中，默认没有选中的
     var selected: Bool = true
     
-    //字典转模型  重写构造方法
-    init(dict: [String : AnyObject]) {
-        super.init()
-        //使用kvo为当前属性设置值
-        setValuesForKeys(dict)
-    }
-    
-    //防止kvo赋值属性不匹配二崩溃
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+    required init() {} 
+//    //字典转模型  重写构造方法
+//    init(dict: [String : AnyObject]) {
+//        super.init()
+//        //使用kvo为当前属性设置值
+//        setValuesForKeys(dict)
+//    }
+//
+//    //防止kvo赋值属性不匹配二崩溃
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
 
 }

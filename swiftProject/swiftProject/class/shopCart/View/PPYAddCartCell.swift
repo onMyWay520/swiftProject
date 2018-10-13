@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import SDWebImage
 //使用代理传输数据
 protocol PPYAddCartCellDelegate :NSObjectProtocol {
     
@@ -17,40 +16,33 @@ protocol PPYAddCartCellDelegate :NSObjectProtocol {
 }
 class PPYAddCartCell: PPYBaseTableViewCell {
     weak var delegate: PPYAddCartCellDelegate?
-    var titleLab:UILabel?
-    var goodsImageView:UIImageView?
-    var desLab:UILabel?
-    var priceLab:UILabel?
-    var addShopCartButton:UIButton?
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    /// 商品模型
+    var goodModel : PPYGoodsModel? {
+        //属性监视
+        didSet {
+            if let iconName  = goodModel?.iconName {
+                goodsImageView.image = UIImage(named: iconName)
+            }
+            
+            if let title = goodModel?.title {
+                titleLab.text = title
+            }
+            
+            if let desc = goodModel?.desc {
+                desLab.text = desc
+            }
+        
+        }
     }
     override func setCellUI() {
-        
-        self.goodsImageView=UIImageView()
-        self.goodsImageView?.sd_setImage(with: NSURL.init(string: "http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40f507b2e99aa64034f78f01930.jpg") as URL?, placeholderImage: UIImage.init(named: "spellDefault"), options: [], progress: nil, completed: nil)
-        self.addSubview(self.goodsImageView!)
-        self.titleLab=UILabel()
-        self.titleLab?.font=UIFont.systemFont(ofSize: 14)
-        self.titleLab?.text="我是标题"
-        self.titleLab?.textColor=UIColor(hex: "333333")
-        self.titleLab?.textAlignment=NSTextAlignment.left
-        self.addSubview(self.titleLab!)
-        
-        self.desLab=UILabel()
-        self.desLab?.font=UIFont.systemFont(ofSize: 12)
-        self.desLab?.text="120ml*12/箱"
-        self.desLab?.textColor=UIColor(hex: "666666")
-        self.desLab?.textAlignment=NSTextAlignment.left
-        self.addSubview(self.desLab!)
-        
-        self.addShopCartButton=UIButton.buttonWith(imageName:"addShopCart")
-        addShopCartButton?.addTarget(self, action: #selector(addCarButtonClick), for:UIControlEvents.touchUpInside )
-        self.addSubview(self.addShopCartButton!)
+        contentView .addSubview(goodsImageView)
+        contentView.addSubview(titleLab)
+        contentView.addSubview(desLab)
+        addShopCartButton.addTarget(self, action: #selector(addCarButtonClick), for:UIControlEvents.touchUpInside )
+        contentView.addSubview(addShopCartButton)
     }
     override func layoutSubviews() {
-        self.goodsImageView?.snp.makeConstraints { (make) in
+        goodsImageView.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
             make.top.equalTo(self).offset(10)
             // 设置宽、高
@@ -58,23 +50,23 @@ class PPYAddCartCell: PPYBaseTableViewCell {
             make.width.equalTo(50)
             make.left.equalTo(self).offset(10)
         }
-        self.titleLab?.snp.makeConstraints { (make) in
+        titleLab.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
-            make.top.equalTo((self.goodsImageView?.snp.top)!)
+            make.top.equalTo((goodsImageView.snp.top))
             // 设置宽、高
             make.height.equalTo(14)
             make.width.equalTo(120)
-            make.left.equalTo((self.goodsImageView?.snp.right)!).offset(20)
+            make.left.equalTo((goodsImageView.snp.right)).offset(20)
         }
-        self.desLab?.snp.makeConstraints { (make) in
+      desLab.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
-            make.top.equalTo((self.titleLab?.snp.bottom)!).offset(10)
+            make.top.equalTo((titleLab.snp.bottom)).offset(10)
             // 设置宽、高
             make.height.equalTo(14)
-            make.width.equalTo(100)
-            make.left.equalTo((self.titleLab?.snp.left)!)
+            make.width.equalTo(150)
+            make.left.equalTo((titleLab.snp.left))
         }
-        self.addShopCartButton?.snp.makeConstraints { (make) in
+        self.addShopCartButton.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
             make.top.equalTo(self).offset(20)
             // 设置宽、高
@@ -83,19 +75,45 @@ class PPYAddCartCell: PPYBaseTableViewCell {
             make.right.equalTo(self).offset(-20)
         }
     }
+    // MARK: - 属性懒加载
+    fileprivate lazy var goodsImageView: UIImageView = {
+        let goodsImageView = UIImageView()
+        goodsImageView.image=UIImage(named: "goods_01")
+        //圆角
+        goodsImageView.layer.cornerRadius = 30
+        //裁剪模式
+        goodsImageView.layer.masksToBounds = true
+        return goodsImageView
+    }()
+    //商品标题
+    fileprivate lazy var titleLab: UILabel = {
+        let titleLab = UILabel()
+        titleLab.text="1234"
+        return titleLab
+    }()
+    
+    //商品描述
+    fileprivate lazy var desLab: UILabel = {
+        let desLab  = UILabel()
+        desLab.text="56789"
+        desLab.textColor = UIColor.gray
+        return desLab
+    }()
+    fileprivate lazy var addShopCartButton: UIButton = {
+        let addShopCartButton  = UIButton.buttonWith(imageName:"addShopCart")
+        return addShopCartButton
+    }()
+    
     /// 购买按键的点击  private私有方法
     @objc fileprivate func addCarButtonClick(_ btn:UIButton) {
 //        goodModel!.alreadyAddShoppingCArt = true
         
         //        btn.isEnabled = !goodModel!.alreadyAddShoppingCArt
         //传输值
-        delegate?.clickTransmitData(self, icon: self.goodsImageView!)
+        delegate?.clickTransmitData(self, icon: self.goodsImageView)
         
     }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+
 
 }

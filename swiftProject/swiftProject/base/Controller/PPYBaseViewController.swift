@@ -16,8 +16,39 @@ class PPYBaseViewController: UIViewController {
     //修改导航栏背景色
     self.navigationController?.navigationBar.barTintColor = defaultColor
     self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18)]
-
+        setBackBarButtonItem()
+        setRightButton()
     }
+    /// 设置导航栏右边按钮
+    func setRightButton() -> UIBarButtonItem {
+        
+        let searchItem = UIButton.init(type: .custom)
+        searchItem.setImage(UIImage(named: ""), for: .normal)
+        searchItem.sizeToFit()
+        searchItem.frame.size = CGSize(width: 30, height: 30)
+        searchItem.contentHorizontalAlignment = .right
+        searchItem.addTarget(self, action: #selector(rightButtonClick), for: UIControlEvents.touchUpInside)
+        return UIBarButtonItem.init(customView: searchItem)
+    }
+    // MARK: - private method
+    func setBackBarButtonItem() -> UIBarButtonItem {
+        
+        let backButton = UIButton.init(type: .custom)
+        backButton.setImage(UIImage(named: "backnarrow_white"), for: .normal)
+        backButton.sizeToFit()
+        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        backButton.addTarget(self, action: #selector(backClick), for: UIControlEvents.touchUpInside)
+        return UIBarButtonItem.init(customView: backButton)
+    }
+    @objc func rightButtonClick() {
+        
+    }
+    
+    @objc func backClick() {
+        
+    self.navigationController?.popViewController(animated: true)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }

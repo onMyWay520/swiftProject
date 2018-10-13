@@ -1,4 +1,6 @@
 PODS:
+  - Alamofire (4.7.3)
+  - HandyJSON (4.2.0)
   - MJRefresh (3.1.15.3)
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
@@ -7,29 +9,39 @@ PODS:
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - SnapKit (4.0.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - HandyJSON
   - MJRefresh
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - SDWebImage
   - SnapKit
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - HandyJSON
     - MJRefresh
     - RxCocoa
     - RxSwift
     - SDWebImage
     - SnapKit
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 812937a6258b97cac81195261c9734b28b48c809
+PODFILE CHECKSUM: d23f5659b818bf663128ac20737ce9789103cbb4
 
 COCOAPODS: 1.5.3

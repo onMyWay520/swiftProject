@@ -18,7 +18,6 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         people.eat()//无参数的方法
         people.logMe("log me", logYou: "log you")//有参数的方法
 
-     
     }
 
     override func loadNewData() {

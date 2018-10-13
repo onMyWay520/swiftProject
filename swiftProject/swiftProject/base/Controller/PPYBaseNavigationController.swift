@@ -48,14 +48,14 @@ class PPYBaseNavigationController: UINavigationController {
         backButton.addTarget(self, action: #selector(PPYBaseNavigationController.backClick), for: UIControlEvents.touchUpInside)
         return UIBarButtonItem.init(customView: backButton)
     }
-    /// 点击右边的搜索
+    /// 点击右边
    @objc private func rightButtonClick() {
-//        let searchvc = SearchVC()
-//        self.pushViewController(searchvc, animated: true)
+
     }
     
     /// 返回
    @objc private func backClick() {
+    
         self.popViewController(animated: true)
     }
 

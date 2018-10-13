@@ -28,8 +28,8 @@ class ViewController: UIViewController {
 //        animals.removeAll()
           print(animals)
 //        print(animals.isEmpty)//判断数组是否为空
-        var varA = "ValueA"
-        var varB = 1008.00
+        let varA = "ValueA"
+        let varB = 1008.00
         print("Value of \(varA) is more than \(varB) millions")//Value of ValueA is more than 1008.0 millions
         var myString:String?
         myString="hello"

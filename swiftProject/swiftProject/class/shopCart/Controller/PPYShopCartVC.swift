@@ -11,26 +11,53 @@ import UIKit
 class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     ///贝塞尔曲线
     fileprivate var path : UIBezierPath?
+    ///商品列表cell的重用标识
+    fileprivate let addCartCellID = "PPYAddCartCellID"
+    //商品模型数组
+    fileprivate var goodArray = Array<Any>()
     //自定义图层
     var layer: CALayer?
+    /// 已经添加到购物车的商品模型数组
+    fileprivate var addGoodArray = [PPYGoodsModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mainView.register(PPYAddCartCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
-        self.mainView.mj_footer.isHidden=false
-        mainView.mj_header.beginRefreshing()
-       
+        setUI()
         
     }
-    
+    func setUI(){
+ self.mainView.register(PPYAddCartCell.classForCoder(), forCellReuseIdentifier: addCartCellID)
+    self.mainView.mj_footer.isHidden=false
+    //初始化模型数组,制作一些假数据
+    for i in 0..<6 {
+    var dict = [String :AnyObject]()
+    dict["iconName"] = "goods_0\(i+1)" as AnyObject
+    dict["title"] = "\(i)水果" as AnyObject
+    dict["desc"] = "这是第\(i)个商品" as AnyObject
+    dict["newPrice"] = "20\(i)" as AnyObject
+    dict["oldPrice"] = "30\(i)" as AnyObject
+    let model = PPYGoodsModel.deserialize(from: dict)
+    //将字典转模型并添加到数组中
+    goodArray.append( model as Any )
+    }
+    mainView.addSubview(confirmButton)
+    confirmButton.frame=CGRect(x: 0, y: ppyScreenH-ppyTabBarH-50-STATUS_NAV_BAR_Y, width: ppyScreenW, height: 50)
+
+    }
+    fileprivate lazy var confirmButton: UIButton = {
+        let confirmButton  = UIButton.buttonWith(titleColor: UIColor.white, titleFont: UIFont.systemFont(ofSize: 16), backgroundColor: defaultColor, title: "确定订单", cornerRadius: 0)
+        confirmButton .addTarget(self, action: #selector(confirmButtonClick), for: UIControlEvents.touchUpInside)
+        return confirmButton
+    }()
     override func loadNewData() {
-        self.dataArray=["1","2","3","4"]
+       
+
         self.mainView.mj_header.endRefreshing()
-        self.mainView .reloadData()
+        self.mainView.reloadData()
         
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.dataArray.count
+        return self.goodArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -46,87 +73,25 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
         return 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellID = "goodsCell"
-        var cell:PPYAddCartCell! = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath) as? PPYAddCartCell
+        var cell:PPYAddCartCell! = tableView.dequeueReusableCell(withIdentifier:addCartCellID, for: indexPath) as? PPYAddCartCell
         if cell==nil {
-            cell=PPYAddCartCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
+            cell = PPYAddCartCell(style: UITableViewCellStyle.default, reuseIdentifier:addCartCellID)
         }
         cell.delegate=self as PPYAddCartCellDelegate
-        cell.titleLab?.text="我是标题\(indexPath.section+1)"
+        cell.goodModel = goodArray[indexPath.section] as? PPYGoodsModel
+        
         return cell
     }
-
+    @objc func confirmButtonClick() {
+        let vc = PPYConfirmOrderVC()
+        vc.addGoodArray=addGoodArray
+    self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 // MARK: - Cell点击的代理方法
@@ -139,11 +104,12 @@ extension PPYShopCartVC : PPYAddCartCellDelegate {
             return
         }
         //获得当前的数据
-        //            let redata = goodArray[indexPath.row]
-        //
-        //            //添加到已购买数组之中
-        //            addGoodArray.append(redata)
+        let redata = goodArray[indexPath.section]
         
+         //添加到已购买数组之中
+        addGoodArray.append(redata as! PPYGoodsModel)
+        
+        self.tabBarItem.badgeValue = "\(addGoodArray.count)"
         //重新计算iconView的frame值
         //获取当前行的frame值
         var rect = self.mainView.rectForRow(at: indexPath)
