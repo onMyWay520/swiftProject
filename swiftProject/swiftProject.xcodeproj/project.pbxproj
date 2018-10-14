@@ -57,6 +57,14 @@
 		56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C4215DC68B00D69319 /* PPYPageTitleView.swift */; };
 		56E332CE215DC6CE00D69319 /* PPYCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332CD215DC6CE00D69319 /* PPYCommon.swift */; };
 		56E332D2215DDDBB00D69319 /* PPYPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E332D1215DDDBB00D69319 /* PPYPeople.m */; };
+		842F406C2173836A008B220C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F406B2173836A008B220C /* Alamofire.framework */; };
+		842F406E2173836A008B220C /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F406D2173836A008B220C /* HandyJSON.framework */; };
+		842F40702173836A008B220C /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F406F2173836A008B220C /* MJRefresh.framework */; };
+		842F40722173836A008B220C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F40712173836A008B220C /* RxCocoa.framework */; };
+		842F40742173836A008B220C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F40732173836A008B220C /* RxSwift.framework */; };
+		842F40762173836A008B220C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F40752173836A008B220C /* SDWebImage.framework */; };
+		842F40782173836A008B220C /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F40772173836A008B220C /* SnapKit.framework */; };
+		842F407A2173836A008B220C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F40792173836A008B220C /* SwiftyJSON.framework */; };
 		BB838B2DBAA447952C857D20 /* Pods_swiftProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +147,14 @@
 		56E332D0215DDDBB00D69319 /* PPYPeople.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPYPeople.h; sourceTree = "<group>"; };
 		56E332D1215DDDBB00D69319 /* PPYPeople.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPYPeople.m; sourceTree = "<group>"; };
 		660794DA2660AC39D5C18F47 /* Pods-swiftProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.release.xcconfig"; sourceTree = "<group>"; };
+		842F406B2173836A008B220C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F406D2173836A008B220C /* HandyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HandyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F406F2173836A008B220C /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F40712173836A008B220C /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F40732173836A008B220C /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F40752173836A008B220C /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F40772173836A008B220C /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F40792173836A008B220C /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +162,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842F406C2173836A008B220C /* Alamofire.framework in Frameworks */,
+				842F406E2173836A008B220C /* HandyJSON.framework in Frameworks */,
+				842F40702173836A008B220C /* MJRefresh.framework in Frameworks */,
+				842F40722173836A008B220C /* RxCocoa.framework in Frameworks */,
+				842F40742173836A008B220C /* RxSwift.framework in Frameworks */,
+				842F40762173836A008B220C /* SDWebImage.framework in Frameworks */,
+				842F40782173836A008B220C /* SnapKit.framework in Frameworks */,
+				842F407A2173836A008B220C /* SwiftyJSON.framework in Frameworks */,
 				BB838B2DBAA447952C857D20 /* Pods_swiftProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +194,14 @@
 		02C91346559C4B89BE226BE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				842F406B2173836A008B220C /* Alamofire.framework */,
+				842F406D2173836A008B220C /* HandyJSON.framework */,
+				842F406F2173836A008B220C /* MJRefresh.framework */,
+				842F40712173836A008B220C /* RxCocoa.framework */,
+				842F40732173836A008B220C /* RxSwift.framework */,
+				842F40752173836A008B220C /* SDWebImage.framework */,
+				842F40772173836A008B220C /* SnapKit.framework */,
+				842F40792173836A008B220C /* SwiftyJSON.framework */,
 				3EF3C04C984FC5FE134D6469 /* Pods_swiftProject.framework */,
 			);
 			name = Frameworks;

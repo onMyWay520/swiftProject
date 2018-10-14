@@ -44,6 +44,29 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     confirmButton.frame=CGRect(x: 0, y: ppyScreenH-ppyTabBarH-50-STATUS_NAV_BAR_Y, width: ppyScreenW, height: 50)
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        NotificationCenter.default.addObserver(self, selector: #selector(addGoodArr), name: NSNotification.Name(rawValue:"addGoodArray"), object: nil)
+          self.navigationItem.leftBarButtonItem?.accessibilityElementsHidden=true
+    }
+   // 实现通知监听方法
+    @objc func addGoodArr(nofi : Notification){
+        let addGoodArr = nofi.userInfo!["addGoodArray"] as! [PPYGoodsModel]
+        var sum = 0
+        for model in addGoodArr{
+          sum = sum + model.count
+            
+          self.tabBarItem.badgeValue = "\(sum)"
+        }
+        
+
+    }
+   // 最后要记得移除通知
+    deinit {
+        /// 移除通知
+ NotificationCenter.default.removeObserver(self)
+    }
+    
     fileprivate lazy var confirmButton: UIButton = {
         let confirmButton  = UIButton.buttonWith(titleColor: UIColor.white, titleFont: UIFont.systemFont(ofSize: 16), backgroundColor: defaultColor, title: "确定订单", cornerRadius: 0)
         confirmButton .addTarget(self, action: #selector(confirmButtonClick), for: UIControlEvents.touchUpInside)

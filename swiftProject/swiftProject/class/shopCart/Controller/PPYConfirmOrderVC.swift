@@ -52,7 +52,10 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
             }
         }
     }
-
+    override func backClick(){
+    NotificationCenter.default.post(name: NSNotification.Name("addGoodArray"), object: self, userInfo: ["addGoodArray":addGoodArray])
+ self.navigationController?.popViewController(animated: true)
+    }
     //底部视图
     lazy var bottomView : UIView = {
         let bottomView = UIView()
