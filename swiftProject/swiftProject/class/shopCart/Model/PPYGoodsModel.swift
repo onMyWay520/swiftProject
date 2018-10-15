@@ -21,15 +21,17 @@ class PPYGoodsModel: HandyJSON {
     //商品的描述
     var desc : String?
     
+    var goodsId :  Int
+    
     //商品购买的数量, 默认0
-    var count: Int = 1
+    var count: Int = 0
     
     //新价格
     var newPrice : String?
     
     //老价格
     var oldPrice : String?
-    
+
     //是否选中，默认没有选中的
     var selected: Bool = true
     

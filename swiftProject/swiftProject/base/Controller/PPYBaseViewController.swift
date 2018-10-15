@@ -16,35 +16,35 @@ class PPYBaseViewController: UIViewController {
     //修改导航栏背景色
     self.navigationController?.navigationBar.barTintColor = defaultColor
     self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18)]
-   self.navigationItem.rightBarButtonItem=setRightButton()
-       self.navigationItem.leftBarButtonItem = setBackBarButtonItem()
+ self.navigationItem.rightBarButtonItem=UIBarButtonItem.init(customView: rightButton)
+       self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
     }
     /// 设置导航栏右边按钮
-    func setRightButton() -> UIBarButtonItem {
+    lazy var rightButton: UIButton = {
         
-        let searchItem = UIButton.init(type: .custom)
-        searchItem.setImage(UIImage(named: ""), for: .normal)
-        searchItem.sizeToFit()
-        searchItem.frame.size = CGSize(width: 30, height: 30)
-        searchItem.contentHorizontalAlignment = .right
-        searchItem.addTarget(self, action: #selector(rightButtonClick), for: UIControlEvents.touchUpInside)
-        return UIBarButtonItem.init(customView: searchItem)
-    }
+        let rightButton = UIButton.init(type: .custom)
+        rightButton.setImage(UIImage(named: ""), for: .normal)
+        rightButton.sizeToFit()
+        rightButton.frame.size = CGSize(width: 30, height: 30)
+        rightButton.contentHorizontalAlignment = .right
+        rightButton.addTarget(self, action: #selector(rightButtonClick), for: UIControlEvents.touchUpInside)
+        return rightButton
+    }()
     // MARK: - private method
-    func setBackBarButtonItem() -> UIBarButtonItem {
+    lazy var leftButton: UIButton = {
         
-        let backButton = UIButton.init(type: .custom)
-        backButton.setImage(UIImage(named: "backnarrow_white"), for: .normal)
-        backButton.sizeToFit()
-        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-        backButton.addTarget(self, action: #selector(backClick), for: UIControlEvents.touchUpInside)
-        return UIBarButtonItem.init(customView: backButton)
-    }
+        let leftButton = UIButton.init(type: .custom)
+        leftButton.setImage(UIImage(named: "backnarrow_white"), for: .normal)
+        leftButton.sizeToFit()
+        leftButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        leftButton.addTarget(self, action: #selector(leftButtonClick), for: UIControlEvents.touchUpInside)
+        return leftButton
+    }()
     @objc func rightButtonClick() {
         
     }
     
-    @objc func backClick() {
+    @objc func leftButtonClick() {
         
     self.navigationController?.popViewController(animated: true)
     }

@@ -52,7 +52,7 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
             }
         }
     }
-    override func backClick(){
+    override func leftButtonClick(){
     NotificationCenter.default.post(name: NSNotification.Name("addGoodArray"), object: self, userInfo: ["addGoodArray":addGoodArray])
  self.navigationController?.popViewController(animated: true)
     }
@@ -121,7 +121,7 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
         }
         
         totalPriceLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(bottomView.snp.center)
+         make.center.equalTo(bottomView.snp.center)
         }
         
         buyButton.snp.makeConstraints { (make) in
@@ -163,6 +163,9 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
         func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
             return "删除"
         }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.001
+    }
 
 
 }

@@ -18,46 +18,12 @@ class PPYBaseNavigationController: UINavigationController {
     }
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.viewControllers.count<1 {
-//    viewController.navigationItem.rightBarButtonItem=setRightButton()
         }
         else {
         
-      viewController.hidesBottomBarWhenPushed = true
-//   viewController.navigationItem.leftBarButtonItem = setBackBarButtonItem()
-        }
+      viewController.hidesBottomBarWhenPushed = true     }
       super.pushViewController(viewController, animated: true)
     }
-//        /// 设置导航栏右边按钮
-//        func setRightButton() -> UIBarButtonItem {
-//
-//            let searchItem = UIButton.init(type: .custom)
-//            searchItem.setImage(UIImage(named: ""), for: .normal)
-//            searchItem.sizeToFit()
-//            searchItem.frame.size = CGSize(width: 30, height: 30)
-//            searchItem.contentHorizontalAlignment = .right
-//            searchItem.addTarget(self, action: #selector(PPYBaseNavigationController.rightButtonClick), for: UIControlEvents.touchUpInside)
-//            return UIBarButtonItem.init(customView: searchItem)
-//        }
-//    // MARK: - private method
-//    func setBackBarButtonItem() -> UIBarButtonItem {
-//
-//        let backButton = UIButton.init(type: .custom)
-//        backButton.setImage(UIImage(named: "backnarrow_white"), for: .normal)
-//        backButton.sizeToFit()
-//        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-//        backButton.addTarget(self, action: #selector(PPYBaseNavigationController.backClick), for: UIControlEvents.touchUpInside)
-//        return UIBarButtonItem.init(customView: backButton)
-//    }
-//    /// 点击右边
-//   @objc private func rightButtonClick() {
-//
-//    }
-//
-//    /// 返回
-//   @objc private func backClick() {
-//
-//        self.popViewController(animated: true)
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

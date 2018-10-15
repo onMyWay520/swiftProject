@@ -28,11 +28,12 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     func setUI(){
  self.mainView.register(PPYAddCartCell.classForCoder(), forCellReuseIdentifier: addCartCellID)
     self.mainView.mj_footer.isHidden=false
+   
     //初始化模型数组,制作一些假数据
     for i in 0..<6 {
     var dict = [String :AnyObject]()
     dict["iconName"] = "goods_0\(i+1)" as AnyObject
-    dict["title"] = "\(i)水果" as AnyObject
+    dict["title"] = "水果\(i+1)" as AnyObject
     dict["desc"] = "这是第\(i)个商品" as AnyObject
     dict["newPrice"] = "20\(i)" as AnyObject
     dict["oldPrice"] = "30\(i)" as AnyObject
@@ -47,7 +48,7 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         NotificationCenter.default.addObserver(self, selector: #selector(addGoodArr), name: NSNotification.Name(rawValue:"addGoodArray"), object: nil)
-          self.navigationItem.leftBarButtonItem?.accessibilityElementsHidden=true
+        leftButton.isHidden=true
     }
    // 实现通知监听方法
     @objc func addGoodArr(nofi : Notification){
@@ -108,11 +109,11 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     @objc func confirmButtonClick() {
         let vc = PPYConfirmOrderVC()
         vc.addGoodArray=addGoodArray
-    self.navigationController?.pushViewController(vc, animated: true)
+    self.navigationController?.pushViewController(vc, animated: false)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
 

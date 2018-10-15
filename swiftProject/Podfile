@@ -8,7 +8,8 @@ target 'swiftProject' do
     pod 'SnapKit'
     pod 'RxSwift', '~> 4.0'
     pod 'RxCocoa',    '~> 4.0'
-    pod 'HandyJSON', '~> 4.1.1'
+    pod 'HandyJSON', '~> 4.2.0'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'FMDB'
 end

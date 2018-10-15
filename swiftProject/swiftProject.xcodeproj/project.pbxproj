@@ -14,6 +14,9 @@
 		56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0B216C3BF50089394A /* PPYPublishVC.swift */; };
 		56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */; };
 		56153E10216C46400089394A /* PPYPublishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56153E0F216C46400089394A /* PPYPublishVC.xib */; };
+		56201440217431FC009054E0 /* PPYUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5620143F217431FC009054E0 /* PPYUtil.swift */; };
+		5620144221746294009054E0 /* PPYDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5620144121746294009054E0 /* PPYDataBaseManager.swift */; };
+		56201444217497C1009054E0 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56201443217497C1009054E0 /* FMDB.framework */; };
 		5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641190D215B245200E00CDB /* PPYHomeVC.swift */; };
 		56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411911215B246B00E00CDB /* PPYSearchVC.swift */; };
 		5641191A215B247600E00CDB /* PPYShopCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411918215B247500E00CDB /* PPYShopCartVC.swift */; };
@@ -95,6 +98,9 @@
 		56153E0B216C3BF50089394A /* PPYPublishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPublishVC.swift; sourceTree = "<group>"; };
 		56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYVerticalSqureBtn.swift; sourceTree = "<group>"; };
 		56153E0F216C46400089394A /* PPYPublishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PPYPublishVC.xib; sourceTree = "<group>"; };
+		5620143F217431FC009054E0 /* PPYUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYUtil.swift; sourceTree = "<group>"; };
+		5620144121746294009054E0 /* PPYDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYDataBaseManager.swift; sourceTree = "<group>"; };
+		56201443217497C1009054E0 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5641190D215B245200E00CDB /* PPYHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYHomeVC.swift; sourceTree = "<group>"; };
 		56411911215B246B00E00CDB /* PPYSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYSearchVC.swift; sourceTree = "<group>"; };
 		56411918215B247500E00CDB /* PPYShopCartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYShopCartVC.swift; sourceTree = "<group>"; };
@@ -162,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56201444217497C1009054E0 /* FMDB.framework in Frameworks */,
 				842F406C2173836A008B220C /* Alamofire.framework in Frameworks */,
 				842F406E2173836A008B220C /* HandyJSON.framework in Frameworks */,
 				842F40702173836A008B220C /* MJRefresh.framework in Frameworks */,
@@ -194,6 +201,7 @@
 		02C91346559C4B89BE226BE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56201443217497C1009054E0 /* FMDB.framework */,
 				842F406B2173836A008B220C /* Alamofire.framework */,
 				842F406D2173836A008B220C /* HandyJSON.framework */,
 				842F406F2173836A008B220C /* MJRefresh.framework */,
@@ -347,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				560C4521216DF768001F0DE5 /* PPYGoodsModel.swift */,
+				5620144121746294009054E0 /* PPYDataBaseManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -425,6 +434,7 @@
 				5646306C217084410077F053 /* NetworkTools.swift */,
 				56463068217075B50077F053 /* TimerButton.swift */,
 				56463069217075B50077F053 /* MainTabBar.swift */,
+				5620143F217431FC009054E0 /* PPYUtil.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -802,6 +812,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -813,6 +824,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -862,6 +874,7 @@
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
 				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,
 				56E332D2215DDDBB00D69319 /* PPYPeople.m in Sources */,
+				56201440217431FC009054E0 /* PPYUtil.swift in Sources */,
 				56E332C8215DC68B00D69319 /* PPYPageContentView.swift in Sources */,
 				56411920215B247F00E00CDB /* PPYMineVC.swift in Sources */,
 				5641190E215B245200E00CDB /* PPYHomeVC.swift in Sources */,
@@ -891,6 +904,7 @@
 				565C1B852159C78A00356718 /* AppDelegate.swift in Sources */,
 				56411934215B742800E00CDB /* PPYBaseButton.swift in Sources */,
 				56411930215B285700E00CDB /* PPYBaseView.swift in Sources */,
+				5620144221746294009054E0 /* PPYDataBaseManager.swift in Sources */,
 				5653A2202171A4570075A999 /* String+GetSize.swift in Sources */,
 				56E332C6215DC68B00D69319 /* UIView+Extension.swift in Sources */,
 				5646796C215CD4DC00D534F1 /* PPYBaseCollectionVC.swift in Sources */,
