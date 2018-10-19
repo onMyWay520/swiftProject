@@ -25,8 +25,8 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
         setUI()
         
     }
-    func setUI(){
- self.mainView.register(PPYAddCartCell.classForCoder(), forCellReuseIdentifier: addCartCellID)
+   func setUI(){
+   self.mainView.register(PPYAddCartCell.classForCoder(), forCellReuseIdentifier: addCartCellID)
     self.mainView.mj_footer.isHidden=false
    
     //初始化模型数组,制作一些假数据
@@ -37,13 +37,25 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     dict["desc"] = "这是第\(i)个商品" as AnyObject
     dict["newPrice"] = "20\(i)" as AnyObject
     dict["oldPrice"] = "30\(i)" as AnyObject
+    dict["goodsId"] = "10\(i)" as AnyObject
+
     let model = PPYGoodsModel.deserialize(from: dict)
     //将字典转模型并添加到数组中
     goodArray.append( model as Any )
     }
     mainView.addSubview(confirmButton)
     confirmButton.frame=CGRect(x: 0, y: ppyScreenH-ppyTabBarH-50-STATUS_NAV_BAR_Y, width: ppyScreenW, height: 50)
-
+    let addGoods = PPYDataBaseManager.shared.loadGoods()
+    if ((addGoods?.count) != nil){
+     addGoodArray = addGoods!
+      var sum = 0
+      for model in addGoodArray {
+        sum = sum + model.count
+        
+        self.tabBarItem.badgeValue = "\(sum)"
+      }
+    }
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -59,13 +71,12 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
             
           self.tabBarItem.badgeValue = "\(sum)"
         }
-        
-
+    
     }
    // 最后要记得移除通知
     deinit {
-        /// 移除通知
- NotificationCenter.default.removeObserver(self)
+    /// 移除通知
+    NotificationCenter.default.removeObserver(self)
     }
     
     fileprivate lazy var confirmButton: UIButton = {
@@ -108,7 +119,7 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     }
     @objc func confirmButtonClick() {
         let vc = PPYConfirmOrderVC()
-        vc.addGoodArray=addGoodArray
+//        vc.addGoodArray=addGoodArray
     self.navigationController?.pushViewController(vc, animated: false)
     }
     override func didReceiveMemoryWarning() {
@@ -128,12 +139,52 @@ extension PPYShopCartVC : PPYAddCartCellDelegate {
             return
         }
         //获得当前的数据
-        let redata = goodArray[indexPath.section]
-        
-         //添加到已购买数组之中
-        addGoodArray.append(redata as! PPYGoodsModel)
-        
-        self.tabBarItem.badgeValue = "\(addGoodArray.count)"
+        let redata = goodArray[indexPath.section] as! PPYGoodsModel
+        //首先获取之前保存的
+        let addGoods = PPYDataBaseManager.shared.loadGoods()
+        if addGoods == nil {
+            //添加到已加入购物车数组之中
+            addGoodArray.append(redata )
+            //加入到数据库中
+            PPYDataBaseManager.shared.insertshopCartData(model: redata )
+            if (addGoodArray.count > 0){
+                var sum = 0
+                for model in addGoodArray {
+                    sum = sum + model.count
+                    
+                    self.tabBarItem.badgeValue = "\(sum)"
+                }
+            }
+        }
+        else{
+            for model in addGoods! {
+                if(model.alreadyAddShoppingCart){
+                    model.count += 1
+                    PPYDataBaseManager.shared.updateshopCart(model: model )
+//                    self.tabBarItem.badgeValue = "\( model.count)"
+                }
+                else{
+                    redata.alreadyAddShoppingCart=true
+                    //添加到已加入购物车数组之中
+                    addGoodArray.append(redata )
+                    //加入到数据库中
+                    PPYDataBaseManager.shared.insertshopCartData(model: redata )
+    
+                }
+                
+            }
+            if ((addGoods?.count)! > 0){
+                var sum = 0
+                for model in addGoods! {
+                    sum = sum + model.count
+                    
+                    self.tabBarItem.badgeValue = "\(sum)"
+                }
+            }
+           
+        }
+
+       
         //重新计算iconView的frame值
         //获取当前行的frame值
         var rect = self.mainView.rectForRow(at: indexPath)
@@ -144,6 +195,7 @@ extension PPYShopCartVC : PPYAddCartCellDelegate {
         startAnimation(headRect, iconView: icon)
     }
 }
+// MARK:加入购物车动画相关
 extension PPYShopCartVC {
     fileprivate func startAnimation(_ rect: CGRect ,iconView:UIImageView){
         if layer == nil {

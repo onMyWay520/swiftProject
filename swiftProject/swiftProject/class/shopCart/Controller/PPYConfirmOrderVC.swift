@@ -10,7 +10,7 @@ import UIKit
 
 class PPYConfirmOrderVC: PPYBaseTableViewController {
     // MARK: - 属性
-    /// 已经添加进购物车的商品模型数组，初始化
+   // MARK:  已经添加进购物车的商品模型数组，初始化
     var addGoodArray: [PPYGoodsModel]! {
         //属性监视
         didSet {
@@ -20,7 +20,7 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
     //购买商品的总金额
     var price: Float = 0.00
     
-    //商品列表cell的重用标示符
+   // MARK: 商品列表cell的重用标示符
     fileprivate let shoppingCarCellIdntifier  = "shoppingCarCellIdntifier"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,16 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
         bottomView.addSubview(selectButton)
         bottomView.addSubview(totalPriceLabel)
         bottomView.addSubview(buyButton)
+        let addGoods = PPYDataBaseManager.shared.loadGoods()
+        if ((addGoods?.count) != nil){
+            addGoodArray = addGoods!
+        }
         layoutUI()
         judgeIsSelectAll()
         reCalculateGoodCount()
 
     }
-    //判断是否需要全选中
+    // MARK: 判断是否需要全选中
     func judgeIsSelectAll(){
         for model in addGoodArray! {
             if model.selected != true {
@@ -56,14 +60,14 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
     NotificationCenter.default.post(name: NSNotification.Name("addGoodArray"), object: self, userInfo: ["addGoodArray":addGoodArray])
  self.navigationController?.popViewController(animated: true)
     }
-    //底部视图
+    // MARK: 底部视图
     lazy var bottomView : UIView = {
         let bottomView = UIView()
         bottomView.backgroundColor  = UIColor.white
         return bottomView
     }()
     
-    //底部多选、反选的按钮
+    // MARK: 底部多选、反选的按钮
     lazy var selectButton: UIButton = {
         let selectButton = UIButton(type: UIButtonType.custom)
         selectButton.setImage(UIImage(named: "check_n"), for: UIControlState())
@@ -75,11 +79,11 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
         //默认是已经选择的状态
         selectButton.isSelected = true
         selectButton.sizeToFit()
-        
+
         return selectButton
     }()
     
-    //底部总价格的Label
+    // MARK: 底部总价格的Label
     lazy var totalPriceLabel: UILabel = {
         let label = UILabel()
         let attributeText = NSMutableAttributedString(string: "总价格\(self.price)0")
@@ -91,7 +95,7 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
         return label
     }()
     
-    //点击付款的按钮
+    // MARK: 点击付款的按钮
     lazy var buyButton : UIButton = {
         let button = UIButton(type: UIButtonType.custom)
         button.setTitle("付款", for: UIControlState())
@@ -150,10 +154,13 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
         
         return cell
     }
+    // MARK:删除按钮事件
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
+
                 addGoodArray .remove(at: indexPath.row)
                 reCalculateGoodCount()
+            PPYDataBaseManager.shared.deleteshopCart(mode:addGoodArray[indexPath.row] )
                 self.mainView .reloadData()
             }
         }
@@ -169,21 +176,22 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
 
 
 }
-///cell点击的代理方法
+// MARK: cell点击的代理方法
 extension PPYConfirmOrderVC : PPYShoppingCellDelegate {
     
     //商品数量按钮的点击
     func shopping(_ shopping: PPYShopingCell, button: UIButton, label: UILabel) {
         
         //获得点击当前的cell
-        guard let indexPath = mainView.indexPath(for: shopping) else {
+        guard let indexPath = mainView.indexPath(for: shopping)
+            else {
             return
         }
         
         //获得当前数据模型
         let data = addGoodArray![indexPath.row]
         
-        if button.tag == 10 {
+        if button.tag == 10 {//减
             
             if data.count < 1 {
                 //count 的数量不能为0
@@ -194,14 +202,15 @@ extension PPYConfirmOrderVC : PPYShoppingCellDelegate {
             label.text = "\(data.count)"
             
         }
-        else{
+        else{//加
             data.count += 1
             label.text = "\(data.count)"
         }
+        PPYDataBaseManager.shared.updateshopCart(model: data)
         //重新计算总价格
         reCalculateGoodCount()
     }
-    //选择按钮的点击代理
+   // MARK: 选择按钮的点击代理
     func shoppingCalculate() {
         reCalculateGoodCount()
         judgeIsSelectAll()
@@ -210,7 +219,7 @@ extension PPYConfirmOrderVC : PPYShoppingCellDelegate {
 }
 extension PPYConfirmOrderVC {
     
-    ///重新计算商品的数量
+ // MARK: 重新计算商品的数量
     fileprivate func reCalculateGoodCount() {
         //遍历模型
         for model in addGoodArray! {
@@ -233,7 +242,7 @@ extension PPYConfirmOrderVC {
         mainView.reloadData()
     }
     
-    //全选商品按钮的点击
+ // MARK: 全选商品按钮的点击
     @objc fileprivate func didSelectButton(_ btn:UIButton) {
         
         

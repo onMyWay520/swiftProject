@@ -60,6 +60,7 @@
 		56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332C4215DC68B00D69319 /* PPYPageTitleView.swift */; };
 		56E332CE215DC6CE00D69319 /* PPYCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E332CD215DC6CE00D69319 /* PPYCommon.swift */; };
 		56E332D2215DDDBB00D69319 /* PPYPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E332D1215DDDBB00D69319 /* PPYPeople.m */; };
+		56EE7BA12178304000EE601E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EE7BA02178304000EE601E /* libsqlite3.tbd */; };
 		842F406C2173836A008B220C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F406B2173836A008B220C /* Alamofire.framework */; };
 		842F406E2173836A008B220C /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F406D2173836A008B220C /* HandyJSON.framework */; };
 		842F40702173836A008B220C /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F406F2173836A008B220C /* MJRefresh.framework */; };
@@ -152,6 +153,7 @@
 		56E332CF215DDDBB00D69319 /* swiftProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		56E332D0215DDDBB00D69319 /* PPYPeople.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPYPeople.h; sourceTree = "<group>"; };
 		56E332D1215DDDBB00D69319 /* PPYPeople.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPYPeople.m; sourceTree = "<group>"; };
+		56EE7BA02178304000EE601E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		660794DA2660AC39D5C18F47 /* Pods-swiftProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject.release.xcconfig"; sourceTree = "<group>"; };
 		842F406B2173836A008B220C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		842F406D2173836A008B220C /* HandyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HandyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56EE7BA12178304000EE601E /* libsqlite3.tbd in Frameworks */,
 				56201444217497C1009054E0 /* FMDB.framework in Frameworks */,
 				842F406C2173836A008B220C /* Alamofire.framework in Frameworks */,
 				842F406E2173836A008B220C /* HandyJSON.framework in Frameworks */,
@@ -201,6 +204,7 @@
 		02C91346559C4B89BE226BE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56EE7BA02178304000EE601E /* libsqlite3.tbd */,
 				56201443217497C1009054E0 /* FMDB.framework */,
 				842F406B2173836A008B220C /* Alamofire.framework */,
 				842F406D2173836A008B220C /* HandyJSON.framework */,

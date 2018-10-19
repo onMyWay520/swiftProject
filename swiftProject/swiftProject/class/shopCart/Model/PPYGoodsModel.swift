@@ -9,6 +9,10 @@
 import UIKit
 import HandyJSON
 class PPYGoodsModel: HandyJSON {
+    required init() {
+        
+    }
+    
     //是否已经加入购物车
     var alreadyAddShoppingCart :Bool = false
     
@@ -21,10 +25,10 @@ class PPYGoodsModel: HandyJSON {
     //商品的描述
     var desc : String?
     
-    var goodsId :  Int
+    var goodsId :  Int = 0
     
-    //商品购买的数量, 默认0
-    var count: Int = 0
+    //商品购买的数量, 默认1
+    var count: Int = 1
     
     //新价格
     var newPrice : String?
@@ -35,7 +39,7 @@ class PPYGoodsModel: HandyJSON {
     //是否选中，默认没有选中的
     var selected: Bool = true
     
-    required init() {} 
+//    required init() {} 
 //    //字典转模型  重写构造方法
 //    init(dict: [String : AnyObject]) {
 //        super.init()

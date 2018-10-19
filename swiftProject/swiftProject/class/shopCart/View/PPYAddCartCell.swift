@@ -106,14 +106,8 @@ class PPYAddCartCell: PPYBaseTableViewCell {
     
     /// 购买按键的点击  private私有方法
     @objc fileprivate func addCarButtonClick(_ btn:UIButton) {
-//        goodModel!.alreadyAddShoppingCArt = true
-        
-        //        btn.isEnabled = !goodModel!.alreadyAddShoppingCArt
         //传输值
         delegate?.clickTransmitData(self, icon: self.goodsImageView)
         
     }
-
-
-
 }
