@@ -122,7 +122,7 @@ class PPYDataBaseManager: NSObject {
         if db.open(){
             let insertshopCartInfo = String.init(format: "insert into shopCart (title, desc,newPrice,oldPrice,iconName,goodsId,selected,count,alreadyAddShoppingCart) values ('%@','%@','%@','%@','%@',%d,%d,%d,%d);", model.title!,model.desc!,model.newPrice!,model.oldPrice!,model.iconName!,model.goodsId,model.selected,model.count,model.alreadyAddShoppingCart);
             do{
-                try db.executeUpdate(insertshopCartInfo, values: [model.goodsId])
+                try db.executeUpdate(insertshopCartInfo, values: [model.goodsId,model.alreadyAddShoppingCart])
                 
             }
             catch{
@@ -151,11 +151,42 @@ class PPYDataBaseManager: NSObject {
         if db.open() {
             let query = String.init(format: "update shopCart set title = '%@',desc = '%@',newPrice = '%@',oldPrice = '%@',iconName = '%@',count = %d ,selected = %d,alreadyAddShoppingCart =%d  where goodsId = %d", model.title!,model.desc!,model.newPrice!,model.oldPrice!, model.iconName!,model.count, model.selected, model.alreadyAddShoppingCart,model.goodsId)
             do{
-                try db.executeUpdate(query, values: [model.goodsId])
+                try db.executeUpdate(query, values: [model.count,model.goodsId])
             }catch{
                 print(error.localizedDescription)
             }
             db.close()
         }
+    }
+    //
+    func selectShopCartgoods(goodsId:Int) ->Array <PPYGoodsModel>{
+        var goods=Array<Any>()
+        let db = fmdb()
+        if db.open(){
+            let query = String.init(format: "select *from shopCart where goodsId = %d", goodsId)
+            do{
+                
+                let results = try db.executeQuery(query, values: [])
+                while results.next(){
+                    let model = PPYGoodsModel();
+                    model.title = results.string(forColumn: "title")
+                    model.iconName = results.string(forColumn: "iconName")
+                    model.desc = results.string(forColumn: "desc")
+                    model.goodsId = Int(results.int(forColumn: "goodsId"))
+                    model.newPrice =  results.string(forColumn: "newPrice")
+                    model.oldPrice =  results.string(forColumn: "oldPrice")
+                    model.selected = Bool(results.bool(forColumn: "selected"))
+                    model.alreadyAddShoppingCart=Bool(results.bool(forColumn: "alreadyAddShoppingCart"))
+                    model.count = Int(results.int(forColumn: "count"))
+                    goods.append(model)
+    
+                    
+                }
+            }catch{
+                print(error.localizedDescription)
+            }
+            db.close()
+        }
+        return goods as! Array<PPYGoodsModel>
     }
 }

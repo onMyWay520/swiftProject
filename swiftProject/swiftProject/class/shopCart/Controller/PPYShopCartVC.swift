@@ -119,15 +119,12 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
     }
     @objc func confirmButtonClick() {
         let vc = PPYConfirmOrderVC()
-//        vc.addGoodArray=addGoodArray
-    self.navigationController?.pushViewController(vc, animated: false)
+     self.navigationController?.pushViewController(vc, animated: false)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
     }
-
-
 }
 // MARK: - Cell点击的代理方法
 extension PPYShopCartVC : PPYAddCartCellDelegate {
@@ -141,10 +138,11 @@ extension PPYShopCartVC : PPYAddCartCellDelegate {
         //获得当前的数据
         let redata = goodArray[indexPath.section] as! PPYGoodsModel
         //首先获取之前保存的
-        let addGoods = PPYDataBaseManager.shared.loadGoods()
-        if addGoods == nil {
+        let addGoods = PPYDataBaseManager.shared.selectShopCartgoods(goodsId: redata.goodsId)
+        if addGoods.count == 0 {//判断购物车之前没有保存数据
+            redata.alreadyAddShoppingCart=true
             //添加到已加入购物车数组之中
-            addGoodArray.append(redata )
+            addGoodArray.append(redata)
             //加入到数据库中
             PPYDataBaseManager.shared.insertshopCartData(model: redata )
             if (addGoodArray.count > 0){
@@ -156,28 +154,27 @@ extension PPYShopCartVC : PPYAddCartCellDelegate {
                 }
             }
         }
-        else{
-            for model in addGoods! {
-                if(model.alreadyAddShoppingCart){
+        else{//判断购物车之前保存有数据
+            let model = addGoods[0]
+                if(model.alreadyAddShoppingCart){//之前加入过购物车
                     model.count += 1
                     PPYDataBaseManager.shared.updateshopCart(model: model )
-//                    self.tabBarItem.badgeValue = "\( model.count)"
+
                 }
-                else{
+                else{//之前没有加入过购物车
                     redata.alreadyAddShoppingCart=true
                     //添加到已加入购物车数组之中
-                    addGoodArray.append(redata )
+                    addGoodArray.append(redata)
                     //加入到数据库中
                     PPYDataBaseManager.shared.insertshopCartData(model: redata )
-    
                 }
-                
-            }
-            if ((addGoods?.count)! > 0){
+            let addGoodsArray = PPYDataBaseManager.shared.loadGoods()
+
+            if ((addGoodsArray?.count)! > 0){
                 var sum = 0
-                for model in addGoods! {
+                for model in addGoodsArray! {
                     sum = sum + model.count
-                    
+
                     self.tabBarItem.badgeValue = "\(sum)"
                 }
             }

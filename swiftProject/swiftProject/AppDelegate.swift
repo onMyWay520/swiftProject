@@ -16,10 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow.init()
-//        let loginVC = PPYLoginVC.init()
-//        window?.rootViewController=loginVC
-        let tabBarController = PPYBaseTabBarController.init()
-        window?.rootViewController = tabBarController
+        let userDefault = UserDefaults.standard
+        let userName = userDefault.object(forKey: "userName")
+        if (userName != nil) {
+            let tabBarController = PPYBaseTabBarController.init()
+            window?.rootViewController = tabBarController
+        }
+        else{
+            let loginVC = PPYLoginVC.init()
+            window?.rootViewController=loginVC
+        }
         window?.makeKeyAndVisible();
         return true
     }

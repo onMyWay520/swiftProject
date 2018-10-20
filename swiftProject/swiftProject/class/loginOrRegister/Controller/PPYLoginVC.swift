@@ -70,7 +70,9 @@ class PPYLoginVC: PPYBaseViewController {
         let alertController = UIAlertController(title: "验证通过",message: "登录成功", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "好的", style: .default, handler: {
             action in
-            
+            let userDefault = UserDefaults.standard
+            userDefault.set(self.usernameOutlet.text, forKey: "userName")
+            userDefault .synchronize()
             let tabbar = PPYBaseTabBarController.init()
             UIApplication.shared.keyWindow?.rootViewController?=tabbar
         })

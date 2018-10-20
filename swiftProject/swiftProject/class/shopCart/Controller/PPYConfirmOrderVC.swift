@@ -158,9 +158,10 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
 
+            PPYDataBaseManager.shared.deleteshopCart(mode:addGoodArray[indexPath.row] )
                 addGoodArray .remove(at: indexPath.row)
                 reCalculateGoodCount()
-            PPYDataBaseManager.shared.deleteshopCart(mode:addGoodArray[indexPath.row] )
+
                 self.mainView .reloadData()
             }
         }
