@@ -78,7 +78,10 @@ class PPYHomeChildVC: PPYBaseTableViewController {
             let vc = PPYkeyWordsVC()
             navigationController!.pushViewController(vc, animated: true)
         }
+        
         else{
+            let vc = PPYClosureVC()
+        navigationController!.pushViewController(vc, animated: true)
             
         }
     }
