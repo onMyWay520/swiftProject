@@ -30,6 +30,14 @@
 		56411932215B28B900E00CDB /* PPYHomeGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411931215B28B900E00CDB /* PPYHomeGoodsCell.swift */; };
 		56411934215B742800E00CDB /* PPYBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56411933215B742800E00CDB /* PPYBaseButton.swift */; };
 		56449077217ADE1200DFE52F /* PPYSaveInfoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56449076217ADE1200DFE52F /* PPYSaveInfoTool.swift */; };
+		56458DB5217D5E71006C4910 /* PPYClosureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56458DB3217D5E71006C4910 /* PPYClosureVC.xib */; };
+		56458DB6217D5E71006C4910 /* PPYClosureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56458DB4217D5E71006C4910 /* PPYClosureVC.swift */; };
+		56458DB8217D735A006C4910 /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56458DB7217D735A006C4910 /* UIAlert+Extension.swift */; };
+		56458DBA217D9BBA006C4910 /* PPYNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56458DB9217D9BBA006C4910 /* PPYNewsModel.swift */; };
+		56458DBC217D9EC9006C4910 /* PPYNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56458DBB217D9EC9006C4910 /* PPYNewsViewModel.swift */; };
+		56458DC1217DA458006C4910 /* PPYNewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56458DBF217DA458006C4910 /* PPYNewsTableCell.swift */; };
+		56458DC2217DA458006C4910 /* PPYNewsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56458DC0217DA458006C4910 /* PPYNewsTableCell.xib */; };
+		56458DC4217DAA77006C4910 /* PPYNewsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56458DC3217DAA77006C4910 /* PPYNewsTableVC.swift */; };
 		5646306A217075B50077F053 /* TimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56463068217075B50077F053 /* TimerButton.swift */; };
 		5646306B217075B50077F053 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56463069217075B50077F053 /* MainTabBar.swift */; };
 		5646306D217084410077F053 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646306C217084410077F053 /* NetworkTools.swift */; };
@@ -116,6 +124,14 @@
 		56411931215B28B900E00CDB /* PPYHomeGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeGoodsCell.swift; sourceTree = "<group>"; };
 		56411933215B742800E00CDB /* PPYBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseButton.swift; sourceTree = "<group>"; };
 		56449076217ADE1200DFE52F /* PPYSaveInfoTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYSaveInfoTool.swift; sourceTree = "<group>"; };
+		56458DB3217D5E71006C4910 /* PPYClosureVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPYClosureVC.xib; sourceTree = "<group>"; };
+		56458DB4217D5E71006C4910 /* PPYClosureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPYClosureVC.swift; sourceTree = "<group>"; };
+		56458DB7217D735A006C4910 /* UIAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extension.swift"; sourceTree = "<group>"; };
+		56458DB9217D9BBA006C4910 /* PPYNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYNewsModel.swift; sourceTree = "<group>"; };
+		56458DBB217D9EC9006C4910 /* PPYNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYNewsViewModel.swift; sourceTree = "<group>"; };
+		56458DBF217DA458006C4910 /* PPYNewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYNewsTableCell.swift; sourceTree = "<group>"; };
+		56458DC0217DA458006C4910 /* PPYNewsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PPYNewsTableCell.xib; sourceTree = "<group>"; };
+		56458DC3217DAA77006C4910 /* PPYNewsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYNewsTableVC.swift; sourceTree = "<group>"; };
 		56463068217075B50077F053 /* TimerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerButton.swift; sourceTree = "<group>"; };
 		56463069217075B50077F053 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		5646306C217084410077F053 /* NetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
@@ -269,6 +285,8 @@
 			children = (
 				56411931215B28B900E00CDB /* PPYHomeGoodsCell.swift */,
 				56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */,
+				56458DBF217DA458006C4910 /* PPYNewsTableCell.swift */,
+				56458DC0217DA458006C4910 /* PPYNewsTableCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,6 +294,7 @@
 		5641190A215B245200E00CDB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				56458DBB217D9EC9006C4910 /* PPYNewsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -287,6 +306,7 @@
 				56E332D1215DDDBB00D69319 /* PPYPeople.m */,
 				56E332CF215DDDBB00D69319 /* swiftProject-Bridging-Header.h */,
 				56871F6D215E05D00055B0E1 /* PPYHomeGoodsModel.swift */,
+				56458DB9217D9BBA006C4910 /* PPYNewsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,7 +317,10 @@
 				5641190D215B245200E00CDB /* PPYHomeVC.swift */,
 				56BD8078215B9559009BE2DF /* PPYHomeChildVC.swift */,
 				5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */,
+				56458DC3217DAA77006C4910 /* PPYNewsTableVC.swift */,
 				5668C023215F558400531C72 /* PPYkeyWordsVC.swift */,
+				56458DB4217D5E71006C4910 /* PPYClosureVC.swift */,
+				56458DB3217D5E71006C4910 /* PPYClosureVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -647,6 +670,7 @@
 				5653A2212171A4680075A999 /* UIImage+Color.swift */,
 				56E332BF215DC68B00D69319 /* UIView+Extension.swift */,
 				56E332C0215DC68B00D69319 /* PPYColor.swift */,
+				56458DB7217D735A006C4910 /* UIAlert+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -786,9 +810,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56458DB5217D5E71006C4910 /* PPYClosureVC.xib in Resources */,
 				565C1B8F2159C78C00356718 /* LaunchScreen.storyboard in Resources */,
 				565C1B8C2159C78C00356718 /* Assets.xcassets in Resources */,
 				56153E10216C46400089394A /* PPYPublishVC.xib in Resources */,
+				56458DC2217DA458006C4910 /* PPYNewsTableCell.xib in Resources */,
 				560C4520216DC877001F0DE5 /* PPYLoginVC.xib in Resources */,
 				565C1B8A2159C78A00356718 /* Main.storyboard in Resources */,
 			);
@@ -870,15 +896,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56458DB8217D735A006C4910 /* UIAlert+Extension.swift in Sources */,
 				56E332C7215DC68B00D69319 /* PPYColor.swift in Sources */,
 				5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */,
 				5641192E215B283A00E00CDB /* PPYBaseTableViewCell.swift in Sources */,
 				56411932215B28B900E00CDB /* PPYHomeGoodsCell.swift in Sources */,
 				56E332CE215DC6CE00D69319 /* PPYCommon.swift in Sources */,
+				56458DC4217DAA77006C4910 /* PPYNewsTableVC.swift in Sources */,
 				56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */,
 				56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */,
 				560C4524216DFC24001F0DE5 /* PPYAddCartCell.swift in Sources */,
+				56458DC1217DA458006C4910 /* PPYNewsTableCell.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
+				56458DB6217D5E71006C4910 /* PPYClosureVC.swift in Sources */,
 				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,
 				56E332D2215DDDBB00D69319 /* PPYPeople.m in Sources */,
 				56201440217431FC009054E0 /* PPYUtil.swift in Sources */,
@@ -901,6 +931,7 @@
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
 				560C451F216DC877001F0DE5 /* PPYLoginVC.swift in Sources */,
 				5653A2282171ECA20075A999 /* PPYPriceLabel.swift in Sources */,
+				56458DBC217D9EC9006C4910 /* PPYNewsViewModel.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,
 				56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */,
 				5653A2242171E3760075A999 /* PPYConfirmOrderVC.swift in Sources */,
@@ -915,6 +946,7 @@
 				5620144221746294009054E0 /* PPYDataBaseManager.swift in Sources */,
 				5653A2202171A4570075A999 /* String+GetSize.swift in Sources */,
 				56E332C6215DC68B00D69319 /* UIView+Extension.swift in Sources */,
+				56458DBA217D9BBA006C4910 /* PPYNewsModel.swift in Sources */,
 				5646796C215CD4DC00D534F1 /* PPYBaseCollectionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

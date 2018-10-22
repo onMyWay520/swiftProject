@@ -8,10 +8,14 @@
 
 import UIKit
 
+//声明一个闭包类型 AddBlock
+typealias AddBlock = (Int,Int)->(Int);
+
 class PPYClosureVC: PPYBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title="闭包演练"
 
     }
 
@@ -20,6 +24,8 @@ class PPYClosureVC: PPYBaseViewController {
         let a = {
             print("这也是闭包")
         }
+        a()
+
     }
     
     @IBAction func closureBtnClick2(_ sender: Any) {
@@ -139,8 +145,7 @@ class PPYClosureVC: PPYBaseViewController {
             return $0 + $1
         }
         print(sum)
-        //15
-        
+        //20
         //字典
         let stock = [1.5: 5, 10: 2, 4.99: 20, 2.30: 5, 8.19: 30]
         let stockSum = stock.reduce(0) {
@@ -156,16 +161,40 @@ class PPYClosureVC: PPYBaseViewController {
 //        input.reduce(into: <#T##Result#>) { (<#inout Result#>, <#String#>) in
 //            <#code#>
 //        }
+    }
+    @IBAction func closureBtnClick8(_ sender: Any){
         
-
+        let  add:AddBlock = {
+            $0 * $1
+        }
+        let count = add(2,3)
+        print(count)
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func closureBtnClick9(_ sender: Any){
+        UIAlertController.alert(title: "温馨提示", message: "自定义alertView") {
+            print("确定点击事件")
+        }
+      
     }
-    
+    @IBAction func closureBtnClick10(_ sender: Any){
+        
+        UIAlertController.alertSheet(title: "温馨提示", message: "自定义底部框", buttons:  ["点击1","点击2","点击3"], dismiss: { (btnIndex) in
+            print("\(btnIndex)")
+        }) {
+            print("cancelClicked")
+        }
+    }
+    @IBAction func closureBtnClick11(_ sender: Any){
+        UIAlertController.alert(title: "温馨提示", message: "自定义弹框", cancelButtonTitle: "取消", otherButtons:  ["点击1","点击2","点击3"], dismiss: { (btnIndex) in
+            print("\(btnIndex)")
+        }) {
+             print("cancelClicked")
+        }
+    }
+    @IBAction func closureBtnClick12(_ sender: Any){
+        
+        
+    }
 
     /*
     // MARK: - Navigation

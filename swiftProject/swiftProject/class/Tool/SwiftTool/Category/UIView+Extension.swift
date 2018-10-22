@@ -92,5 +92,18 @@ extension UIView {
             frame.origin = newValue
         }
     }
-    
+    func cornerRadius(cornerView: UIView , cornerSize:Int) {
+        
+        let rect = cornerView.bounds
+        
+        let radio = CGSize(width: cornerSize, height: cornerSize) // 圆角尺寸
+        
+        let corner = UInt8(UIRectCorner.topLeft.rawValue) | UInt8(UIRectCorner.topRight.rawValue) | UInt8(UIRectCorner.bottomLeft.rawValue) | UInt8(UIRectCorner.bottomRight.rawValue)// 这只圆角位置
+        
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: UIRectCorner(rawValue: UIRectCorner.RawValue(corner)), cornerRadii: radio)
+        let masklayer = CAShapeLayer() // 创建shapelayer
+        masklayer.frame = cornerView.bounds
+        masklayer.path = path.cgPath // 设置路径
+        cornerView.layer.mask = masklayer
+    }
 }

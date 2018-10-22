@@ -66,20 +66,15 @@ class PPYLoginVC: PPYBaseViewController {
         
     }
     func showAlert() {
-
-        let alertController = UIAlertController(title: "验证通过",message: "登录成功", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "好的", style: .default, handler: {
-            action in
+       
+        UIAlertController.alert(title: "验证通过", message: "登录成功") {
             let userDefault = UserDefaults.standard
             userDefault.set(self.usernameOutlet.text, forKey: "userName")
             userDefault .synchronize()
             let tabbar = PPYBaseTabBarController.init()
             UIApplication.shared.keyWindow?.rootViewController?=tabbar
-        })
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-        
-        
+        }
+
     }
 
 }

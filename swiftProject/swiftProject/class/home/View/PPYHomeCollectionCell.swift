@@ -14,6 +14,7 @@ class PPYHomeCollectionCell: PPYBaseCollectionViewCell {
     override func setCollectionCellUI() {
         self.goodsImageView=UIImageView()
         self.goodsImageView?.sd_setImage(with: NSURL.init(string: "http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40f507b2e99aa64034f78f01930.jpg") as URL?, placeholderImage: UIImage.init(named: "spellDefault"), options: [], progress: nil, completed: nil)
+        
         self.addSubview(self.goodsImageView!)
         self.titleLab=UILabel()
         self.titleLab?.font=UIFont.systemFont(ofSize: 14)

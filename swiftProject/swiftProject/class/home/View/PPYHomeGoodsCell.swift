@@ -24,6 +24,7 @@ class PPYHomeGoodsCell: PPYBaseTableViewCell {
 
      self.goodsImageView=UIImageView()
      self.goodsImageView?.sd_setImage(with: NSURL.init(string: "http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40f507b2e99aa64034f78f01930.jpg") as URL?, placeholderImage: UIImage.init(named: "spellDefault"), options: [], progress: nil, completed: nil)
+        
       self.addSubview(self.goodsImageView!)
       self.titleLab=UILabel()
       self.titleLab?.font=UIFont.systemFont(ofSize: 14)
@@ -39,18 +40,20 @@ class PPYHomeGoodsCell: PPYBaseTableViewCell {
       self.desLab?.textAlignment=NSTextAlignment.left
       self.addSubview(self.desLab!)
        
-        self.addShopCartButton=UIButton.buttonWith(titleColor: UIColor.white, titleFont: UIFont.systemFont(ofSize: 16), backgroundColor: defaultColor, title: "加入采购单",cornerRadius:5)
-      self.addSubview(self.addShopCartButton!)
+//        self.addShopCartButton=UIButton.buttonWith(titleColor: UIColor.white, titleFont: UIFont.systemFont(ofSize: 16), backgroundColor: defaultColor, title: "加入采购单",cornerRadius:5)
+//      self.addSubview(self.addShopCartButton!)
     }
     override func layoutSubviews() {
          self.goodsImageView?.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
             make.top.equalTo(self).offset(10)
             // 设置宽、高
-            make.height.equalTo(100)
-            make.width.equalTo(100)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
             make.left.equalTo(self).offset(10)
         }
+        self.goodsImageView!.cornerRadius(cornerView:self.goodsImageView!, cornerSize: 20)
+
          self.titleLab?.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
             make.top.equalTo((self.goodsImageView?.snp.top)!)

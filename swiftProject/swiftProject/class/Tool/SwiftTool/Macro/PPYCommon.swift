@@ -41,6 +41,20 @@ func DeLog<T>(_ message : T, file : String = #file, funcName : String = #functio
     
     #endif
 }
+// 自适应屏幕宽度
+func WIDTH(_ size: CGFloat) -> CGFloat {
+    return size * ppyScreenW / 375.0
+}
+// 自适应屏幕高度
+func HEIGHT(_ size: CGFloat) -> CGFloat {
+    return size * ppyScreenH / 667.0
+}
+// 自适应屏幕字体大小
+func AUTO_FONT(_ size: CGFloat) -> UIFont {
+    let autoSize = size * ppyScreenW / 375.0
+    return UIFont.systemFont(ofSize: autoSize)
+}
+
 class PPYCommon: NSObject {
 
 }

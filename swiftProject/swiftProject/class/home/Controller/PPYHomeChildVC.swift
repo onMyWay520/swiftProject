@@ -8,10 +8,12 @@
 
 import UIKit
 class PPYHomeChildVC: PPYBaseTableViewController {
-
+    //标题数组
+    fileprivate var titleArray = Array<Any>()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
+        titleArray=["关键字演练","闭包演练","MVVM请求网络","待定"]
         self.mainView.mj_footer.isHidden=false
         mainView.mj_header.beginRefreshing()
         let  people=PPYPeople ()
@@ -37,7 +39,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         return self.dataArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 60
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 5;
@@ -55,7 +57,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         if cell==nil {
             cell=PPYHomeGoodsCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
         }
-        cell.titleLab?.text="我是标题\(indexPath.section+1)"
+        cell.titleLab?.text=self.titleArray[indexPath.section] as? String
         return cell
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -74,16 +76,22 @@ class PPYHomeChildVC: PPYBaseTableViewController {
 //        return "删除"
 //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section==0 {
-            let vc = PPYkeyWordsVC()
-            navigationController!.pushViewController(vc, animated: true)
-        }
-        
-        else{
-            let vc = PPYClosureVC()
-        navigationController!.pushViewController(vc, animated: true)
+        var vc = PPYBaseViewController ()
+        switch indexPath.section {
+        case 0:
+            vc = PPYkeyWordsVC()
+            break
+        case 1:
+           vc = PPYClosureVC()
+            break
+        case 2:
+            vc = PPYNewsTableVC()
+            break
+
+        default:break
             
         }
+        navigationController!.pushViewController(vc, animated: true)
     }
 
     /*

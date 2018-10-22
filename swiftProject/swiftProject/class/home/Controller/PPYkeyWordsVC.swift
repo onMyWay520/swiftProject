@@ -61,8 +61,7 @@ class Fruit{
     required init(name :String){
         self.name = name
     }
-    
-    
+
 }
 /*
  在swift中，extension和oc的category有点类似，但是extension比起category来说更加强大和灵活，他不仅可以扩展某种类型或结构体的方法，同时他还可以与protocol等结合使用，他可以为特定的class，struct，enum或者protocol添加新的特性
@@ -153,9 +152,7 @@ class PPYkeyWordsVC: PPYBaseTableViewController {
     //在Swift中, 如果我们要重写某个方法, 或者某个属性的话, 我们需要在重写的变量前增加一个override关键字
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title="关键字演练"
-//        mainView.frame=CGRect(x: 0, y:-20, width: ppyScreenW, height: ppyScreenH)
-        self.dataArray=["struct","enum","subscript","mutating","extensions","convenience"]
+        self.title="关键字演练";       self.dataArray=["struct","enum","subscript","mutating","extensions","convenience"]
     self.mainView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "CellId")
     }
     func numberOfSections(in tableView: UITableView) -> Int {

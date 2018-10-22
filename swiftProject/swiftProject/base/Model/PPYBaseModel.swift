@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
-class PPYBaseModel: NSObject {
-
+import HandyJSON
+class PPYBaseModel: HandyJSON {
+    required init() {
+        
+    }
 }

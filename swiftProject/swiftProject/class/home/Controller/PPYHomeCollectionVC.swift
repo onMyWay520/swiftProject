@@ -9,7 +9,7 @@
 import UIKit
 
 class PPYHomeCollectionVC: PPYBaseCollectionVC {
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
     }
