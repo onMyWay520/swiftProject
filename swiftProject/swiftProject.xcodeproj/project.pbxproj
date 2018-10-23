@@ -19,6 +19,7 @@
 		560F9E0F217EC92400D1FB3A /* CAGradientLayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E0E217EC92400D1FB3A /* CAGradientLayer+Extension.swift */; };
 		560F9E11217EC97800D1FB3A /* PPYBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E10217EC97800D1FB3A /* PPYBarVC.swift */; };
 		560F9E13217ECA4500D1FB3A /* zhuzhuang.json in Resources */ = {isa = PBXBuildFile; fileRef = 560F9E12217ECA4500D1FB3A /* zhuzhuang.json */; };
+		560F9E15217F10FD00D1FB3A /* PPYDetailSwitchTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E14217F10FD00D1FB3A /* PPYDetailSwitchTitleVC.swift */; };
 		56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0B216C3BF50089394A /* PPYPublishVC.swift */; };
 		56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */; };
 		56153E10216C46400089394A /* PPYPublishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56153E0F216C46400089394A /* PPYPublishVC.xib */; };
@@ -121,6 +122,7 @@
 		560F9E0E217EC92400D1FB3A /* CAGradientLayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Extension.swift"; sourceTree = "<group>"; };
 		560F9E10217EC97800D1FB3A /* PPYBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBarVC.swift; sourceTree = "<group>"; };
 		560F9E12217ECA4500D1FB3A /* zhuzhuang.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zhuzhuang.json; sourceTree = "<group>"; };
+		560F9E14217F10FD00D1FB3A /* PPYDetailSwitchTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYDetailSwitchTitleVC.swift; sourceTree = "<group>"; };
 		56153E0B216C3BF50089394A /* PPYPublishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPublishVC.swift; sourceTree = "<group>"; };
 		56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYVerticalSqureBtn.swift; sourceTree = "<group>"; };
 		56153E0F216C46400089394A /* PPYPublishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PPYPublishVC.xib; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				5668C023215F558400531C72 /* PPYkeyWordsVC.swift */,
 				560F9E10217EC97800D1FB3A /* PPYBarVC.swift */,
 				56458DB4217D5E71006C4910 /* PPYClosureVC.swift */,
+				560F9E14217F10FD00D1FB3A /* PPYDetailSwitchTitleVC.swift */,
 				56458DB3217D5E71006C4910 /* PPYClosureVC.xib */,
 			);
 			path = Controller;
@@ -961,6 +964,7 @@
 				56871F72215E21E20055B0E1 /* PPYBaseViewModel.swift in Sources */,
 				5646306A217075B50077F053 /* TimerButton.swift in Sources */,
 				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
+				560F9E15217F10FD00D1FB3A /* PPYDetailSwitchTitleVC.swift in Sources */,
 				560F9E05217EAEE300D1FB3A /* PPYbannerView.swift in Sources */,
 				5646306D217084410077F053 /* NetworkTools.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,

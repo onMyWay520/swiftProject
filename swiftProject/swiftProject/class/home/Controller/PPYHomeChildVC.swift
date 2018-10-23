@@ -13,7 +13,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
-        titleArray=["关键字演练","闭包演练","MVVM请求网络","柱状图"]
+        titleArray=["关键字演练","闭包演练","MVVM请求网络","柱状图","详情滑动切换标题"]
         self.mainView.mj_footer.isHidden=false
         mainView.mj_header.beginRefreshing()
         let  people=PPYPeople ()
