@@ -13,7 +13,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
-        titleArray=["关键字演练","闭包演练","MVVM请求网络","待定"]
+        titleArray=["关键字演练","闭包演练","MVVM请求网络","柱状图"]
         self.mainView.mj_footer.isHidden=false
         mainView.mj_header.beginRefreshing()
         let  people=PPYPeople ()
@@ -28,13 +28,13 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         self.mainView .reloadData()
         
     }
-    override func loadMoreData() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
-            self.dataArray .append("5")
-            self.mainView .reloadData()
-            self.mainView.mj_footer.endRefreshing()
-        }
-    }
+//    override func loadMoreData() {
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+//            self.dataArray .append("5")
+//            self.mainView .reloadData()
+//            self.mainView.mj_footer.endRefreshing()
+//        }
+//    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.dataArray.count
     }
@@ -45,7 +45,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         return 5;
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.001;
+        return section==0 ? 250 :0.001;
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -53,7 +53,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellID = "goodsCell"
-        var cell:PPYHomeGoodsCell! = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath) as? PPYHomeGoodsCell
+        var cell:PPYHomeGoodsCell! = tableView.dequeueReusableCell(withIdentifier:cellID) as? PPYHomeGoodsCell
         if cell==nil {
             cell=PPYHomeGoodsCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
         }
@@ -62,6 +62,19 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section==0 {
+            let  vi = UIView ()
+            let  banner = PPYbannerView.init(frame: CGRect(x: 0, y: 0, width: ppyScreenW, height: 250))
+            vi.addSubview(banner)
+            return vi
+        }
+        else{
+            return nil
+        }
+        
+        
     }
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {
@@ -87,7 +100,9 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         case 2:
             vc = PPYNewsTableVC()
             break
-
+        case 3:
+            vc = PPYBarVC()
+            break
         default:break
             
         }

@@ -24,35 +24,37 @@ class PPYHomeGoodsCell: PPYBaseTableViewCell {
 
      self.goodsImageView=UIImageView()
      self.goodsImageView?.sd_setImage(with: NSURL.init(string: "http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40f507b2e99aa64034f78f01930.jpg") as URL?, placeholderImage: UIImage.init(named: "spellDefault"), options: [], progress: nil, completed: nil)
-        
-      self.addSubview(self.goodsImageView!)
+
+      self.contentView.addSubview(self.goodsImageView!)
       self.titleLab=UILabel()
       self.titleLab?.font=UIFont.systemFont(ofSize: 14)
       self.titleLab?.text="我是标题"
       self.titleLab?.textColor=UIColor(hex: "333333")
       self.titleLab?.textAlignment=NSTextAlignment.left
-      self.addSubview(self.titleLab!)
+      self.contentView.addSubview(self.titleLab!)
         
       self.desLab=UILabel()
       self.desLab?.font=UIFont.systemFont(ofSize: 12)
       self.desLab?.text="120ml*12/箱"
       self.desLab?.textColor=UIColor(hex: "666666")
       self.desLab?.textAlignment=NSTextAlignment.left
-      self.addSubview(self.desLab!)
+      self.contentView.addSubview(self.desLab!)
        
 //        self.addShopCartButton=UIButton.buttonWith(titleColor: UIColor.white, titleFont: UIFont.systemFont(ofSize: 16), backgroundColor: defaultColor, title: "加入采购单",cornerRadius:5)
 //      self.addSubview(self.addShopCartButton!)
+
     }
     override func layoutSubviews() {
          self.goodsImageView?.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
-            make.top.equalTo(self).offset(10)
+            make.top.equalTo(self.contentView).offset(10)
             // 设置宽、高
             make.height.equalTo(40)
             make.width.equalTo(40)
-            make.left.equalTo(self).offset(10)
+            make.left.equalTo(self.contentView).offset(10)
         }
-        self.goodsImageView!.cornerRadius(cornerView:self.goodsImageView!, cornerSize: 20)
+//        self.contentView.cornerRadius(cornerView:self.goodsImageView!, cornerSize: 20)
+
 
          self.titleLab?.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离

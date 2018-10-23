@@ -11,6 +11,14 @@
 		560C4520216DC877001F0DE5 /* PPYLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560C451E216DC877001F0DE5 /* PPYLoginVC.xib */; };
 		560C4522216DF768001F0DE5 /* PPYGoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C4521216DF768001F0DE5 /* PPYGoodsModel.swift */; };
 		560C4524216DFC24001F0DE5 /* PPYAddCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C4523216DFC24001F0DE5 /* PPYAddCartCell.swift */; };
+		560F9E05217EAEE300D1FB3A /* PPYbannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E04217EAEE300D1FB3A /* PPYbannerView.swift */; };
+		560F9E07217EB3E900D1FB3A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560F9E06217EB3E900D1FB3A /* Kingfisher.framework */; };
+		560F9E09217EB3E900D1FB3A /* LLCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560F9E08217EB3E900D1FB3A /* LLCycleScrollView.framework */; };
+		560F9E0B217EC7D800D1FB3A /* PPYChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E0A217EC7D800D1FB3A /* PPYChartView.swift */; };
+		560F9E0D217EC88F00D1FB3A /* PPYBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E0C217EC88F00D1FB3A /* PPYBarModel.swift */; };
+		560F9E0F217EC92400D1FB3A /* CAGradientLayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E0E217EC92400D1FB3A /* CAGradientLayer+Extension.swift */; };
+		560F9E11217EC97800D1FB3A /* PPYBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F9E10217EC97800D1FB3A /* PPYBarVC.swift */; };
+		560F9E13217ECA4500D1FB3A /* zhuzhuang.json in Resources */ = {isa = PBXBuildFile; fileRef = 560F9E12217ECA4500D1FB3A /* zhuzhuang.json */; };
 		56153E0C216C3BF50089394A /* PPYPublishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0B216C3BF50089394A /* PPYPublishVC.swift */; };
 		56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */; };
 		56153E10216C46400089394A /* PPYPublishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56153E0F216C46400089394A /* PPYPublishVC.xib */; };
@@ -105,6 +113,14 @@
 		560C451E216DC877001F0DE5 /* PPYLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPYLoginVC.xib; sourceTree = "<group>"; };
 		560C4521216DF768001F0DE5 /* PPYGoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYGoodsModel.swift; sourceTree = "<group>"; };
 		560C4523216DFC24001F0DE5 /* PPYAddCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYAddCartCell.swift; sourceTree = "<group>"; };
+		560F9E04217EAEE300D1FB3A /* PPYbannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYbannerView.swift; sourceTree = "<group>"; };
+		560F9E06217EB3E900D1FB3A /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		560F9E08217EB3E900D1FB3A /* LLCycleScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LLCycleScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		560F9E0A217EC7D800D1FB3A /* PPYChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYChartView.swift; sourceTree = "<group>"; };
+		560F9E0C217EC88F00D1FB3A /* PPYBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBarModel.swift; sourceTree = "<group>"; };
+		560F9E0E217EC92400D1FB3A /* CAGradientLayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Extension.swift"; sourceTree = "<group>"; };
+		560F9E10217EC97800D1FB3A /* PPYBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBarVC.swift; sourceTree = "<group>"; };
+		560F9E12217ECA4500D1FB3A /* zhuzhuang.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zhuzhuang.json; sourceTree = "<group>"; };
 		56153E0B216C3BF50089394A /* PPYPublishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYPublishVC.swift; sourceTree = "<group>"; };
 		56153E0D216C41970089394A /* PPYVerticalSqureBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYVerticalSqureBtn.swift; sourceTree = "<group>"; };
 		56153E0F216C46400089394A /* PPYPublishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PPYPublishVC.xib; sourceTree = "<group>"; };
@@ -188,6 +204,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				560F9E07217EB3E900D1FB3A /* Kingfisher.framework in Frameworks */,
+				560F9E09217EB3E900D1FB3A /* LLCycleScrollView.framework in Frameworks */,
 				56EE7BA12178304000EE601E /* libsqlite3.tbd in Frameworks */,
 				56201444217497C1009054E0 /* FMDB.framework in Frameworks */,
 				842F406C2173836A008B220C /* Alamofire.framework in Frameworks */,
@@ -222,6 +240,8 @@
 		02C91346559C4B89BE226BE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				560F9E06217EB3E900D1FB3A /* Kingfisher.framework */,
+				560F9E08217EB3E900D1FB3A /* LLCycleScrollView.framework */,
 				56EE7BA02178304000EE601E /* libsqlite3.tbd */,
 				56201443217497C1009054E0 /* FMDB.framework */,
 				842F406B2173836A008B220C /* Alamofire.framework */,
@@ -287,6 +307,8 @@
 				56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */,
 				56458DBF217DA458006C4910 /* PPYNewsTableCell.swift */,
 				56458DC0217DA458006C4910 /* PPYNewsTableCell.xib */,
+				560F9E04217EAEE300D1FB3A /* PPYbannerView.swift */,
+				560F9E0A217EC7D800D1FB3A /* PPYChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,6 +329,8 @@
 				56E332CF215DDDBB00D69319 /* swiftProject-Bridging-Header.h */,
 				56871F6D215E05D00055B0E1 /* PPYHomeGoodsModel.swift */,
 				56458DB9217D9BBA006C4910 /* PPYNewsModel.swift */,
+				560F9E0C217EC88F00D1FB3A /* PPYBarModel.swift */,
+				560F9E12217ECA4500D1FB3A /* zhuzhuang.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,6 +343,7 @@
 				5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */,
 				56458DC3217DAA77006C4910 /* PPYNewsTableVC.swift */,
 				5668C023215F558400531C72 /* PPYkeyWordsVC.swift */,
+				560F9E10217EC97800D1FB3A /* PPYBarVC.swift */,
 				56458DB4217D5E71006C4910 /* PPYClosureVC.swift */,
 				56458DB3217D5E71006C4910 /* PPYClosureVC.xib */,
 			);
@@ -671,6 +696,7 @@
 				56E332BF215DC68B00D69319 /* UIView+Extension.swift */,
 				56E332C0215DC68B00D69319 /* PPYColor.swift */,
 				56458DB7217D735A006C4910 /* UIAlert+Extension.swift */,
+				560F9E0E217EC92400D1FB3A /* CAGradientLayer+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -812,6 +838,7 @@
 			files = (
 				56458DB5217D5E71006C4910 /* PPYClosureVC.xib in Resources */,
 				565C1B8F2159C78C00356718 /* LaunchScreen.storyboard in Resources */,
+				560F9E13217ECA4500D1FB3A /* zhuzhuang.json in Resources */,
 				565C1B8C2159C78C00356718 /* Assets.xcassets in Resources */,
 				56153E10216C46400089394A /* PPYPublishVC.xib in Resources */,
 				56458DC2217DA458006C4910 /* PPYNewsTableCell.xib in Resources */,
@@ -847,6 +874,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/LLCycleScrollView/LLCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -859,6 +888,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -905,6 +936,7 @@
 				56458DC4217DAA77006C4910 /* PPYNewsTableVC.swift in Sources */,
 				56153E0E216C41970089394A /* PPYVerticalSqureBtn.swift in Sources */,
 				56411914215B246B00E00CDB /* PPYSearchVC.swift in Sources */,
+				560F9E0F217EC92400D1FB3A /* CAGradientLayer+Extension.swift in Sources */,
 				560C4524216DFC24001F0DE5 /* PPYAddCartCell.swift in Sources */,
 				56458DC1217DA458006C4910 /* PPYNewsTableCell.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
@@ -923,13 +955,17 @@
 				56449077217ADE1200DFE52F /* PPYSaveInfoTool.swift in Sources */,
 				56871F6E215E05D00055B0E1 /* PPYHomeGoodsModel.swift in Sources */,
 				5646306B217075B50077F053 /* MainTabBar.swift in Sources */,
+				560F9E0B217EC7D800D1FB3A /* PPYChartView.swift in Sources */,
 				5668C024215F558400531C72 /* PPYkeyWordsVC.swift in Sources */,
+				560F9E11217EC97800D1FB3A /* PPYBarVC.swift in Sources */,
 				56871F72215E21E20055B0E1 /* PPYBaseViewModel.swift in Sources */,
 				5646306A217075B50077F053 /* TimerButton.swift in Sources */,
 				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
+				560F9E05217EAEE300D1FB3A /* PPYbannerView.swift in Sources */,
 				5646306D217084410077F053 /* NetworkTools.swift in Sources */,
 				5641192B215B280200E00CDB /* PPYBaseNavigationController.swift in Sources */,
 				560C451F216DC877001F0DE5 /* PPYLoginVC.swift in Sources */,
+				560F9E0D217EC88F00D1FB3A /* PPYBarModel.swift in Sources */,
 				5653A2282171ECA20075A999 /* PPYPriceLabel.swift in Sources */,
 				56458DBC217D9EC9006C4910 /* PPYNewsViewModel.swift in Sources */,
 				56411929215B280200E00CDB /* PPYBaseViewController.swift in Sources */,

@@ -15,6 +15,8 @@ let IS_IPHONE_5 = SCREEN_MAX_LENGTH == 568.0
 let IS_IPHONE_6 = SCREEN_MAX_LENGTH == 667.0
 let IS_IPHONE_6P = SCREEN_MAX_LENGTH == 736.0
 let IS_IPHONE_X = SCREEN_MAX_LENGTH == 812.0
+//判断iPad
+let IPAD_DEV:Bool! = (UIDevice.current.userInterfaceIdiom == .pad) ? true : false
 let STATUS_NAV_BAR_Y:CGFloat = IS_IPHONE_X == true ? 88.0 : 64.0
 let TABBAR_HEIGHT:CGFloat = IS_IPHONE_X == true ? 83.0 : 49.0
 let STATUSBAR_HEIGHT:CGFloat = IS_IPHONE_X == true ? 44.0 : 20.0
@@ -55,6 +57,23 @@ func AUTO_FONT(_ size: CGFloat) -> UIFont {
     return UIFont.systemFont(ofSize: autoSize)
 }
 
+/// 通过 red 、 green 、blue 、alpha 颜色数值
+public let RGBA:((Float,Float,Float,Float) -> UIColor ) = { (r: Float, g: Float , b: Float , a: Float ) -> UIColor in
+    return UIColor.init(red: CGFloat(CGFloat(r)/255.0), green: CGFloat(CGFloat(g)/255.0), blue: CGFloat(CGFloat(b)/255.0), alpha: CGFloat(a))
+}
+/// 根据imageName创建一个UIImage
+public let imageNamed:((String) -> UIImage? ) = { (imageName : String) -> UIImage? in
+    return UIImage.init(named: imageName)
+}
+// 时间戳转日期
+func timeStampToString(timeStamp:String,format:String)->String {
+    let string = NSString(string: timeStamp)
+    let timeSta:TimeInterval = string.doubleValue
+    let dfmatter = DateFormatter()
+    dfmatter.dateFormat = format
+    let date = NSDate(timeIntervalSince1970: timeSta)
+    return dfmatter.string(from: date as Date)
+}
 class PPYCommon: NSObject {
 
 }

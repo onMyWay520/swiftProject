@@ -31,6 +31,7 @@ class PPYHomeCollectionCell: PPYBaseCollectionViewCell {
             make.width.equalTo(ppyScreenW/2-40)
             make.left.equalTo(self)
         }
+
         self.titleLab?.snp.makeConstraints { (make) in
             // 让顶部距离view1的底部为10的距离
         make.top.equalTo((self.goodsImageView?.snp.bottom)!).offset(10)

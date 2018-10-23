@@ -27,7 +27,7 @@ class PPYBaseCollectionVC: PPYBaseViewController,UICollectionViewDelegate,UIColl
         self.view.addSubview(mainColltionView!)
         dataArr = NSMutableArray()
     }
-    func setUI() {
+    override func setUI() {
        
     }
     //返回多少个组

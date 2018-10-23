@@ -12,4 +12,5 @@ target 'swiftProject' do
     pod 'SwiftyJSON'
     pod 'Alamofire'
     pod 'FMDB'
+    pod 'LLCycleScrollView'
 end

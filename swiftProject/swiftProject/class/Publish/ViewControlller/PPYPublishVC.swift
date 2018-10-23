@@ -12,7 +12,7 @@ class PPYPublishVC: PPYBaseViewController {
     var buttons: [PPYVerticalSqureBtn] = [PPYVerticalSqureBtn]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setmyUI()
 
     }
     
@@ -42,7 +42,7 @@ class PPYPublishVC: PPYBaseViewController {
     }
  }
 extension PPYPublishVC {
-    fileprivate func setUI(){
+    fileprivate func setmyUI(){
         let titleImages = [("publish-video", "发视频"),
                            ("publish-picture", "发图片"),
                            ("publish-text", "发段子"),

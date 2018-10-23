@@ -9,6 +9,17 @@
 import UIKit
 
 class PPYUtil: NSObject {
+    /// 快速创建 Label,设置文本, 文本颜色,Font,文本位置
+    class func createLabel(text : String? , textColor : UIColor?, font : UIFont?, textAlignment : NSTextAlignment = .left ) -> UILabel {
+        
+        let label = UILabel()
+        label.text = text
+        if (textColor != nil) { label.textColor = textColor }
+        if (font != nil) { label.font = font }
+        label.textAlignment = textAlignment
+        return label
+    }
+    
     class func createTextFieldWith(Frame frame:CGRect, BoardStyle boardStyle:UITextBorderStyle, PlaceHolder placeHolder:String?, BackgroundColor backgroundColor:UIColor?, TintColor tintColor:UIColor?, IsPWD isPwd:Bool) -> UITextField{
         let textField = UITextField(frame: frame)
         textField.borderStyle = boardStyle

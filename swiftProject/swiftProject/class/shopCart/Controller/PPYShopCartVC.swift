@@ -22,10 +22,10 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setmyUI()
         
     }
-   func setUI(){
+   func setmyUI(){
    self.mainView.register(PPYAddCartCell.classForCoder(), forCellReuseIdentifier: addCartCellID)
     self.mainView.mj_footer.isHidden=false
    
@@ -55,7 +55,6 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
         self.tabBarItem.badgeValue = "\(sum)"
       }
     }
-    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

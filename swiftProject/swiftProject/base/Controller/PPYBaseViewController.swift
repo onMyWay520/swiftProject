@@ -12,12 +12,20 @@ class PPYBaseViewController: UIViewController {
 
     override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor=UIColor.white
-    //修改导航栏背景色
-    self.navigationController?.navigationBar.barTintColor = defaultColor
-    self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18)]
- self.navigationItem.rightBarButtonItem=UIBarButtonItem.init(customView: rightButton)
-       self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
+        setNavItem()
+        setUI()
+    }
+    func setNavItem() {
+        self.view.backgroundColor=UIColor.white
+        //修改导航栏背景色
+        self.navigationController?.navigationBar.barTintColor = defaultColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18)]
+        self.navigationItem.rightBarButtonItem=UIBarButtonItem.init(customView: rightButton)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
+    }
+    func setUI() {
+        
+        
     }
     /// 设置导航栏右边按钮
     lazy var rightButton: UIButton = {
