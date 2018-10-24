@@ -54,6 +54,7 @@
 		5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */; };
 		56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */; };
 		56467972215CE09200D534F1 /* PPYHomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */; };
+		56528C14217FFF74003679F6 /* PPYWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56528C13217FFF74003679F6 /* PPYWaveView.swift */; };
 		5653A2202171A4570075A999 /* String+GetSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5653A21F2171A4570075A999 /* String+GetSize.swift */; };
 		5653A2222171A4680075A999 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5653A2212171A4680075A999 /* UIImage+Color.swift */; };
 		5653A2242171E3760075A999 /* PPYConfirmOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5653A2232171E3760075A999 /* PPYConfirmOrderVC.swift */; };
@@ -157,6 +158,7 @@
 		5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeCollectionVC.swift; sourceTree = "<group>"; };
 		5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeCollectionCell.swift; sourceTree = "<group>"; };
+		56528C13217FFF74003679F6 /* PPYWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYWaveView.swift; sourceTree = "<group>"; };
 		5653A21F2171A4570075A999 /* String+GetSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+GetSize.swift"; sourceTree = "<group>"; };
 		5653A2212171A4680075A999 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
 		5653A2232171E3760075A999 /* PPYConfirmOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYConfirmOrderVC.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 		5641191F215B247F00E00CDB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56528C13217FFF74003679F6 /* PPYWaveView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				560F9E0F217EC92400D1FB3A /* CAGradientLayer+Extension.swift in Sources */,
 				560C4524216DFC24001F0DE5 /* PPYAddCartCell.swift in Sources */,
 				56458DC1217DA458006C4910 /* PPYNewsTableCell.swift in Sources */,
+				56528C14217FFF74003679F6 /* PPYWaveView.swift in Sources */,
 				56BD8079215B9559009BE2DF /* PPYHomeChildVC.swift in Sources */,
 				56458DB6217D5E71006C4910 /* PPYClosureVC.swift in Sources */,
 				56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */,

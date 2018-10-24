@@ -17,12 +17,16 @@ class PPYMineVC: PPYBaseTableViewController {
         let headView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: ppyScreenW, height: HeadViewHeight))
         headView.backgroundColor = .white
         headView.contentMode = .scaleAspectFill
-        headView.clipsToBounds = true
         //加载图片
         let url = URL(string: "http://c.hiphotos.baidu.com/zhidao/pic/item/5ab5c9ea15ce36d3c704f35538f33a87e950b156.jpg")
         headView.kf.setImage(with: url)
     
         return headView
+    }()
+    private lazy var waveView : PPYWaveView={
+        let  waveView=PPYWaveView (frame: CGRect(x: 0.0, y: HeadViewHeight+20, width: ppyScreenW, height: 30))
+        waveView.backgroundColor=UIColor.orange
+        return waveView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +40,15 @@ class PPYMineVC: PPYBaseTableViewController {
 
     }
     func setupView() {
+        view.backgroundColor=UIColor.yellow
         view.addSubview(headView)
+        view.addSubview(waveView)
         mainView.tableFooterView = UIView()
         mainView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: resueIdentifer)
         mainView.mj_header.isHidden=true
         mainView.showsVerticalScrollIndicator = false
 //        //下面两句必不可少，否则会出现第一次加载时位置不对的情况
-        mainView.contentInset.top = HeadViewHeight
+        mainView.contentInset.top = HeadViewHeight+50
         mainView.contentOffset = CGPoint(x: 0.0, y: -HeadViewHeight)
     }
     //MARK: - DataSource
