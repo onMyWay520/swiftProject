@@ -13,7 +13,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
-        titleArray=["关键字演练","闭包演练","MVVM请求网络","柱状图","详情滑动切换标题"]
+        titleArray=["关键字演练","闭包演练","MVVM请求网络","柱状图","详情滑动切换标题","RXSwift介绍","粒子效果"]
         self.mainView.mj_footer.isHidden=false
         mainView.mj_header.beginRefreshing()
         let  people=PPYPeople ()
@@ -36,7 +36,7 @@ class PPYHomeChildVC: PPYBaseTableViewController {
 //        }
 //    }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.dataArray.count
+        return self.titleArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -102,6 +102,14 @@ class PPYHomeChildVC: PPYBaseTableViewController {
             break
         case 3:
             vc = PPYBarVC()
+            break
+        case 4:
+            vc = PPYRXSwiftVC()
+            break
+        case 5:
+//            let cell = mainView.cellForRow(at: indexPath)
+//            let point = CGPoint(x: (cell?.center.x)!, y: (cell?.center.y)!)
+//            startEmittering(point)
             break
         default:break
             

@@ -104,5 +104,19 @@ extension UIView {
         masklayer.path = path.cgPath // 设置路径
         cornerView.layer.mask = masklayer
     }
-    
+    /// 获取响应链上的UIViewController
+    /// - Returns: UIViewController?
+    func currentViewController() -> UIViewController?{
+        var responder:UIResponder? = self.next
+        while responder != nil {
+            if (responder?.isKind(of: UIViewController.self)) == true {
+                let con = responder as? UIViewController
+                return con
+            }else {
+                responder = responder?.next
+            }
+        }
+        return nil
+    }
+
 }
