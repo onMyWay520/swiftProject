@@ -13,7 +13,7 @@
 
 #define LOCK(lock) dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
 #define UNLOCK(lock) dispatch_semaphore_signal(lock);
-
+//内联函数获得该图片的缓存大小 注意乘以屏幕的比例
 FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 #if SD_MAC
     return image.size.height * image.size.width;
@@ -58,6 +58,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         self.weakCache = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory capacity:0];
         self.weakCacheLock = dispatch_semaphore_create(1);
         self.config = config;
+        //添加通知，当受到内存警告则移除所有的缓存对象
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(didReceiveMemoryWarning:)
                                                      name:UIApplicationDidReceiveMemoryWarningNotification
@@ -145,9 +146,13 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 @interface SDImageCache ()
 
 #pragma mark - Properties
+//内存缓存对象
 @property (strong, nonatomic, nonnull) SDMemoryCache *memCache;
+//磁盘缓存路径
 @property (strong, nonatomic, nonnull) NSString *diskCachePath;
+//保存缓存路径的数组
 @property (strong, nonatomic, nullable) NSMutableArray<NSString *> *customPaths;
+//执行处理输入输出的队列
 @property (strong, nonatomic, nullable) dispatch_queue_t ioQueue;
 @property (strong, nonatomic, nonnull) NSFileManager *fileManager;
 
@@ -157,7 +162,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 @implementation SDImageCache
 
 #pragma mark - Singleton, init, dealloc
-
+//生成单例SDImageCache
 + (nonnull instancetype)sharedImageCache {
     static dispatch_once_t once;
     static id instance;
@@ -170,7 +175,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 - (instancetype)init {
     return [self initWithNamespace:@"default"];
 }
-
+//初始化磁盘缓存路径和内存缓存name
 - (nonnull instancetype)initWithNamespace:(nonnull NSString *)ns {
     NSString *path = [self makeDiskCachePath:ns];
     return [self initWithNamespace:ns diskCacheDirectory:path];
@@ -224,7 +229,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 #pragma mark - Cache paths
-
+////添加一个只读的缓存路径
 - (void)addReadOnlyCachePath:(nonnull NSString *)path {
     if (!self.customPaths) {
         self.customPaths = [NSMutableArray new];
@@ -234,16 +239,16 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         [self.customPaths addObject:path];
     }
 }
-
+//获取给定key的缓存路径 需要一个根缓存路径
 - (nullable NSString *)cachePathForKey:(nullable NSString *)key inPath:(nonnull NSString *)path {
     NSString *filename = [self cachedFileNameForKey:key];
     return [path stringByAppendingPathComponent:filename];
 }
-
+//获取给定key的默认缓存路径
 - (nullable NSString *)defaultCachePathForKey:(nullable NSString *)key {
     return [self cachePathForKey:key inPath:self.diskCachePath];
 }
-
+//根据key值生成文件名：采用MD5
 - (nullable NSString *)cachedFileNameForKey:(nullable NSString *)key {
     const char *str = key.UTF8String;
     if (str == NULL) {
@@ -258,7 +263,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
                           r[11], r[12], r[13], r[14], r[15], ext.length == 0 ? @"" : [NSString stringWithFormat:@".%@", ext]];
     return filename;
 }
-
+//生成磁盘路径
 - (nullable NSString *)makeDiskCachePath:(nonnull NSString*)fullNamespace {
     NSArray<NSString *> *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     return [paths[0] stringByAppendingPathComponent:fullNamespace];
@@ -291,11 +296,12 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         return;
     }
     // if memory cache is enabled
+    //缓存到内存
     if (self.config.shouldCacheImagesInMemory) {
         NSUInteger cost = SDCacheCostForImage(image);
         [self.memCache setObject:image forKey:key cost:cost];
     }
-    
+    //缓存到磁盘，采用异步操作
     if (toDisk) {
         dispatch_async(self.ioQueue, ^{
             @autoreleasepool {
@@ -325,7 +331,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         }
     }
 }
-
+//利用key进行缓存data
 - (void)storeImageDataToDisk:(nullable NSData *)imageData forKey:(nullable NSString *)key {
     if (!imageData || !key) {
         return;
@@ -340,26 +346,27 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     if (!imageData || !key) {
         return;
     }
-    
+    //如果文件中不存在磁盘缓存路径 则创建
     if (![self.fileManager fileExistsAtPath:_diskCachePath]) {
         [self.fileManager createDirectoryAtPath:_diskCachePath withIntermediateDirectories:YES attributes:nil error:NULL];
     }
     
-    // get cache Path for image key
+    // get cache Path for image key  得到该key的缓存路径
     NSString *cachePathForKey = [self defaultCachePathForKey:key];
-    // transform to NSUrl
+    // transform to NSUrl  将缓存路径转化为url
     NSURL *fileURL = [NSURL fileURLWithPath:cachePathForKey];
-    
+    //将imageData存储起来
+
     [imageData writeToURL:fileURL options:self.config.diskCacheWritingOptions error:nil];
     
-    // disable iCloud backup
+    // disable iCloud backup  如果调用者关闭icloud 关闭iCloud备份
     if (self.config.shouldDisableiCloud) {
         [fileURL setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];
     }
 }
 
 #pragma mark - Query and Retrieve Ops
-
+//异步检查图片是否缓存在磁盘中
 - (void)diskImageExistsWithKey:(nullable NSString *)key completion:(nullable SDWebImageCheckCacheCompletionBlock)completionBlock {
     dispatch_async(self.ioQueue, ^{
         BOOL exists = [self _diskImageDataExistsWithKey:key];
@@ -410,10 +417,12 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     
     return imageData;
 }
+//在内存缓存中查询对应key的图片
 
 - (nullable UIImage *)imageFromMemoryCacheForKey:(nullable NSString *)key {
     return [self.memCache objectForKey:key];
 }
+//在磁盘缓存中查询对应key的图片 并且如果允许内存缓存则在内存中缓存
 
 - (nullable UIImage *)imageFromDiskCacheForKey:(nullable NSString *)key {
     UIImage *diskImage = [self diskImageForKey:key];
@@ -424,6 +433,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
     return diskImage;
 }
+//在缓存中查询对应key的图片
 
 - (nullable UIImage *)imageFromCacheForKey:(nullable NSString *)key {
     // First check the in-memory cache...
@@ -436,7 +446,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     image = [self imageFromDiskCacheForKey:key];
     return image;
 }
-
+//根据key在磁盘缓存中搜索图片data
 - (nullable NSData *)diskImageDataBySearchingAllPathsForKey:(nullable NSString *)key {
     NSString *defaultPath = [self defaultCachePathForKey:key];
     NSData *data = [NSData dataWithContentsOfFile:defaultPath options:self.config.diskCacheReadingOptions error:nil];
@@ -469,6 +479,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
     return nil;
 }
+//根据key在磁盘缓存中搜索图片dimage
 
 - (nullable UIImage *)diskImageForKey:(nullable NSString *)key {
     NSData *data = [self diskImageDataForKey:key];
@@ -482,6 +493,8 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 - (nullable UIImage *)diskImageForKey:(nullable NSString *)key data:(nullable NSData *)data options:(SDImageCacheOptions)options {
     if (data) {
         UIImage *image = [[SDWebImageCodersManager sharedInstance] decodedImageWithData:data];
+        //根据图片的scale或图片中的图片组 重新计算返回一张新图片
+
         image = [self scaledImageForKey:key image:image];
         if (self.config.shouldDecompressImages) {
             BOOL shouldScaleDown = options & SDImageCacheScaleDownLargeImages;
@@ -492,7 +505,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         return nil;
     }
 }
-
+//在缓存中查询对应key的图片信息 包含image，diskData以及缓存的类型
 - (nullable UIImage *)scaledImageForKey:(nullable NSString *)key image:(nullable UIImage *)image {
     return SDScaledImageForKey(key, image);
 }
@@ -509,7 +522,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         return nil;
     }
     
-    // First check the in-memory cache...
+    // First check the in-memory cache...如果内存缓存包含图片数据则回调结束
     UIImage *image = [self imageFromMemoryCacheForKey:key];
     BOOL shouldQueryMemoryOnly = (image && !(options & SDImageCacheQueryDataWhenInMemory));
     if (shouldQueryMemoryOnly) {
@@ -527,6 +540,8 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         }
         
         @autoreleasepool {
+            //到这里说明已经来到磁盘缓存区获取 然后回调结束
+
             NSData *diskData = [self diskImageDataBySearchingAllPathsForKey:key];
             UIImage *diskImage;
             SDImageCacheType cacheType = SDImageCacheTypeDisk;
@@ -565,16 +580,17 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 #pragma mark - Remove Ops
+//删除缓存中指定key的图片
 
 - (void)removeImageForKey:(nullable NSString *)key withCompletion:(nullable SDWebImageNoParamsBlock)completion {
     [self removeImageForKey:key fromDisk:YES withCompletion:completion];
 }
-
+//删除缓存中指定key的图片 磁盘是可选项
 - (void)removeImageForKey:(nullable NSString *)key fromDisk:(BOOL)fromDisk withCompletion:(nullable SDWebImageNoParamsBlock)completion {
     if (key == nil) {
         return;
     }
-
+    //如果内存也缓存了，则删除内存缓存
     if (self.config.shouldCacheImagesInMemory) {
         [self.memCache removeObjectForKey:key];
     }
@@ -614,11 +630,11 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 #pragma mark - Cache clean Ops
-
+//清空所有的内存缓存
 - (void)clearMemory {
     [self.memCache removeAllObjects];
 }
-
+//异步清除所有的磁盘缓存
 - (void)clearDiskOnCompletion:(nullable SDWebImageNoParamsBlock)completion {
     dispatch_async(self.ioQueue, ^{
         [self.fileManager removeItemAtPath:self.diskCachePath error:nil];
@@ -638,7 +654,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 - (void)deleteOldFiles {
     [self deleteOldFilesWithCompletionBlock:nil];
 }
-
+//异步清除所有失效的缓存图片-因为可以设定缓存时间，超过则失效
 - (void)deleteOldFilesWithCompletionBlock:(nullable SDWebImageNoParamsBlock)completionBlock {
     dispatch_async(self.ioQueue, ^{
         NSURL *diskCacheURL = [NSURL fileURLWithPath:self.diskCachePath isDirectory:YES];
@@ -657,63 +673,68 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
             default:
                 break;
         }
-        
+        //NSURLContentModificationDateKey判断遍历返回的URL所指项目的最后修改时间，NSURLTotalFileAllocatedSizeKey判断URL目录中所分配的空间大小
         NSArray<NSString *> *resourceKeys = @[NSURLIsDirectoryKey, cacheContentDateKey, NSURLTotalFileAllocatedSizeKey];
 
-        // This enumerator prefetches useful properties for our cache files.
+        //利用目录枚举器遍历指定磁盘缓存路径目录下的文件，从而我们活的文件大小，缓存时间等信息
         NSDirectoryEnumerator *fileEnumerator = [self.fileManager enumeratorAtURL:diskCacheURL
                                                    includingPropertiesForKeys:resourceKeys
                                                                       options:NSDirectoryEnumerationSkipsHiddenFiles
                                                                  errorHandler:NULL];
+        //计算过期时间，默认1周以前的缓存文件是过期失效
 
         NSDate *expirationDate = [NSDate dateWithTimeIntervalSinceNow:-self.config.maxCacheAge];
+        //保存遍历的文件url
         NSMutableDictionary<NSURL *, NSDictionary<NSString *, id> *> *cacheFiles = [NSMutableDictionary dictionary];
+        //保存当前缓存的大小
         NSUInteger currentCacheSize = 0;
 
         // Enumerate all of the files in the cache directory.  This loop has two purposes:
         //
         //  1. Removing files that are older than the expiration date.
         //  2. Storing file attributes for the size-based cleanup pass.
+        //保存删除的文件url
         NSMutableArray<NSURL *> *urlsToDelete = [[NSMutableArray alloc] init];
+        //遍历目录枚举器，目的1删除过期文件 2纪录文件大小，以便于之后删除使用
         for (NSURL *fileURL in fileEnumerator) {
             NSError *error;
+            //获取指定url对应文件的指定三种属性的key和value
             NSDictionary<NSString *, id> *resourceValues = [fileURL resourceValuesForKeys:resourceKeys error:&error];
 
-            // Skip directories and errors.
+            //如果是文件夹则返回
             if (error || !resourceValues || [resourceValues[NSURLIsDirectoryKey] boolValue]) {
                 continue;
             }
 
-            // Remove files that are older than the expiration date;
+            //获取指定url文件对应的修改日期
             NSDate *modifiedDate = resourceValues[cacheContentDateKey];
+            //如果修改日期大于指定日期，则加入要移除的数组里
             if ([[modifiedDate laterDate:expirationDate] isEqualToDate:expirationDate]) {
                 [urlsToDelete addObject:fileURL];
                 continue;
             }
             
-            // Store a reference to this file and account for its total size.
+            //获取指定的url对应的文件的大小，并且把url与对应大小存入一个字典中
             NSNumber *totalAllocatedSize = resourceValues[NSURLTotalFileAllocatedSizeKey];
             currentCacheSize += totalAllocatedSize.unsignedIntegerValue;
             cacheFiles[fileURL] = resourceValues;
         }
-        
+        //删除所有最后修改日期大于指定日期的所有文件
         for (NSURL *fileURL in urlsToDelete) {
             [self.fileManager removeItemAtURL:fileURL error:nil];
         }
 
-        // If our remaining disk cache exceeds a configured maximum size, perform a second
-        // size-based cleanup pass.  We delete the oldest files first.
+        //如果当前缓存的大小超过了默认大小，则按照日期删除，直到缓存大小<默认大小的一半
         if (self.config.maxCacheSize > 0 && currentCacheSize > self.config.maxCacheSize) {
-            // Target half of our maximum cache size for this cleanup pass.
             const NSUInteger desiredCacheSize = self.config.maxCacheSize / 2;
 
-            // Sort the remaining cache files by their last modification time (oldest first).
+            //根据文件创建的时间排序
             NSArray<NSURL *> *sortedFiles = [cacheFiles keysSortedByValueWithOptions:NSSortConcurrent
                                                                      usingComparator:^NSComparisonResult(id obj1, id obj2) {
                                                                          return [obj1[NSURLContentModificationDateKey] compare:obj2[NSURLContentModificationDateKey]];
                                                                      }];
 
-            // Delete files until we fall below our desired cache size.
+            //迭代删除缓存，直到缓存大小是默认缓存大小的一半
             for (NSURL *fileURL in sortedFiles) {
                 if ([self.fileManager removeItemAtURL:fileURL error:nil]) {
                     NSDictionary<NSString *, id> *resourceValues = cacheFiles[fileURL];
@@ -726,6 +747,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
                 }
             }
         }
+        //在主线程中回调
         if (completionBlock) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completionBlock();
@@ -735,6 +757,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 #if SD_UIKIT
+//应用进入后台的时候，调用这个方法　然后清除过期图片
 - (void)backgroundDeleteOldFiles {
     Class UIApplicationClass = NSClassFromString(@"UIApplication");
     if(!UIApplicationClass || ![UIApplicationClass respondsToSelector:@selector(sharedApplication)]) {
@@ -757,7 +780,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 #endif
 
 #pragma mark - Cache Info
-
+//得到磁盘缓存的大小size
 - (NSUInteger)getSize {
     __block NSUInteger size = 0;
     dispatch_sync(self.ioQueue, ^{
@@ -770,6 +793,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     });
     return size;
 }
+//得到在磁盘缓存中图片的数量
 
 - (NSUInteger)getDiskCount {
     __block NSUInteger count = 0;
@@ -779,7 +803,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     });
     return count;
 }
-
+//异步计算磁盘缓存的大小
 - (void)calculateSizeWithCompletionBlock:(nullable SDWebImageCalculateSizeBlock)completionBlock {
     NSURL *diskCacheURL = [NSURL fileURLWithPath:self.diskCachePath isDirectory:YES];
 

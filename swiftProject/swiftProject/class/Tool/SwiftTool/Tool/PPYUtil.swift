@@ -19,7 +19,7 @@ class PPYUtil: NSObject {
         label.textAlignment = textAlignment
         return label
     }
-    
+      /// 快速创建 TextField,设置文本, 文本颜色,Font,文本位置
     class func createTextFieldWith(Frame frame:CGRect, BoardStyle boardStyle:UITextBorderStyle, PlaceHolder placeHolder:String?, BackgroundColor backgroundColor:UIColor?, TintColor tintColor:UIColor?, IsPWD isPwd:Bool) -> UITextField{
         let textField = UITextField(frame: frame)
         textField.borderStyle = boardStyle
@@ -38,7 +38,7 @@ class PPYUtil: NSObject {
         }
         return textField
     }
-    
+     /// 快速创建 imageView
     class func createImageViewWith(Frame frame:CGRect, ImageName imageName:String, CornarRadius radius:Float) -> UIImageView{
         let imageView = UIImageView(frame:frame)
         imageView.image = UIImage(named:imageName)
@@ -118,11 +118,14 @@ class PPYUtil: NSObject {
             
             if tNumMatchCount == string.count {
                 return 1
-            }else if tLetterMatchCount == string.count {
+            }
+            else if tLetterMatchCount == string.count {
                 return 2
-            }else if tNumMatchCount + tLetterMatchCount == string.count {
+            }
+            else if tNumMatchCount + tLetterMatchCount == string.count {
                 return 3
-            }else{
+            }
+            else{
                 return 4
             }
         }catch{return 0}
@@ -144,5 +147,30 @@ class PPYUtil: NSObject {
         attriString.addAttribute(.foregroundColor, value: color, range: NSMakeRange(index, length))
         return attriString
     }
-    
+    // 把一个字典转为一个Json字符串
+    func toJSONString(dict:NSDictionary!)->NSString{
+        if (!JSONSerialization.isValidJSONObject(dict)) {
+            print("无法解析出JSONString")
+            return ""
+        }
+        let data : NSData! = try? JSONSerialization.data(withJSONObject: dict, options: []) as NSData
+        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+        return JSONString!
+    }
+    // 得到当前的时间戳
+    func getCurrentTimeStamp() ->String {
+        //获取当前时间
+        let now = Date()
+        // 创建一个日期格式器
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+        print("当前日期时间：\(dformatter.string(from: now))")
+        //当前时间的时间戳
+        let timeInterval:TimeInterval = now.timeIntervalSince1970
+        let timeStamp = Int(timeInterval)
+        print("当前时间的时间戳：\(timeStamp)")
+        let fininalSring = "\(timeStamp)"
+        return fininalSring
+    }
+
 }

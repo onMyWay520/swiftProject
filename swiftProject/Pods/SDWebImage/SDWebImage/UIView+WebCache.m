@@ -41,7 +41,17 @@ static char TAG_ACTIVITY_SHOW;
 - (void)setSd_imageProgress:(NSProgress *)sd_imageProgress {
     objc_setAssociatedObject(self, @selector(sd_imageProgress), sd_imageProgress, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
+/**
+ 所有UIView及其子类都是通过这个方法来加载图片
+ 
+ @param url 加载的url
+ @param placeholder 占位图
+ @param options 加载选项
+ @param operationKey key
+ @param setImageBlock Block
+ @param progressBlock 进度Block
+ @param completedBlock 回调Block
+ */
 - (void)sd_internalSetImageWithURL:(nullable NSURL *)url
                   placeholderImage:(nullable UIImage *)placeholder
                            options:(SDWebImageOptions)options
@@ -60,10 +70,13 @@ static char TAG_ACTIVITY_SHOW;
                           progress:(nullable SDWebImageDownloaderProgressBlock)progressBlock
                          completed:(nullable SDExternalCompletionBlock)completedBlock
                            context:(nullable NSDictionary<NSString *, id> *)context {
+    //根据参数operationKey取消当前类所对应的下载Operation对象，如果operationKey为nil key取NSStringFromClass([self class])
     NSString *validOperationKey = operationKey ?: NSStringFromClass([self class]);
+     //具体的取消操作在UIView+WebCacheOperation中实现
     [self sd_cancelImageLoadOperationWithKey:validOperationKey];
+    //利用关联对象给当前self实例绑定url key=imageURLKey value=url
     objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
+    //这里用到位运算，利用&与运算判断调用者是否需要设置占位图，需要则set
     if (!(options & SDWebImageDelayPlaceholder)) {
         dispatch_main_async_safe(^{
             [self sd_setImage:placeholder imageData:nil basedOnClassOrViaCustomSetImageBlock:setImageBlock];
@@ -72,6 +85,7 @@ static char TAG_ACTIVITY_SHOW;
     
     if (url) {
 #if SD_UIKIT
+        // 判断之前是否利用关联对象给self设置了显示菊花加载，如果有则add
         // check if activityView is enabled or not
         if ([self sd_showActivityIndicatorView]) {
             [self sd_addActivityIndicator];
@@ -97,10 +111,14 @@ static char TAG_ACTIVITY_SHOW;
                 progressBlock(receivedSize, expectedSize, targetURL);
             }
         };
+        /*
+         *operation是一个`SDWebImageCombinedOperation`对象。通过这个对象来获取图片
+         */
         id <SDWebImageOperation> operation = [manager loadImageWithURL:url options:options progress:combinedProgressBlock completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             __strong __typeof (wself) sself = wself;
             if (!sself) { return; }
 #if SD_UIKIT
+            //停止菊花
             [sself sd_removeActivityIndicator];
 #endif
             // if the progress not been updated, mark it to complete state
@@ -109,6 +127,7 @@ static char TAG_ACTIVITY_SHOW;
                 sself.sd_imageProgress.completedUnitCount = SDWebImageProgressUnitCountUnknown;
             }
             BOOL shouldCallCompletedBlock = finished || (options & SDWebImageAvoidAutoSetImage);
+            //是否不显示图片两个条件满足其一即可 1>调用者手动主动配置，哪怕image不为nil 2>没有图片并且不delaye占位图情况
             BOOL shouldNotSetImage = ((image && (options & SDWebImageAvoidAutoSetImage)) ||
                                       (!image && !(options & SDWebImageDelayPlaceholder)));
             SDWebImageNoParamsBlock callCompletedBlockClojure = ^{
@@ -116,6 +135,7 @@ static char TAG_ACTIVITY_SHOW;
                 if (!shouldNotSetImage) {
                     [sself sd_setNeedsLayout];
                 }
+                //如果设置了不自动显示图片，则回调让调用者手动添加显示图片 程序return
                 if (completedBlock && shouldCallCompletedBlock) {
                     completedBlock(image, error, cacheType, url);
                 }
@@ -124,6 +144,7 @@ static char TAG_ACTIVITY_SHOW;
             // case 1a: we got an image, but the SDWebImageAvoidAutoSetImage flag is set
             // OR
             // case 1b: we got no image and the SDWebImageDelayPlaceholder is not set
+            //如果设置了不自动显示图片，则回调让调用者手动添加显示图片 程序return
             if (shouldNotSetImage) {
                 dispatch_main_async_safe(callCompletedBlockClojure);
                 return;
@@ -137,6 +158,7 @@ static char TAG_ACTIVITY_SHOW;
                 targetData = data;
             } else if (options & SDWebImageDelayPlaceholder) {
                 // case 2b: we got no image and the SDWebImageDelayPlaceholder flag is set
+                //如果没有image，并且调用者设置了delaye显示默认图那这里targetImage设置为placeholder
                 targetImage = placeholder;
                 targetData = nil;
             }
