@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.3)
+  - Differentiator (3.1.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -8,7 +9,17 @@ PODS:
   - LLCycleScrollView (1.5.1):
     - Kingfisher
   - MJRefresh (3.1.15.3)
+  - ObjectMapper (3.4.1)
+  - RxAlamofire (4.3.0):
+    - RxAlamofire/Core (= 4.3.0)
+  - RxAlamofire/Core (4.3.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4)
   - RxCocoa (4.3.1):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.3.1)
   - SDWebImage (4.4.2):
@@ -23,7 +34,10 @@ DEPENDENCIES:
   - HandyJSON (~> 4.2.0)
   - LLCycleScrollView
   - MJRefresh
+  - ObjectMapper (~> 3.4)
+  - RxAlamofire
   - RxCocoa (~> 4.0)
+  - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
   - SDWebImage
   - SnapKit
@@ -32,12 +46,16 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Differentiator
     - FMDB
     - HandyJSON
     - Kingfisher
     - LLCycleScrollView
     - MJRefresh
+    - ObjectMapper
+    - RxAlamofire
     - RxCocoa
+    - RxDataSources
     - RxSwift
     - SDWebImage
     - SnapKit
@@ -45,17 +63,21 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   LLCycleScrollView: 52c2e96a92b6d16d8e0fe46b6aedb8a320bc846b
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 4b22e5f55fa519c58e5ded14c38607d090df46ec
+PODFILE CHECKSUM: f164f5ca7ea94d7584b550e22b986f47fa70527e
 
 COCOAPODS: 1.5.3

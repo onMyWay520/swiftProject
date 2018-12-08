@@ -13,4 +13,8 @@ target 'swiftProject' do
     pod 'Alamofire'
     pod 'FMDB'
     pod 'LLCycleScrollView'
+    pod 'RxDataSources', '~> 3.0'
+    pod 'RxAlamofire'
+    pod 'ObjectMapper', '~> 3.4'
+
 end

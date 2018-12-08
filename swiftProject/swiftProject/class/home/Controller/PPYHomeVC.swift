@@ -26,17 +26,16 @@ class PPYHomeVC: PPYBaseViewController {
             let vc = PPYHomeChildVC()
             let collectionVC = PPYHomeCollectionVC()
             let waterFlowLayoutVC = PPYWaterFlowLayoutVC()
-
             collectionVC.title=titles[i]
             if i==0 {
-                 childControllers.append(vc)
+              childControllers.append(vc)
             }
             else if (i==1) {
               childControllers.append(waterFlowLayoutVC)
             }
             
             else{
-                 childControllers.append(collectionVC)
+              childControllers.append(collectionVC)
             }
         
         }

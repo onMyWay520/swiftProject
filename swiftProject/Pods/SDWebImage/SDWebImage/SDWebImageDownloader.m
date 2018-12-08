@@ -33,21 +33,16 @@
 
 
 @interface SDWebImageDownloader () <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
-//定义下载队列
+
 @property (strong, nonatomic, nonnull) NSOperationQueue *downloadQueue;
-//定义下载的上个operation 作用是为了后面的下载依赖
 @property (weak, nonatomic, nullable) NSOperation *lastAddedOperation;
-// 图片下载操作类
 @property (assign, nonatomic, nullable) Class operationClass;
-//下载url作为key value是具体的下载operation 用字典来存储，方便cancel等操作
 @property (strong, nonatomic, nonnull) NSMutableDictionary<NSURL *, SDWebImageDownloaderOperation *> *URLOperations;
-//HTTP请求头
 @property (strong, nonatomic, nullable) SDHTTPHeadersMutableDictionary *HTTPHeaders;
-//定义队列用来保证处理所有下载操作线程安全，将任务利用dispatch_barrier_sync队列barrierQueue
 @property (strong, nonatomic, nonnull) dispatch_semaphore_t operationsLock; // a lock to keep the access to `URLOperations` thread-safe
 @property (strong, nonatomic, nonnull) dispatch_semaphore_t headersLock; // a lock to keep the access to `HTTPHeaders` thread-safe
 
-//利用NSURLSession进行网络请求
+// The session in which data tasks will run
 @property (strong, nonatomic) NSURLSession *session;
 
 @end
@@ -57,8 +52,6 @@
 + (void)initialize {
     // Bind SDNetworkActivityIndicator if available (download it here: http://github.com/rs/SDNetworkActivityIndicator )
     // To use it, just add #import "SDNetworkActivityIndicator.h" in addition to the SDWebImage import
-    //这里的initialize就是开篇讲到的知识点，不过这里还有一个值得学习的点就是NSClassFromString，用来判断当前程序是否有指定字符串的类，如果没有回返回一个空对象，id activityIndicator = [NSClassFromString(@"SDNetworkActivityIndicator") performSelector:NSSelectorFromString(@"sharedActivityIndicator")];这样配合对一个不确定进行初始化
-
     if (NSClassFromString(@"SDNetworkActivityIndicator")) {
 
 #pragma clang diagnostic push
@@ -199,16 +192,15 @@
         _operationClass = [SDWebImageDownloaderOperation class];
     }
 }
-//给定指定URL下载图片
+
 - (nullable SDWebImageDownloadToken *)downloadImageWithURL:(nullable NSURL *)url
                                                    options:(SDWebImageDownloaderOptions)options
                                                   progress:(nullable SDWebImageDownloaderProgressBlock)progressBlock
                                                  completed:(nullable SDWebImageDownloaderCompletedBlock)completedBlock {
     __weak SDWebImageDownloader *wself = self;
-    //在下面的block中创建operation
+
     return [self addProgressCallback:progressBlock completedBlock:completedBlock forURL:url createCallback:^SDWebImageDownloaderOperation *{
         __strong __typeof (wself) sself = wself;
-        //设置下载时间
         NSTimeInterval timeoutInterval = sself.downloadTimeout;
         if (timeoutInterval == 0.0) {
             timeoutInterval = 15.0;
@@ -216,42 +208,35 @@
 
         // In order to prevent from potential duplicate caching (NSURLCache + SDImageCache) we disable the cache for image requests if told otherwise
         NSURLRequestCachePolicy cachePolicy = options & SDWebImageDownloaderUseNSURLCache ? NSURLRequestUseProtocolCachePolicy : NSURLRequestReloadIgnoringLocalCacheData;
-        //创建request 设置请求缓存策略 下载时间
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
                                                                     cachePolicy:cachePolicy
                                                                 timeoutInterval:timeoutInterval];
         
         request.HTTPShouldHandleCookies = (options & SDWebImageDownloaderHandleCookies);
-        //HTTPShouldUsePipelining设置为YES, 则允许不必等到response, 就可以再次请求. 这个会很大的提高网络请求的效率,但是也可能会出问题
-        //因为客户端无法正确的匹配请求与响应, 所以这依赖于服务器必须保证,响应的顺序与客户端请求的顺序一致.如果服务器不能保证这一点, 那可能导致响应和请求混乱.
         request.HTTPShouldUsePipelining = YES;
-        //设置请求头
         if (sself.headersFilter) {
             request.allHTTPHeaderFields = sself.headersFilter(url, [sself allHTTPHeaderFields]);
         }
         else {
             request.allHTTPHeaderFields = [sself allHTTPHeaderFields];
         }
-        //重头戏 在这里创建operation对象
-
         SDWebImageDownloaderOperation *operation = [[sself.operationClass alloc] initWithRequest:request inSession:sself.session options:options];
         operation.shouldDecompressImages = sself.shouldDecompressImages;
-        //开篇讲的知识点 身份认证
+        
         if (sself.urlCredential) {
             operation.credential = sself.urlCredential;
         } else if (sself.username && sself.password) {
             operation.credential = [NSURLCredential credentialWithUser:sself.username password:sself.password persistence:NSURLCredentialPersistenceForSession];
         }
-        //下载优先级
+        
         if (options & SDWebImageDownloaderHighPriority) {
             operation.queuePriority = NSOperationQueuePriorityHigh;
         } else if (options & SDWebImageDownloaderLowPriority) {
             operation.queuePriority = NSOperationQueuePriorityLow;
         }
-        //添加operation到下载队列
-        [sself.downloadQueue addOperation:operation];
-        //设置下载的顺序 是按照队列还是栈
+        
         if (sself.executionOrder == SDWebImageDownloaderLIFOExecutionOrder) {
+            // Emulate LIFO execution order by systematically adding new operations as last operation's dependency
             [sself.lastAddedOperation addDependency:operation];
             sself.lastAddedOperation = operation;
         }
@@ -275,7 +260,7 @@
     }
     UNLOCK(self.operationsLock);
 }
-//包装callbackBlocks，URLOperations和token
+
 - (nullable SDWebImageDownloadToken *)addProgressCallback:(SDWebImageDownloaderProgressBlock)progressBlock
                                            completedBlock:(SDWebImageDownloaderCompletedBlock)completedBlock
                                                    forURL:(nullable NSURL *)url
@@ -309,10 +294,9 @@
         [self.downloadQueue addOperation:operation];
     }
     UNLOCK(self.operationsLock);
-    //将进度progressBlock和下载结束completedBlock封装成字典SDCallbacksDictionary，装入数组callbackBlocks，
 
     id downloadOperationCancelToken = [operation addHandlersForProgress:progressBlock completed:completedBlock];
-    //这里生成token标识，这个token说白了就是为了在SDWebImageManager中调用[self.imageDownloader cancel:subOperationToken];来做取消的
+    
     SDWebImageDownloadToken *token = [SDWebImageDownloadToken new];
     token.downloadOperation = operation;
     token.url = url;

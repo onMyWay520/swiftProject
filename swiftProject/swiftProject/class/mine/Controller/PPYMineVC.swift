@@ -70,7 +70,10 @@ class PPYMineVC: PPYBaseTableViewController {
         return 50
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+//        tableView.deselectRow(at: indexPath, animated: true)
+        let  vc = PPYinterview()
+        navigationController!.pushViewController(vc, animated: true)
+
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001

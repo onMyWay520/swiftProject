@@ -9,80 +9,68 @@
 #import <Foundation/Foundation.h>
 #import "SDWebImageCompat.h"
 #import "SDWebImageOperation.h"
-//.设置下载的策略SDWebImageDownloaderOptions
+
 typedef NS_OPTIONS(NSUInteger, SDWebImageDownloaderOptions) {
     /**
      * Put the download in the low queue priority and task priority.
      */
-    //图片下载设置低优先级
     SDWebImageDownloaderLowPriority = 1 << 0,
     
     /**
      * This flag enables progressive download, the image is displayed progressively during download as a browser would do.
      */
-     //分进度下载图片
     SDWebImageDownloaderProgressiveDownload = 1 << 1,
 
     /**
      * By default, request prevent the use of NSURLCache. With this flag, NSURLCache
      * is used with default policies.
      */
-       //设置了该选项则使用NSURLCache缓存策略
     SDWebImageDownloaderUseNSURLCache = 1 << 2,
 
     /**
      * Call completion block with nil image/imageData if the image was read from NSURLCache
      * (to be combined with `SDWebImageDownloaderUseNSURLCache`).
      */
-    //如果图片从NSURLCache读取，则回到block中的image和imageData置为nil
-
     SDWebImageDownloaderIgnoreCachedResponse = 1 << 3,
     
     /**
      * In iOS 4+, continue the download of the image if the app goes to background. This is achieved by asking the system for
      * extra time in background to let the request finish. If the background task expires the operation will be cancelled.
      */
-    //在iOS4之后，如果设置了此选项则在后台依然下载图片，申请额外的时间来进行后台下载
     SDWebImageDownloaderContinueInBackground = 1 << 4,
 
     /**
      * Handles cookies stored in NSHTTPCookieStore by setting 
      * NSMutableURLRequest.HTTPShouldHandleCookies = YES;
      */
-    // 处理存储在NSHTTPCookieStore中的cookies
     SDWebImageDownloaderHandleCookies = 1 << 5,
 
     /**
      * Enable to allow untrusted SSL certificates.
      * Useful for testing purposes. Use with caution in production.
      */
-    //允许非信任的SSL证书
     SDWebImageDownloaderAllowInvalidSSLCertificates = 1 << 6,
 
     /**
      * Put the download in the high queue priority and task priority.
      */
-    //设置图片下载高优先级
     SDWebImageDownloaderHighPriority = 1 << 7,
     
     /**
      * Scale down the image
      */
-    //对大图片进行缩放
     SDWebImageDownloaderScaleDownLargeImages = 1 << 8,
 };
-//SDWebImageDownloaderExecutionOrder是下载执行的顺序：
+
 typedef NS_ENUM(NSInteger, SDWebImageDownloaderExecutionOrder) {
     /**
      * Default value. All download operations will execute in queue style (first-in-first-out).
      */
-    //按照队列先进先出的顺序下载
     SDWebImageDownloaderFIFOExecutionOrder,
 
     /**
      * All download operations will execute in stack style (last-in-first-out).
      */
-    //按照栈后进先出进行下载
     SDWebImageDownloaderLIFOExecutionOrder
 };
 
@@ -125,25 +113,21 @@ typedef SDHTTPHeadersDictionary * _Nullable (^SDWebImageDownloaderHeadersFilterB
  * Decompressing images that are downloaded and cached can improve performance but can consume lot of memory.
  * Defaults to YES. Set this to NO if you are experiencing a crash due to excessive memory consumption.
  */
-//是否压缩图片
 @property (assign, nonatomic) BOOL shouldDecompressImages;
 
 /**
  *  The maximum number of concurrent downloads
  */
-//设置最大并发数量
 @property (assign, nonatomic) NSInteger maxConcurrentDownloads;
 
 /**
  * Shows the current amount of downloads that still need to be downloaded
  */
-//获取当前下载的数量
 @property (readonly, nonatomic) NSUInteger currentDownloadCount;
 
 /**
  *  The timeout value (in seconds) for the download operation. Default: 15.0.
  */
-//下载时间 默认15秒
 @property (assign, nonatomic) NSTimeInterval downloadTimeout;
 
 /**
@@ -152,14 +136,12 @@ typedef SDHTTPHeadersDictionary * _Nullable (^SDWebImageDownloaderHeadersFilterB
  *
  * @see createNewSessionWithConfiguration:
  */
-//NSURLSession配置一些请求所需要的策略
 @property (readonly, nonatomic, nonnull) NSURLSessionConfiguration *sessionConfiguration;
 
 
 /**
  * Changes download operations execution order. Default value is `SDWebImageDownloaderFIFOExecutionOrder`.
  */
-//设置下载顺序
 @property (assign, nonatomic) SDWebImageDownloaderExecutionOrder executionOrder;
 
 /**
@@ -167,20 +149,16 @@ typedef SDHTTPHeadersDictionary * _Nullable (^SDWebImageDownloaderHeadersFilterB
  *
  *  @return global shared instance of downloader class
  */
-//生成单例 并返回当前实例
 + (nonnull instancetype)sharedDownloader;
 
 /**
  *  Set the default URL credential to be set for request operations.
  */
-//设置身份认证
-
 @property (strong, nonatomic, nullable) NSURLCredential *urlCredential;
 
 /**
  * Set username
  */
-//设置用户名
 @property (strong, nonatomic, nullable) NSString *username;
 
 /**

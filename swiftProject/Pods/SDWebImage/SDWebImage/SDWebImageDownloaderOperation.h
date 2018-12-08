@@ -9,13 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "SDWebImageDownloader.h"
 #import "SDWebImageOperation.h"
-//开始下载通知
+
 FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadStartNotification;
-//收到response通知
 FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadReceiveResponseNotification;
-//停止下载通知
 FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadStopNotification;
-//结束下载通知
 FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadFinishNotification;
 
 
@@ -24,22 +21,19 @@ FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadFinishNotification
  Describes a downloader operation. If one wants to use a custom downloader op, it needs to inherit from `NSOperation` and conform to this protocol
  For the description about these methods, see `SDWebImageDownloaderOperation`
  */
-//如果你想要使用一个自定义的downloader对象，那么这个对象需要继承自NSOperation，并且实现这个协议
 @protocol SDWebImageDownloaderOperationInterface<NSObject>
-//SDWebImageDownloaderOperationInterface的初始化方法
+
 - (nonnull instancetype)initWithRequest:(nullable NSURLRequest *)request
                               inSession:(nullable NSURLSession *)session
                                 options:(SDWebImageDownloaderOptions)options;
-//绑定DownloaderOperation的下载进度block和结束block
+
 - (nullable id)addHandlersForProgress:(nullable SDWebImageDownloaderProgressBlock)progressBlock
                             completed:(nullable SDWebImageDownloaderCompletedBlock)completedBlock;
-//返回当前下载操作的图片是否应该压缩
+
 - (BOOL)shouldDecompressImages;
-//设置是否应该压缩图片
 - (void)setShouldDecompressImages:(BOOL)value;
-//返回身份认证
+
 - (nullable NSURLCredential *)credential;
-//设置身份认证
 - (void)setCredential:(nullable NSURLCredential *)value;
 
 - (BOOL)cancel:(nullable id)token;
@@ -52,16 +46,14 @@ FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadFinishNotification
 /**
  * The request used by the operation's task.
  */
-//operation的请求request
 @property (strong, nonatomic, readonly, nullable) NSURLRequest *request;
 
 /**
  * The operation's task
  */
-//operation的task
 @property (strong, nonatomic, readonly, nullable) NSURLSessionTask *dataTask;
 
-//图片是否可以被压缩属性
+
 @property (assign, nonatomic) BOOL shouldDecompressImages;
 
 /**

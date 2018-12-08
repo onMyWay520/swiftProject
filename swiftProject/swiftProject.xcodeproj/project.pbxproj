@@ -63,6 +63,8 @@
 		5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */; };
 		56467970215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */; };
 		56467972215CE09200D534F1 /* PPYHomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */; };
+		564FB02B21BB6A0100850E30 /* PPYinterview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FB02A21BB6A0100850E30 /* PPYinterview.swift */; };
+		564FB03021BBBE3A00850E30 /* PPYRecommandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FB02F21BBBE3A00850E30 /* PPYRecommandViewModel.swift */; };
 		56528C14217FFF74003679F6 /* PPYWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56528C13217FFF74003679F6 /* PPYWaveView.swift */; };
 		5653A2202171A4570075A999 /* String+GetSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5653A21F2171A4570075A999 /* String+GetSize.swift */; };
 		5653A2222171A4680075A999 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5653A2212171A4680075A999 /* UIImage+Color.swift */; };
@@ -176,6 +178,8 @@
 		5646796D215CD88A00D534F1 /* PPYHomeCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeCollectionVC.swift; sourceTree = "<group>"; };
 		5646796F215CDFEC00D534F1 /* PPYBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		56467971215CE09200D534F1 /* PPYHomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYHomeCollectionCell.swift; sourceTree = "<group>"; };
+		564FB02A21BB6A0100850E30 /* PPYinterview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYinterview.swift; sourceTree = "<group>"; };
+		564FB02F21BBBE3A00850E30 /* PPYRecommandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYRecommandViewModel.swift; sourceTree = "<group>"; };
 		56528C13217FFF74003679F6 /* PPYWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPYWaveView.swift; sourceTree = "<group>"; };
 		5653A21F2171A4570075A999 /* String+GetSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+GetSize.swift"; sourceTree = "<group>"; };
 		5653A2212171A4680075A999 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				56458DBB217D9EC9006C4910 /* PPYNewsViewModel.swift */,
+				564FB02F21BBBE3A00850E30 /* PPYRecommandViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				5641191C215B247F00E00CDB /* PPYMineVC.swift */,
+				564FB02A21BB6A0100850E30 /* PPYinterview.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -826,6 +832,7 @@
 		565C1B792159C78A00356718 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = PPY;
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "杭州拼便宜网络科技有限公司";
@@ -907,12 +914,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-swiftProject/Pods-swiftProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/LLCycleScrollView/LLCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -921,12 +932,16 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -963,6 +978,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56458DB8217D735A006C4910 /* UIAlert+Extension.swift in Sources */,
+				564FB03021BBBE3A00850E30 /* PPYRecommandViewModel.swift in Sources */,
 				5644779E2183F9210066AA56 /* PPYShopModel.swift in Sources */,
 				56E332C7215DC68B00D69319 /* PPYColor.swift in Sources */,
 				5646796E215CD88A00D534F1 /* PPYHomeCollectionVC.swift in Sources */,
@@ -999,6 +1015,7 @@
 				5668C024215F558400531C72 /* PPYkeyWordsVC.swift in Sources */,
 				560F9E11217EC97800D1FB3A /* PPYBarVC.swift in Sources */,
 				56871F72215E21E20055B0E1 /* PPYBaseViewModel.swift in Sources */,
+				564FB02B21BB6A0100850E30 /* PPYinterview.swift in Sources */,
 				5646306A217075B50077F053 /* TimerButton.swift in Sources */,
 				56E332CA215DC68B00D69319 /* PPYPageTitleView.swift in Sources */,
 				560F9E15217F10FD00D1FB3A /* PPYDetailSwitchTitleVC.swift in Sources */,
