@@ -45,6 +45,9 @@ class PPYConfirmOrderVC: PPYBaseTableViewController {
     }
     // MARK: 判断是否需要全选中
     func judgeIsSelectAll(){
+        if (addGoodArray == nil) {
+            return
+        }
         for model in addGoodArray! {
             if model.selected != true {
                 //只要有一个不等于就不全选中
