@@ -11,7 +11,7 @@ let navHeight: CGFloat = {
     let statusBarHeight = UIApplication.shared.statusBarFrame.height
     if statusBarHeight == 20.0 {
         return 64
-    }else {
+    } else {
         return 88
     }
 }()

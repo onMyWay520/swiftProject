@@ -41,6 +41,18 @@ struct Matrix {
         }
     }
 }
+class daysofaweek {
+    private var days = ["Sunday", "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "saturday"]
+    subscript(index: Int) -> String {
+        get {
+            return days[index]   // 声明下标脚本的值
+        }
+        set(newValue) {
+            self.days[index] = newValue   // 执行赋值操作
+        }
+    }
+}
 /*在Swift中, 我们使用enum关键字去声明枚举。枚举是一种常见的数据类型，他的主要功能就是将某一种有固定数量可能性的变量的值，以一组命名过的常数来指代*/
 enum Orientation:Int{
     case East
@@ -126,7 +138,7 @@ enum Direction {
 extension UIButton{
     //swit中类方法是以class开头的方法，类似于oc中+开头的方法
     class func createButton(imageName:String)->UIButton{
-        let btn=UIButton()
+        let btn = UIButton()
         btn.setImage(UIImage(named:imageName), for: .normal)
         btn.sizeToFit()
         return btn
@@ -152,7 +164,8 @@ class PPYKeyWordsVC: PPYBaseTableViewController {
     //在Swift中, 如果我们要重写某个方法, 或者某个属性的话, 我们需要在重写的变量前增加一个override关键字
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title="关键字演练";       self.dataArray=["struct","enum","subscript","mutating","extensions","convenience"]
+        self.title = "关键字演练";
+        self.dataArray = [ "struct" , "enum", "subscript", "mutating", "extensions", "convenience"]
     self.mainView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "CellId")
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -174,11 +187,11 @@ class PPYKeyWordsVC: PPYBaseTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellID = "CellId"
         var cell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath)
-        if cell==nil {
-            cell=UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier:cellID)
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.textLabel?.text=self.dataArray[indexPath.section] as? String
+        cell.textLabel?.text = self.dataArray[indexPath.section] as? String
         return cell
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -186,8 +199,7 @@ class PPYKeyWordsVC: PPYBaseTableViewController {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: true)
-        let alertController = UIAlertController(title: self.dataArray[indexPath.section] as? String,
-                                                message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: self.dataArray[indexPath.section] as? String,message: "", preferredStyle: .alert)
 //        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "好的", style: .default, handler: {
             action in
@@ -231,14 +243,12 @@ class PPYKeyWordsVC: PPYBaseTableViewController {
     }
     func showSubscript() {
         var matrix = Matrix(rows: 2, columns: 2)
-        matrix[0, 1] = 1.5
-        matrix[1, 0] = 3.2
+        matrix[0, 1] = 1.2
+        matrix[1, 0] = 2.2
         print("matrix == \(matrix)")
-        /**
-         打印结果：
-         matrix == Matrix(rows: 2, columns: 2, grid: [0.0, 1.5, 3.2000000000000002, 0.0])
-         
-         */
+        let p = daysofaweek()
+        print("day = \(p[0])")
+      
     }
     
     func showMutating() {
@@ -264,7 +274,7 @@ class PPYKeyWordsVC: PPYBaseTableViewController {
     func showConvenience(){
 //        title: "你好", color: UIColor.red
         let btn = UIButton.init(title: "你好", color: UIColor.red, bgColor: UIColor.blue)
-        btn.frame=CGRect.init(x: 80, y: 120, width: 100, height: 30)
+        btn.frame = CGRect.init(x: 80, y: 120, width: 100, height: 30)
         self.view.addSubview(btn)
     }
     deinit {

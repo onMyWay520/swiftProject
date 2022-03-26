@@ -10,25 +10,25 @@ import UIKit
 import MJRefresh
 class PPYBaseTableViewController: PPYBaseViewController,UITableViewDataSource,UITableViewDelegate {
   
-    var mainView = UITableView()
-    var dataArray = Array<Any>()
+    var mainView  = UITableView ()
+    var dataArray = Array<Any> ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let rect = self.view.frame
-        mainView=UITableView(frame: rect, style: UITableViewStyle.grouped )
-        mainView.delegate=self
-        mainView.dataSource=self
-        mainView.estimatedRowHeight=0
-        mainView.estimatedSectionFooterHeight=0
-        mainView.estimatedSectionHeaderHeight=0
+        mainView = UITableView(frame: rect, style: UITableViewStyle.grouped )
+        mainView.delegate = self
+        mainView.dataSource = self
+        mainView.estimatedRowHeight = 0
+        mainView.estimatedSectionFooterHeight = 0
+        mainView.estimatedSectionHeaderHeight = 0
         mainView.separatorStyle = .none
 //        if #available(iOS 11.0, *) {
 //         mainView.contentInsetAdjustmentBehavior = .never
 //        };
-        mainView.mj_header=MJRefreshNormalHeader()
+        mainView.mj_header = MJRefreshNormalHeader()
         mainView.mj_header.setRefreshingTarget(self, refreshingAction:#selector(loadNewData))
-        mainView.mj_footer=MJRefreshAutoNormalFooter()
+        mainView.mj_footer = MJRefreshAutoNormalFooter()
         mainView.mj_footer.setRefreshingTarget(self, refreshingAction:#selector(loadMoreData))
         self.view.addSubview(mainView)
         self.mainView.mj_footer.isHidden=true

@@ -66,7 +66,7 @@ class PPYClosureVC: PPYBaseViewController {
          */
         
         let names = ["ZZZZZZ", "BB", "A", "CCCC", "EEEEE"]
-       print( names.sorted())
+        print( names.sorted())
         // ["A", "BB", "CCCC", "EEEEE", "ZZZZZZ"]
         
         //更改排序规则 其实就是利用了函数重载，具体可看函数定义

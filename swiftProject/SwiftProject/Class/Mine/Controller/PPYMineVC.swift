@@ -24,8 +24,8 @@ class PPYMineVC: PPYBaseTableViewController {
         return headView
     }()
     private lazy var waveView : PPYWaveView={
-        let  waveView=PPYWaveView (frame: CGRect(x: 0.0, y: HeadViewHeight+20, width: KScreenWidth, height: 30))
-        waveView.backgroundColor=UIColor.orange
+        let waveView = PPYWaveView (frame: CGRect(x: 0.0, y: HeadViewHeight+20, width: KScreenWidth, height: 30))
+        waveView.backgroundColor = UIColor.orange
         return waveView
     }()
     override func viewDidLoad() {
@@ -47,8 +47,8 @@ class PPYMineVC: PPYBaseTableViewController {
         mainView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: resueIdentifer)
         mainView.mj_header.isHidden=true
         mainView.showsVerticalScrollIndicator = false
-//        //下面两句必不可少，否则会出现第一次加载时位置不对的情况
-        mainView.contentInset.top = HeadViewHeight+50
+        //下面两句必不可少，否则会出现第一次加载时位置不对的情况
+        mainView.contentInset.top = HeadViewHeight + 50
         mainView.contentOffset = CGPoint(x: 0.0, y: -HeadViewHeight)
     }
     //MARK: - DataSource

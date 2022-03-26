@@ -13,19 +13,19 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
-        titleArray=["关键字演练","闭包演练","MVVM请求网络","柱状图","详情滑动切换标题","RXSwift介绍","粒子效果"]
+        titleArray = ["关键字演练","闭包演练","MVVM请求网络","柱状图","详情滑动切换标题","RXSwift介绍","粒子效果"]
         self.mainView.mj_footer.isHidden=false
         mainView.mj_header.beginRefreshing()
-        let  people=PPYPeople ()
+        let  people = PPYPeople ()
         people.eat()//无参数的方法
         people.logMe("log me", logYou: "log you")//有参数的方法
 
     }
 
     override func loadNewData() {
-        self.dataArray=["1","2","3","4"]
+        self.dataArray = ["1","2","3","4"]
         self.mainView.mj_header.endRefreshing()
-        self.mainView .reloadData()
+        self.mainView.reloadData()
         
     }
 //    override func loadMoreData() {
