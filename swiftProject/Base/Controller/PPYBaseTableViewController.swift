@@ -18,7 +18,7 @@ class PPYBaseTableViewController: PPYBaseViewController,UITableViewDataSource,UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let rect = self.view.frame
+        let rect = CGRect(x: 0, y: STATUS_NAV_BAR_Y , width: KScreenWidth, height: KScreenHeight - STATUS_NAV_BAR_Y)
         mainView = UITableView(frame: rect, style: UITableViewStyle.grouped)
         mainView.delegate = self
         mainView.dataSource = self
@@ -26,9 +26,9 @@ class PPYBaseTableViewController: PPYBaseViewController,UITableViewDataSource,UI
         mainView.estimatedSectionFooterHeight = 0
         mainView.estimatedSectionHeaderHeight = 0
         mainView.separatorStyle = .none
-//        if #available(iOS 11.0, *) {
-//         mainView.contentInsetAdjustmentBehavior = .never
-//        };
+        if #available(iOS 11.0, *) {
+         mainView.contentInsetAdjustmentBehavior = .never
+        };
         header.setRefreshingTarget(self, refreshingAction: #selector(loadNewData))
         footer.setRefreshingTarget(self, refreshingAction:#selector(loadMoreData))
         mainView.mj_header = header

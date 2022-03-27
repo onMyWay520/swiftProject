@@ -15,7 +15,7 @@ class PPYHomeVC: PPYBaseViewController {
     }()
     private lazy var pageTitleView: PPYPageTitleView = {
         let config = PPYPageTitleViewConfig()
-        let pageTitleView = PPYPageTitleView(frame: CGRect(x: 0, y: STATUSBAR_HEIGHT , width: KScreenWidth, height: ppyTitleViewH), titles: titles, config: config)
+        let pageTitleView = PPYPageTitleView(frame: CGRect(x: 0, y: ppyTitleViewH , width: KScreenWidth, height: ppyTitleViewH), titles: titles, config: config)
         pageTitleView.pageTitleViewDelegate = self
         return pageTitleView
     }()
@@ -45,19 +45,22 @@ class PPYHomeVC: PPYBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         leftButton.isHidden = true
+        self.navigationController?
+            .navigationBar.isHidden = true
         view.backgroundColor = UIColor.white
         view.addSubview(pageTitleView)
         view.addSubview(pageContentView)
-        print("is_iphonex == \(Device_Is_iPhone_All)")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//    self.navigationController?.navigationBar.isHidden = true
+    self.navigationController?
+        .navigationBar.isHidden = true
 
     }
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//    self.navigationController?.navigationBar.isHidden = false
+    super.viewWillDisappear(animated)
+    self.navigationController?
+        .navigationBar.isHidden = false
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

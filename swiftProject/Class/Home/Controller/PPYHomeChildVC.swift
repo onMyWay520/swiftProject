@@ -12,10 +12,13 @@ class PPYHomeChildVC: PPYBaseTableViewController {
     fileprivate var titleArray = Array<Any>()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?
+            .navigationBar.isHidden = true
         self.mainView.register(PPYHomeGoodsCell.classForCoder(), forCellReuseIdentifier: "goodsCell")
+        self.mainView.frame = CGRect(x: 0, y: 0, width: KScreenWidth, height: KScreenHeight - STATUSBAR_HEIGHT)
         titleArray = ["关键字演练","闭包演练","MVVM请求网络","柱状图","详情滑动切换标题","RXSwift介绍","粒子效果"]
         self.mainView.mj_footer?.isHidden = false
-        mainView.mj_header?.beginRefreshing()
+        self.mainView.mj_header?.beginRefreshing()
         let  people = PPYPeople ()
         people.eat()//无参数的方法
         people.logMe("log me", logYou: "log you")//有参数的方法
@@ -106,15 +109,15 @@ class PPYHomeChildVC: PPYBaseTableViewController {
         case 4:
             vc = PPYRXSwiftVC()
             break
-        case 5:
+//        case 5:
 //            let cell = mainView.cellForRow(at: indexPath)
 //            let point = CGPoint(x: (cell?.center.x)!, y: (cell?.center.y)!)
 //            startEmittering(point)
+//            fallthrough
+         default:
             break
-        default:break
-            
         }
-        navigationController!.pushViewController(vc, animated: true)
+        navigationController!.pushViewController(vc, animated: false)
     }
 
     /*

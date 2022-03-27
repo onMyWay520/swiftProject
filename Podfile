@@ -15,5 +15,5 @@ target 'swiftProject' do
     pod 'RxDataSources'
     pod 'RxAlamofire'
     pod 'ObjectMapper'
-
+    pod 'LookinServer', :git => 'https://gitee.com/wyc520/LookinServer.git', :configurations => ['Debug']
 end

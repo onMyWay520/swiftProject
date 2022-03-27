@@ -22,7 +22,7 @@ class PPYBaseNavigationController: UINavigationController {
         viewController.hidesBottomBarWhenPushed = true
             
         }
-        super.pushViewController(viewController, animated: true)
+        super.pushViewController(viewController, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

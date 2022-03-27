@@ -14,7 +14,7 @@ class PPYBaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addChildViewControllers()
-        let backView = UIView(frame: CGRect(x: 0, y: 0, width: KScreenWidth, height: TABBAR_HEIGHT))
+        let backView = UIView(frame: CGRect(x: 0, y: 0, width: KScreenWidth, height: 49))
         backView.backgroundColor = UIColor.white
         tabBar.insertSubview(backView, at: 0)
         tabBar.isOpaque = true

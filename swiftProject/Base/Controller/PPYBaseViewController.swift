@@ -18,7 +18,9 @@ class PPYBaseViewController: UIViewController {
     func setNavItem() {
         self.view.backgroundColor = UIColor.white
         //修改导航栏背景色
-        self.navigationController?.navigationBar.barTintColor = UIColor(hex: "2a7fd5")
+        self.navigationController?.navigationBar.barTintColor = DefaultColor
+        self.navigationController?.navigationBar.backgroundColor = DefaultColor
+        self.navigationController?.navigationBar.tintColor = DefaultColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
         self.navigationItem
@@ -57,7 +59,7 @@ class PPYBaseViewController: UIViewController {
     
     @objc func leftButtonClick() {
         
-    self.navigationController?.popViewController(animated: true)
+    self.navigationController?.popViewController(animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -14,7 +14,7 @@ class MainTabBar: UITabBar {
         let button = UIButton(type: .custom)
         button.setBackgroundImage(UIImage(named: "tabBar_publish_icon"), for: .normal)
         button.setBackgroundImage(UIImage(named: "tabBar_publish_click_icon"), for: .highlighted)
-        button.frame = CGRect(x: 0, y: -10, width: 40, height: 40)
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         button.addTarget(self, action: #selector(clickPublishButton), for: .touchUpInside)
         return button
     }()
@@ -33,13 +33,17 @@ class MainTabBar: UITabBar {
 //        let btnH = 49
         let btnY: CGFloat = 0
         var index: CGFloat = 0
-        publishButton.center = ppy_center
+//        publishButton.center = self.ppy_center
         for view in subviews {
             if view.isKind(of: NSClassFromString("UITabBarButton")!){
                 let buttonX = (index < 2) ? index * btnW : (index + 1) * btnW
                 view.frame = CGRect(x: buttonX, y: btnY, width: btnW, height: 49)
                 index += 1
+            } else {
+                view.frame = CGRect(x: 2 * btnW + (btnW - 40)/2 , y: 5, width: 40, height: 40)
+
             }
+
         }
         
     }
