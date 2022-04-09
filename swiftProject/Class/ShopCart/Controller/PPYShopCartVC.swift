@@ -22,6 +22,7 @@ class PPYShopCartVC: PPYBaseTableViewController,CAAnimationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "购物车"
         setmyUI()
         
     }

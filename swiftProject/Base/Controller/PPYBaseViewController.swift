@@ -13,10 +13,10 @@ class PPYBaseViewController: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
         setNavItem()
-        setUI()
+//        setUI()
     }
     func setNavItem() {
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = DefaultColor
         //修改导航栏背景色
         self.navigationController?.navigationBar.barTintColor = DefaultColor
         self.navigationController?.navigationBar.backgroundColor = DefaultColor
@@ -27,6 +27,7 @@ class PPYBaseViewController: UIViewController {
             .leftBarButtonItem =
         UIBarButtonItem.init(customView: leftButton)
         self.navigationController?.navigationBar.isHidden = false
+
     }
     func setUI() {
         

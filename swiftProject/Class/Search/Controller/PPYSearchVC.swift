@@ -13,6 +13,8 @@ class PPYSearchVC: PPYBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         leftButton.isHidden=true
+        self.navigationItem.title = "搜索"
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
